@@ -1,0 +1,48 @@
+* Quick notes
+
+** GPGPU
+   https://zh.wikipedia.org/wiki/%E9%80%9A%E7%94%A8%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86%E5%99%A8
+
+   [2016-08-15 Mon 09:37]
+
+** 异构计算的概念
+   [[https://zh.wikipedia.org/wiki/%25E5%25BC%2582%25E6%259E%2584%25E8%25AE%25A1%25E7%25AE%2597][异构计算 - 维基百科，自由的百科全书]]
+   指使用不同类型指令集和体系架构的计算单元组成系统的计算方式。常见的计算单元类别包括CPU、GPU等协处理器、DSP、ASIC、FPGA等。
+
+   [2016-08-15 Mon 09:44]
+
+** intel MIC
+   [[https://zh.wikipedia.org/wiki/%25E8%2587%25B3%25E5%25BC%25BA%25E8%259E%258D%25E6%25A0%25B8][至强融核 - 维基百科，自由的百科全书]]
+   集成众核
+
+   [2016-08-15 Mon 10:13]
+
+** hwloc
+   [[http://linux.die.net/man/7/hwloc][hwloc(7): General info about hwloc - Linux man page]]
+
+   [2016-08-15 Mon 10:36]
+
+** libnuma
+   [[http://oss.sgi.com/projects/libnuma/][SGI - Developer Central Open Source | numactl and libnuma]]
+
+   [2016-08-15 Mon 10:42]
+
+** numa
+   [[http://baike.baidu.com/item/NUMA/6906025?noadapt=1][NUMA_百度百科]]
+
+   [2016-08-15 Mon 10:56]
+
+** MKL
+   [[https://en.wikipedia.org/wiki/Math_Kernel_Library][Math Kernel Library - Wikipedia, the free encyclopedia]]
+
+   [2016-08-15 Mon 17:37]
+
+** libevent
+   [[https://zh.wikipedia.org/zh-cn/Libevent][libevent - 维基百科，自由的百科全书]]
+
+   [2016-08-16 Tue 11:03]
+
+** memcached
+   [[https://zh.wikipedia.org/wiki/Memcached][memcached - 维基百科，自由的百科全书]]
+
+   [2016-08-16 Tue 11:05]

@@ -1,0 +1,46 @@
+* Spacemacs Rocks Episode 2 (Day Three)
+
+** Split your configs into several files
+1. Use Git to manage your init file
+2. help window is annoying
+  #+BEGIN_SRC emacs-lisp
+(require 'popwin)
+(popwin-mode t)
+#+END_SRC
+3. load-file, load-path and load
+4. features, provide, require and autoload
+5. name conventions
+   lightjameslyy/xxx
+   lightjameslyy-xxx
+   all of the names should have a prefix to minimize naming conflicts.
+6. define your own abbrevs
+   #+BEGIN_SRC emacs-lisp
+;; define my own abbrevs
+(abbrev-mode t)
+(define-abbrev-table 'global-abbrev-table '(
+					    ;; signature
+					    ("lty" "lightjameslyy")
+					    ))
+   
+   #+END_SRC
+7. how to organize your configs
+- init-packages.el
+- init-ui.el
+- init-better-default.el
+- init-keybindings.el
+- custom.el
+  #+BEGIN_SRC emacs-lisp
+(setq custom-file (expand-file-name "lisp/custom.el" user-emacs-directory))
+  #+END_SRC
+
+8. use `counsel-git` to find file in git managed project
+   #+BEGIN_SRC emacs-lisp
+(global-set-key (kbd "C-c g") 'counsel-git)   
+   #+END_SRC
+** Major mode and minor mode in details
+1. conventions
+text-mode/special-mode/prog-mode
+naming: xxx-mode, xxx-mode-key-map xxx-mode-hook
+
+2. mode key map and mode hook
+

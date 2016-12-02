@@ -1,0 +1,86 @@
+#+TITLE: Learning Subversion Notes
+
+* help
+
+** help command
+
+   #+BEGIN_SRC shell
+   svn help
+   #+END_SRC
+
+* Basic Usage
+
+** Creating and Configuring Your Repository
+
+*** Creating the Repository
+    #+BEGIN_SRC shell
+    > svnadmin create [PATH]
+    #+END_SRC
+
+** Getting Data into Your Repository
+
+*** Importing Files and Directories
+    The *svn import* command is a quick way to copy an unversioned tree of files into a repository.
+
+    #+BEGIN_SRC shell
+    svn import [PATH] [URL]
+    #+END_SRC
+
+    to see the list of a repository:
+    #+BEGIN_SRC shell
+    svn list [URL]
+    #+END_SRC
+
+*** Repository Layout Convention
+
+    trunk: main body of development, originating from the start of the project till the present.
+    branches: a copy of code derived from certain point of the trunk, used for applying major changes to the code while preserve the integrity of the code in the trunk.
+    tags: stable snapshots of a particular line of development.
+
+    # there's a example: file:///Users/lightjames/workspace/svn/repo/shell/
+
+** Creating a Working Copy
+
+   #+BEGIN_SRC shell
+   svn checkout [URL] [PATH]
+   #+END_SRC
+
+   *Notice*: if you delete .svn by accident, just delete the directory contained this .svn directory(don't use /svn delete/), then run /svn update/ in parent directory.
+
+** Basic Work Cycle
+
+*** Update Your Working Copy
+
+    #+BEGIN_SRC shell
+    svn update
+    #+END_SRC
+
+*** Make Your Changes
+
+    #+BEGIN_SRC shell
+    svn add FOO
+    svn delete FOO
+    svn copy FOO BAR
+    svn mv FOO BAR
+    svn mkdir FOO
+    #+END_SRC
+
+*** Review Your Changes
+
+**** See an overview of your changes
+
+     #+BEGIN_SRC shell
+     svn status
+     #+END_SRC
+
+     ?: not under version control
+     A: scheduled for addition
+     C: conflict
+     D: scheduled for deletion
+     M: modified
+
+**** Examine the details of your local modifications
+
+     #+BEGIN_SRC shell
+     svn diff
+     #+END_SRC

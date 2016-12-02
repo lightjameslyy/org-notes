@@ -1,0 +1,63 @@
+* Spacemacs ABC Notes
+https://www.youtube.com/watch?v=ZFV5EqpZ6_s&index=1&list=PLrJ2YN5y27KLhd3yNs2dR8_inqtEiEweE
+
+** SPC
+*** SPC
+Jump to word 
+*** TAB
+Last buffer(visible in window)
+*** !
+Run shell command
+*** '
+Open shell
+*** * or /
+Search in project
+*** 0,1,...,9
+Jump to window
+*** :
+Run M-x
+*** ;
+Comment operator
+*** ?
+Helm session with keybindings
+*** `
+Skip backwards in avy jump list (consider using C-o instead)
+*** f1 
+Fuzzy search among Emacs things
+*** a: Applications
+**** c: Calculator
+**** d: Dired
+**** o: Org  
+**** s: Shells
+**** u: Undo tree
+*** b: Buffers  
+**** .: buffer micro state  
+**** b: Helm mini
+**** B: Ibuffer
+**** d: Kill this buffer 
+**** e: Safe erase buffer 
+**** f: Reveal in osx finder 
+**** h: Home 
+**** k: Kill buffer with ido  
+**** K: Kill other buffers 
+**** m: Move 
+**** M: Ace swap window 
+**** n: next useful buffer  
+**** p: previous useful buffer 
+**** P: replace the whole buffer with external clipboard
+**** s: scratch buffer 
+**** w: toggle read only 
+**** Y: copy the whole buffer to clipboard
+**** C-k: kill buffers matching regular expression
+*** c: compile/comment 
+*** C: capture/color
+*** e: errors
+*** f: files 
+**** a: fasd
+****    
+ 
+ 
+
+ 
+ 
+

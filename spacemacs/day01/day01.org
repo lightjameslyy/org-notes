@@ -1,0 +1,29 @@
+* Spacemacs Rocks Episode 2 (day one)
+
+** Install Emacs
+- Mac
+- Windows
+- Linux
+
+** Go over the Emacs tutorial at least once
+- C-h t to open tutorial
+- cursor movement (C-f/C-b/C-n/C-p/C-a/C-e)
+- M(meta), s(super, command), S(shift), C(ctrl)
+- C-g quit command
+  
+** Active some built-in functionality (org-mode)
+- linum-mode to display line number 
+- open file: C-x C-f, save file: C-x C-s
+- always ask emacs the right question
+- C-h k(key)/ C-h v(variable)/ C-h f(function)
+  
+** Learn some Emacs Lisp
+- google search: learn x in y minutes
+
+** Start to hacking Emacs 
+** Emacs package system
+- install company mode 
+** Bonus(org-mode basis)
+- use * to define headings
+- C-c C-t to toggle TODO states
+- GTD(getting things done)

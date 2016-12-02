@@ -1,0 +1,107 @@
+* conference notes
+
+** D2 / 1
+
+*** key words:
+    - 聚类、分类
+    - 主成分
+    - 站点特征值的分析（CIPD、COPD、CIPE、COPE）
+    - 基于特征角对站点进行分类
+    - 分析站点周围的土地利用
+
+** D2 / 2
+
+** C1 / 12
+
+   - problem: 传统测试以单机为主，无法满足大数据的需求
+   - 基于云平台的测评技术
+
+** C1 / 13
+
+   - 卫星数据存储管理面临瓶颈
+     - 分布式数据库
+   - 使用Hbase
+     - 字典序
+     - 列族确定，列可以自由扩展
+   - GeoHash 编码
+     - 将查询任务分割
+
+** C1 / 14
+
+** C1 / 15
+
+** C1 / 17
+
+** C1 / 18
+
+   - 湖泊提取架构：众包+半自动化机器学习
+
+** C1 / 19
+
+** C2 / 2
+
+   - co-design of software and physical layer architecture
+   - 由于ska具体应用的不同，需要不同的硬件和软件进行协同配合，就是说需要进行硬件设计（FPGA等）
+
+** C2 / 3
+
+** C2 / 4
+
+** C2 / 5
+
+* 8.27 ska
+
+** monthly report
+
+** tasks management
+- jira.ska-sdp.org
+- create sub-task --> 显示我们有group
+- Monday data 会议
+- 1.25 个工作量需要5个人
+- jira + conference
+
+** DALiuGE
+- MPI 的劣势比较明显,无法满足ska的需求
+- ska 的候选数据处理应用
+- similar to STAR
+- 采用python,直接挂在docker上跑
+- [[https://github.com/SKA-ScienceDataProcessor/dfms]]
+
+** data lifecycle management
+- assigned to fudan, but later to Andreas(in fact pending)
+
+** hardware challenge
+- 5 年内，功耗比提升64倍，性价提升30倍
+
+** COTS(commercial off the shell)
+- 不仅要软件开发，还要architecture方面
+
+** ARCH-145
+- about EF(执行框架)
+
+** 评估的角度
+- 执行框架
+- 硬件平台
+
+** 硬件架构
+- 可能需要更加异构的架构(CPU+GPU+MIC+FPGA...)
+
+** 中方联盟评分机制
+- 分ABCD四级(3个月以后开始公布)
+- 表现过差退出联盟
+
+** 团队不许出现破坏团结的现象
+
+** 联盟的组织机构
+*** 执行委员会
+- 每个单位至少1人
+*** 总体组
+ - 每家单位至少有一人在总体组
+ - 10%经费做总体组经费
+
+*** 协调小组
+
+*** 专家委员会
+- 计算机
+- 大数据
+- 天文学

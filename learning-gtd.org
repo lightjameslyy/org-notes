@@ -1,0 +1,27 @@
+#+TITLE: learning dairy
+#+AUTHOR: liutao
+#+DATE: <2016-10-14 Fri 09:03>
+#+
+
+* TODO org-mode tutorial
+
+** TODO todo items
+   SCHEDULED: <2016-10-14 Fri 09:23>
+   http://orgmode.org/org.html#TODO-items
+
+*** DONE todo basic
+    CLOSED: [2016-10-14 Fri 09:46] SCHEDULED: <2016-10-14 Fri 09:23>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-10-14 Fri 09:46]
+    :END:
+    http://orgmode.org/org.html#TODO-basics
+
+*** DONE todo extensions
+    CLOSED: [2016-10-14 Fri 09:46] SCHEDULED: <2016-10-14 Fri 09:27>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-10-14 Fri 09:46]
+    :END:
+    http://orgmode.org/org.html#TODO-extensions
+
+*** TODO progress logging
+  http://orgmode.org/org.html#Progress-logging

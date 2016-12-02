@@ -1,0 +1,10 @@
+#+TITLE: reading schedule
+#+AUTHOR: lightjames
+
+* STARTED 并行算法设计与性能优化
+  SCHEDULED: <2016-10-16 Sun 22:20>
+
+** STARTED chapter01 绪论
+   SCHEDULED: <2016-10-16 Sun 22:20>
+
+*** TODO 1.1 并行和向量化的作用

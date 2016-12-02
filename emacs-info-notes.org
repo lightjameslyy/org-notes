@@ -1,0 +1,14 @@
+#+TITLE: Learning Emacs (M-x info)
+
+* org-mode
+
+** hyperlinks
+*** link format
+- [[link][description]] or [[www.baidu.com][link]]
+- for example: [[http://lightjameslyy.github.io/][my blog]]
+*** edit link and description
+- command: C-c C-l
+- then edit in minibuffer
+*** internal links
+
+

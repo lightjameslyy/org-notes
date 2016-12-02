@@ -1,0 +1,16 @@
+#+TITLE: how to use ycmd in emacs(c++)
+
+* Makefile
+
+  write a makefile first.
+
+* generate .ycm_extra_conf.py
+
+** install ycmd
+
+** command
+
+   #+BEGIN_SRC shell
+   cd ~/workspace/YCM_Generator/
+   python config_gen.py <path to c++ project>
+   #+END_SRC

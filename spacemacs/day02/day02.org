@@ -1,0 +1,105 @@
+* Spacemacs Rock Episode 2 (Day two)
+
+** Fix some annoying stuff
+1. make cursor style to bar globally ==> setq-default
+
+2. disable backup file
+#+BEGIN_SRC emacs-lisp
+  (setq make-backup-files nil)
+#+END_SRC
+use C-c ' to open another buffer to edit source code
+make soure code fancy in the org file
+#+BEGIN_SRC emacs-lisp
+  (require 'org)
+  (setq org-src-fontify-natively t)
+#+END_SRC
+
+3. enable recentf-mode (I haven't make it yet)
+#+BEGIN_SRC emacs-lisp
+(require 'recentf)
+(recentf-mode 1)
+(setq recentf-max-menu-items 25)
+(global-set-key "\C-x\ \C-r" 'recentf-open-files)
+#+END_SRC
+
+4. add delete selection mode 
+
+#+BEGIN_SRC emacs-lisp
+(delete-selection-mode t)
+#+END_SRC
+
+** Make emacs more fancy
+1. show match parenthesises
+#+BEGIN_SRC emacs-lisp
+(add-hook 'emacs-lisp-mode-hook 'show-paren-mode)
+#+END_SRC
+in my case:
+#+BEGIN_SRC emacs-lisp
+(show-paren-mode t)
+#+END_SRC
+
+2. highlight current line
+#+BEGIN_SRC emacs-lisp
+(global-hl-line-mode t)
+#+END_SRC
+** Improve built in package system
+#+BEGIN_SRC emacs-lisp
+(when (>= emacs-major-version 24)
+  (package-initialize)
+  (require 'package)
+  (add-to-list 'package-archives '("melpa" . "http://melpa.org/packages/") t)
+  )
+
+(require 'cl)
+
+;; add whatever packages you want here
+(defvar lightjameslyy/packages '(
+				 company
+				 monokai-theme
+				 ) "Default packages")
+
+(defun lightjameslyy/packages-installed-p()
+  (loop for pkg in lightjameslyy/packages
+	when (not (package-installed-p pkg)) do (return nil)
+	finally (return t)))
+
+(unless (lightjameslyy/packages-installed-p)
+  (message "%s" "Refreshing package database...")
+  (package-refresh-contents)
+  (dolist (pkg lightjameslyy/packages)
+    (when (not (package-installed-p pkg))
+      (package-install pkg))))
+#+END_SRC
+
+1. install a theme (monokai)
+2. install hungry delete
+3. package-list-packages (add/delete/update packages)
+4. install and confugure smex and ivy mode
+5. use customize-group to customize package settings
+6. install and configure smartparens mode
+7. don't update packages daily in case of failure
+
+
+** Set up a javascript IDE
+1. install js2-mode and start to write javascript code
+2. install nodejs-repl to execute code inside Emacs
+
+** Learn more from Emacs itself
+1. C-h C-f, C-h C-v, C-h C-k
+2. learn more about elisp(M-x info)
+
+
+** Org-mode (bonus time)
+*** Agenda files and agenda view
+1. one gtd.org file
+#+BEGIN_SRC emacs-lisp
+(setq org-agenda-files '("~/org"))
+(global-set-key (kbd "C-c a") 'org-agenda)
+#+END_SRC
+*** learn how to shedule items and set deadline
+1. C-c C-s:  shedule items
+2. C-c C-d:  set deadline
+
+** Exercise
+*** the difference between .emacs and .emacs.d/init.el 
+*** try to configure company mode via customize-group

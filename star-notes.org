@@ -1,0 +1,81 @@
+#+TITLE: STAR-NOTES
+
+* conceptions
+  1. round-robin scheduling: Round-robin (RR) is one of the algorithms employed by process and network schedulers in computing. Time slices are assigned to each process in equal portions and in circular order, handling all processes without priority.
+
+* star_dev.c
+** star_malloc()
+   - return: void*
+   - malloc with error check
+
+** star_fatal_error()
+   - return: void
+   - print star error message to stderr
+
+** star_task_new()
+   - return: Task*
+   - init *task* with star_malloc()
+   - init attributes of *task*
+
+** star_tack_delete()
+   - return: (void*)(Task*)
+   - unbind *task* with *star*
+   - free the space of *task*
+
+** STAR_Args_List()
+   - return: (void*)(icl_list_t*)
+   - get argument list of current task of *star*
+
+** STAR_Thread_Rank()
+   - return: int
+   - return the rank of current thread of *star*
+
+** STAR_Args_Pop()
+   - return: void*
+   - get next argument's *data*
+
+** star_worker_new()
+   - return: Work*
+   - allocate and initialize a worker structure
+
+** STAR_Setup()
+   - return: Star*
+   - init *star* with star_malloc()
+   - init attributes of *star*
+   - setup workers
+   - launch workers
+
+** star_work_set_affinity_and_call_main_loop()
+   - return: void
+
+** star_work_main_loop()
+   - return: long long
+   - Called by the workers (and master) to continue executing tasks until some exit condition is reached.
+
+** star_work_main_loop_check_for_task()
+   - return: Task*
+
+** STAR_New()
+   - return: Star*
+   - Init number of cores and topology
+   - Get number of threads
+
+* StarOS.c
+** star_get_numthreads()
+   - return: int
+   - get threads number from star_topology_init() or environment variable
+
+** star_getenv_int()
+   - return: int
+   - using getenv()
+   - if can't get valid value from getenv(), return *defval*
+
+** star_get_affthreads()
+   - return: int*
+   - return *cores_bind*
+
+** star_setaffinity()
+   - return: int
+   - This routine will set affinity for the calling thread that has rank 'rank'. Ranks start with 0.
+   - CPU_ZERO(): Clears set, so that it contains no CPUs.
+   - CPU_SET(): Add CPU cpu to set.
