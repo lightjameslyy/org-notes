@@ -1,0 +1,71 @@
+#+TITLE: my daily todo list
+#+AUTHOR: lightjames
+
+<2017-02-14 Tue>
+   |--------+----------------------------------------+----------------+----------------+----------------|
+   | Status | Task                                   | Pomodoro Ticks | Internal Break | External Break |
+   |--------+----------------------------------------+----------------+----------------+----------------|
+   | Done   | finish 立项任务书                      | xx             | ''             | '              |
+   | Done   | finish yesterday's diary on AMS system |                |                |                |
+   | Done   | read Pomodoro chapter 03               | x              |                |                |
+   | Done   | read Pomodoro chapter 04               | x              |                |                |
+   |        | read QUARK code                        |                |                |                |
+   | Done   | learn how to create table in org-mode  | x              |                |                |
+   |--------+----------------------------------------+----------------+----------------+----------------|
+
+<2017-02-15 Wed>
+   |--------+------------------------+----------------+----------------+----------------|
+   | Status | Task                   | Pomodoro Ticks | Internal Break | External Break |
+   |--------+------------------------+----------------+----------------+----------------|
+   | Done   | AMS Diary              |                |                |                |
+   | Done   | read quark-0.9.0 guide | xxx            |                | '              |
+   | Done   | finish Pomodoro book   | x              | '              | '              |
+   |        | write QUARK report     |                |                |                |
+   | Done   | read Mind Map chapter  | xx             | ''             | '              |
+   |--------+------------------------+----------------+----------------+----------------|
+
+<2017-02-16 Thu>
+   |--------+------------------------------------------+----------------+----------------+----------------|
+   | Status | Task                                     | Pomodoro Ticks | Internal Break | External Break |
+   |--------+------------------------------------------+----------------+----------------+----------------|
+   | Done   | QUARK's master and worker, scheduler map | x              |                |                |
+   | Done   | write QUARK report                       | xxxxx          | '              |                |
+   |        | learn basic pthread                      | x              |                |                |
+   |        | read Mind Map book                       |                |                |                |
+   | Done   | Manage InSAR on AMS                      | x              |                |                |
+   | Done   | AMS Diary                                |                |                |                |
+   | Done   | Commit on AMS                            |                |                |                |
+   |--------+------------------------------------------+----------------+----------------+----------------|
+
+[2017-02-17 Fri]
+   |--------+---------------------------------------+----------------+----------------+----------------|
+   | Status | Task                                  | Pomodoro Ticks | Internal Break | External Break |
+   |--------+---------------------------------------+----------------+----------------+----------------|
+   | Done   | add AMS task pengqianyi and me        |                |                |                |
+   | Done   | add user for pengqianyi and yuxianjie |                |                |                |
+   | Done   | read StarPU handbook                  | xxxxx          | '              | ''             |
+   |        | learn basic pthread                   |                |                |                |
+   | Done   | AMS diary                             |                |                |                |
+   | Done   | read Mind Map                         | x              |                |                |
+   |--------+---------------------------------------+----------------+----------------+----------------|
+
+[2017-02-20 Mon]
+   |--------+--------------------------------+----------------+----------------+----------------|
+   | Status | Task                           | Pomodoro Ticks | Internal Break | External Break |
+   |--------+--------------------------------+----------------+----------------+----------------|
+   | Done   | install StarPU on my mac       | xx             |                |                |
+   | Done   | read StarPU handbook           |                |                |                |
+   | Done   | AMS diary and  making AMS plan |                |                |                |
+   |        | learn basic pthread            |                |                |                |
+   | Done   | leetcode                       |                |                |                |
+   |--------+--------------------------------+----------------+----------------+----------------|
+
+[2017-02-21 Tue]
+   |--------+--------------------------------+----------------+----------------+----------------|
+   | Status | Task                           | Pomodoro Ticks | Internal Break | External Break |
+   |--------+--------------------------------+----------------+----------------+----------------|
+   |        | AMS diary and  making AMS plan |                |                |                |
+   | Done   | read StarPU paper              | xxxxxxx        | ''             | ''             |
+   |        | leetcode                       |                |                |                |
+   |        | learn basic pthread            |                |                |                |
+   | Done   | copy mnode data                |                |                |                |

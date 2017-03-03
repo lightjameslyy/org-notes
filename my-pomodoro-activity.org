@@ -1,0 +1,128 @@
+#+TITLE: my activities list
+#+AUTHOR: lightjames
+#+DATE: <2017-02-14 Tue 09:52>
+
+* DONE finish 立项任务书
+  CLOSED: [2017-02-14 Tue 19:04]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-14 Tue 19:04]
+  :END:
+* DONE prepare reading materials for new comers
+  CLOSED: [2017-02-14 Tue 10:38]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-14 Tue 10:38]
+  :END:
+* DONE finish yesterday's diary on AMS system
+  CLOSED: [2017-02-14 Tue 19:04]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-14 Tue 19:04]
+  :END:
+* DONE read Pomodoro chapter 03
+  CLOSED: [2017-02-14 Tue 11:29]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-14 Tue 11:29]
+  :END:
+* DONE read Pomodoro chapter 04
+  CLOSED: [2017-02-14 Tue 15:00]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-14 Tue 15:00]
+  :END:
+* DONE U learn how to create table in org-mode
+  CLOSED: [2017-02-14 Tue 15:44]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-14 Tue 15:44]
+  :END:
+* DONE AMS diary (1)
+  CLOSED: [2017-02-16 Thu 09:30]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 09:30]
+  :END:
+* DONE finish Pomodoro book (1)
+  CLOSED: [2017-02-15 Wed 09:51]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-15 Wed 09:51]
+  :END:
+* DONE read Mind Map chapter 01 (1)
+  CLOSED: [2017-02-15 Wed 16:24]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-15 Wed 16:24]
+  :END:
+* DONE read quark-0.9.0 guide (3)
+  CLOSED: [2017-02-16 Thu 09:31]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 09:31]
+  :END:
+* DONE write QUARK report (5)
+  CLOSED: [2017-02-16 Thu 17:11]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 17:11]
+  :END:
+* DONE QUARK's master and worker, scheduler map (1)
+  CLOSED: [2017-02-16 Thu 16:25]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 16:25]
+  :END:
+* DONE Manage InSAR on AMS （1）
+  CLOSED: [2017-02-16 Thu 16:25]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 16:25]
+  :END:
+* DONE AMS diary (1)
+  CLOSED: [2017-02-16 Thu 20:44]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 20:44]
+  :END:
+* DONE Commit on AMS
+  CLOSED: [2017-02-16 Thu 20:44]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-16 Thu 20:44]
+  :END:
+* DONE add user for pengqianyi and yuxianjie
+  CLOSED: [2017-02-17 Fri 10:39]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-17 Fri 10:39]
+  :END:
+* DONE add AMS task|pengqianyi & me
+  CLOSED: [2017-02-17 Fri 10:39]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-17 Fri 10:39]
+  :END:
+* DONE read StarPU handbook (5)
+  CLOSED: [2017-02-17 Fri 18:54]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-17 Fri 18:54]
+  :END:
+* DONE read Mind Map book (2)
+  CLOSED: [2017-02-17 Fri 18:54]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-17 Fri 18:54]
+  :END:
+* DONE AMS Diary
+  CLOSED: [2017-02-17 Fri 18:54]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-17 Fri 18:54]
+  :END:
+* DONE install StarPU on my mac (2)
+  CLOSED: [2017-02-21 Tue 09:58]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-21 Tue 09:58]
+  :END:
+* DONE read StarPU handbook (4)
+  CLOSED: [2017-02-21 Tue 09:59]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-21 Tue 09:59]
+  :END:
+* DONE copy mnode data (2)
+  CLOSED: [2017-02-22 Wed 09:25]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-22 Wed 09:25]
+  :END:
+* DONE read StarPU paper (8)
+  CLOSED: [2017-02-22 Wed 17:58]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-02-22 Wed 17:58]
+  :END:
+* TODO AMS diary (0.5)
+* TODO making AMS plan (0.5)
+* TODO leetcode (2)
+* TODO learn basic pthread (3)

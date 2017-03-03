@@ -3,9 +3,9 @@
 #+DATE: <2016-10-14 Fri 09:03>
 #+
 
-* TODO org-mode tutorial
+* STARTED org-mode tutorial
 
-** TODO todo items
+** STARTED todo items
    SCHEDULED: <2016-10-14 Fri 09:23>
    http://orgmode.org/org.html#TODO-items
 
@@ -25,3 +25,266 @@
 
 *** TODO progress logging
   http://orgmode.org/org.html#Progress-logging
+
+
+* DONE introduction to parallel programming
+  CLOSED: [2016-12-11 Sun 16:42] SCHEDULED: <2016-12-07 Wed 15:25>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-11 Sun 16:42]
+  :END:
+  https://computing.llnl.gov/tutorials/parallel_comp/#Whatis
+
+** DONE Overview
+   CLOSED: [2016-12-07 Wed 15:46] SCHEDULED: <2016-12-07 Wed 15:35>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-07 Wed 15:46]
+   :END:
+
+** DONE Concepts and Terminology
+   CLOSED: [2016-12-07 Wed 20:14] SCHEDULED: <2016-12-07 Wed 15:45>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-07 Wed 20:14]
+   :END:
+
+** DONE Parallel Computer Memory Architectures
+   CLOSED: [2016-12-10 Sat 22:23] SCHEDULED: <2016-12-10 Sat 22:00>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-10 Sat 22:23]
+   :END:
+
+** DONE Parallel Programming Models
+   CLOSED: [2016-12-10 Sat 22:50] SCHEDULED: <2016-12-10 Sat 22:25>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-10 Sat 22:50]
+   :END:
+
+** DONE Designing Parallel Programs
+   CLOSED: [2016-12-11 Sun 10:16] SCHEDULED: <2016-12-11 Sun 09:22>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-11 Sun 10:16]
+   :END:
+
+** DONE Parallel Examples
+   CLOSED: [2016-12-11 Sun 16:36] SCHEDULED: <2016-12-11 Sun 16:24>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-11 Sun 16:36]
+   :END:
+
+
+* DONE OpenMP
+  CLOSED: [2016-12-16 Fri 10:43] SCHEDULED: <2016-12-11 Sun 16:40>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-16 Fri 10:43]
+  :END:
+
+** DONE Introduction
+   CLOSED: [2016-12-11 Sun 16:48] SCHEDULED: <2016-12-11 Sun 16:41>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-11 Sun 16:48]
+   :END:
+
+   - *multi-threaded*, *shared memory*
+   - for C/C++ and Fortran
+
+** DONE OpenMP Programming Model
+   CLOSED: [2016-12-11 Sun 17:06] SCHEDULED: <2016-12-11 Sun 16:48>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-11 Sun 17:06]
+   :END:
+
+   - *Shared Memory Model*
+   - *Thread Based Parallelism*
+   - *Explicit Parallelism*: not automatic
+   - *Fork-Join Model*
+   - *Compiler Directive Based*
+   - *Nested Parallelism*
+   - *Dynamic Threads*
+   - *I/O*: it's entirely up to the programmer to ensure that I/O is conducted correctly within the context of a multi-threaded program.
+
+** DONE OpenMP API Overview
+   CLOSED: [2016-12-11 Sun 17:29] SCHEDULED: <2016-12-11 Sun 17:06>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-11 Sun 17:29]
+   :END:
+
+   - Three Components:
+     - *Compiler Directives* (44)
+     - *Runtime Library Routines* (35)
+     - *Environment Variables* (13)
+
+** DONE Compiling OpenMP Programs
+   CLOSED: [2016-12-11 Sun 20:23] SCHEDULED: <2016-12-11 Sun 20:17>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-11 Sun 20:23]
+   :END:
+
+   - *Compiling*:
+     gcc/g++/clang with flag *-fopenmp*.
+
+** DONE OpenMP Directives
+   CLOSED: [2016-12-12 Mon 16:35] SCHEDULED: <2016-12-12 Mon 10:34>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-12 Mon 16:35]
+   :END:
+
+   - *C/C++ Directives Format*:
+     +-------------+----------------+---------------+---------+
+     | #pragma omp | directive-name | [clause, ...] | newline |
+     +-------------+----------------+---------------+---------+
+     - Notice:
+       - *Only one directive-name* may be specified per directive
+       - Each directive *applies to at most one succeeding statement*, which must be a structured block
+     - *Directive Scoping*:
+       - *Static Extent*
+       - *Orphaned Directive*
+       - *Dynamic Extent*
+
+       [[./img/learning-gtd_20161212_105942.png]]
+   - *PARALLEL Region Construct*:
+     - format:
+
+       [[./img/learning-gtd_20161212_110511.png]]
+     - determine number of threads:
+       in order of precedence: *IF* clause ==> *NUM_THREADS* clause ==> *omp_set_num_threads()* function ==> *OMP_NUM_THREADS* environment variable ==> default
+   - *Work-Sharing Constructs*:
+     - types:
+
+       [[./img/learning-gtd_20161212_112702.png]]
+   - *for* Directive
+     - format:
+
+       [[./img/learning-gtd_20161212_113337.png]]
+     - *schedule* clause:
+       - static
+       - dynamic
+       - guided
+       - runtime
+       - auto
+   - *sections* Directive
+     - format:
+
+       [[./img/learning-gtd_20161212_150204.png]]
+   - *single* Directive
+     - format:
+
+       [[./img/learning-gtd_20161212_150620.png]]
+   - *Combined Parallel Work-Sharing Constructs*
+     - parallel for
+     - parallel sections
+   - *task Directive*
+     - format:
+
+       [[./img/learning-gtd_20161212_151706.png]]
+   - *Synchronization Constructs*
+     - *master* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_152234.png]]
+     - *critical* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_152516.png]]
+     - *barrier* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_152723.png]]
+     - *taskwait* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_152911.png]]
+     - *atomic* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_153012.png]]
+     - *flush* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_153308.png]]
+       - implied for the directives shown below:
+
+         [[./img/learning-gtd_20161212_153548.png]]
+     - *ordered* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_153747.png]]
+     - *threadprivate* Directive
+       - format:
+
+         [[./img/learning-gtd_20161212_154100.png]]
+   - *Data Scope Attribute Clauses*
+     - *private* Clause
+       - format: private (list)
+     - *shared* Clause
+       - format: shared (list)
+     - *default* Clause
+       - format: default (shared | none)
+     - *firstprivate* Clause
+       - format: firstprivate (list)
+     - *lastprivate* Clause
+       - format: lastprivate (list)
+     - *copyin* Clause
+       - format: copyin (list)
+     - *copyprivate* Clause
+       - format: copyprivate (list)
+     - *reduction* Clause
+       - format: reduction (operation: list)
+     - *Clauses/Directives Summary*
+       - the table below summarizes which clauses are accepted by which OpenMP directives:
+
+         [[./img/learning-gtd_20161212_162838.png]]
+       - the following OpenMP directives don't accept clauses:
+         - master
+         - critical
+         - barrier
+         - atomic
+         - flush
+         - ordered
+         - threadprivate
+
+** Runtime Library Routines
+
+** Environment Variables
+
+** Thread Stack Size and Thread Binding
+
+** Monitoring, Debugging and Performance Analysis Tools for OpenMP
+
+
+* STARTED OpenMP Video Tutorial
+  SCHEDULED: <2016-12-16 Fri 10:30>
+  https://www.youtube.com/playlist?list=PLGvfHSgImk4ZZwhvxzZVBEB2RBdoc3Zci
+
+  1. increasing number of cores saves energy.
+  2. hard to convert serial code to parallel code automaticlly.
+  3. concurrent vs. parallelism:
+     [[./img/learning-gtd_20161216_105132.png]]
+     [[./img/learning-gtd_20161216_105218.png]]
+     [[./img/learning-gtd_20161216_105309.png]]
+  4. important tips:
+     - threads communicate using shared variables.
+     - find the concurrency and decide algorithm strategy.
+     - cache matters, so the concept of SMP is less appliable.
+     - only /parallel/ construct create mutiple threads
+  5. about *false sharing* (different threads access data on the same cashe line meanwhile)
+     - ugly solution: *padding* to make the data far enough
+  6. synchronization:
+     - high level synchronization:
+       - critical: don't put it into a loop!
+       - atomic
+       - barrier
+       - ordered
+     - low level synchronization:
+       - flush
+     - locks(both simple and nested)
+  7. parallel for loops:
+     - find the compute intensive loops
+     - modify those loops so there's no loop carry dependency
+  8. lock routines:
+     - omp_init_lock()
+     - omp_set_lock()
+     - omp_unset_lock()
+     - omp_destory_lock()
+  9. using /omp_get_num_threads()/ *inside a parallel region*, or it returns 1 (in serial region).
+  10. *task*:
+      - one thread take the charge of creating tasks
+      - the other threads execute the tasks in parallel

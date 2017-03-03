@@ -1,4 +1,4 @@
-#+TITLE: reading schedule
+#+TITLE: reading schedule and notes
 #+AUTHOR: lightjames
 
 * STARTED 并行算法设计与性能优化
@@ -8,3 +8,156 @@
    SCHEDULED: <2016-10-16 Sun 22:20>
 
 *** TODO 1.1 并行和向量化的作用
+
+    -
+
+
+* STARTED Advanced Programming in the Unix Environment, Third Edition
+
+** STARTED chapter 04 文件和目录
+   SCHEDULED: <2016-12-06 Tue 21:00>
+
+*** DONE 4.10 Sticky Bit
+    CLOSED: [2016-12-06 Tue 21:06] SCHEDULED: <2016-12-06 Tue 21:02>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-06 Tue 21:06]
+    :END:
+
+    - 程序的正文部分==>机器指令
+
+*** DONE 4.11 chown, fchown, fchownat and lchown Functions
+    CLOSED: [2016-12-06 Tue 21:23] SCHEDULED: <2016-12-06 Tue 21:09>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-06 Tue 21:23]
+    :END:
+
+    - results: change a file's user ID and group ID.
+    - when the *referenced file is a symbolic link*, lchown and fchownat (with AT_SYMLINK_NOFOLLOW flag set) only change the owners of the symbolic link itself, not the file pointed to by the symbolic link.
+    - what if _POSIX_CHOWN_RESTRICTED is in effect?
+
+*** DONE 4.12 File Size
+    CLOSED: [2016-12-06 Tue 21:39] SCHEDULED: <2016-12-06 Tue 21:24>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-06 Tue 21:39]
+    :END:
+
+    - for a symbolic link, the file size is *the number of bits in the filename*.
+    - *holes in a file*
+
+*** DONE 4.13 File Truncation
+    CLOSED: [2016-12-06 Tue 21:45] SCHEDULED: <2016-12-06 Tue 21:39>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-06 Tue 21:46]
+    :END:
+
+    - a special case of truncation: open a file with the O_TRUNC flag to empty a file.
+    - functions: truncate() and ftruncate().
+
+*** DONE 4.14 File Systems
+    CLOSED: [2016-12-06 Tue 22:26] SCHEDULED: <2016-12-06 Tue 21:47>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-06 Tue 22:26]
+    :END:
+
+    - i-nodes: the i-nodes are fixed-length entries that contain most of the information about a file.
+    - notice:
+      1. each  i-node has a link count that contains the number of directory entries that point to it. *only when the link count goes to 0 can the  file be deleted.* these types of links are called *hard links*.
+      2. the other type of link is called a *symbolic link*.
+      3. only two items of interest are stored in the directory entry: the filename and  the i-node number.
+      4. because the i-node number in the directory  entry points to an i-node in the same file system, *a directory entry can't refer to an i-node in  a different file system*.
+      5. when *renaming a file* without changing file system, the actual contents of the file needn't be moved ==> all that need to be done is to *add a new directory entry that points to the existing i-node* and then *unlink the old directory entry*.
+    - what about the link count field of a directory?
+      1. any *leaf directory*(a directory that does  not contain any other  directories) always has a link count of 2: the directory entry that names  te directory and the entry for dot  in that directory.
+      2. each subdirectory in  a parent directory causes the parent directory's link count to be  increased by 1. (.. entry added)
+
+*** DONE 4.15 link, linkat, unlink, unlinkat, and remove Functions
+    CLOSED: [2016-12-07 Wed 10:20] SCHEDULED: <2016-12-07 Wed 09:37>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-07 Wed 10:20]
+    :END:
+
+    - link and linkat
+      - only the last component of the /newpath/ is created, *the rest of the path must already exist*.
+      - when the *existing file is a symbolic link*, the /flag/ argument controls whether the linkat function creates a link to the symbolic link or to the file to which the symbolic link points.
+      - the *creation* of the new directory entry and the *increment* of the link count must be an *atomic* operation.
+      - if supports *the creation of hard links to directories*, it may *cause loops* in the file system. many file system implementations disallow hard links to directories for this reason.
+    - unlink and unlinkat
+      - conditions that prevents the contents of the file from being deleted:
+        - link count > 0
+        - some process has the file open
+
+*** DONE 4.16 rename and renameat Functions
+    CLOSED: [2016-12-07 Wed 10:30] SCHEDULED: <2016-12-07 Wed 10:21>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-07 Wed 10:30]
+    :END:
+
+    - depending on whether /oldname/  refers to a file, a directory, or a symbolic link, and what if /newname/ already exist.
+
+*** DONE 4.17 Symbolic Links
+    CLOSED: [2016-12-09 Fri 11:13] SCHEDULED: <2016-12-09 Fri 09:16>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-09 Fri 11:13]
+    :END:
+
+    - differences between symbolic links and hard links:
+      [[./img/read-books-gtd_20161209_110601.png]]
+      a symbolic link is an *indirect pointer* to a file, unlike the hard links which *point directly to the i-node* of the file.
+    - when using functions that refer to a file by name, we always need to know *whether the function follows a symbolic link*.
+    - notice: using symbolic links may *introduce loops into the file system*.
+      [[./img/read-books-gtd_20161209_110755.png]]
+      [[./img/read-books-gtd_20161209_110807.png]]
+
+*** DONE 4.18 Creating and Reading Symbolic Links
+    CLOSED: [2016-12-09 Fri 13:23] SCHEDULED: <2016-12-09 Fri 13:15>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-09 Fri 13:23]
+    :END:
+
+    - It's not required that /actualpath/ exist when the symbolic link is created.
+    - Also, /actualpath/ and /sympath/ *needn't reside in the file system*.
+
+*** DONE 4.19 File Times
+    CLOSED: [2016-12-09 Fri 15:52] SCHEDULED: <2016-12-09 Fri 15:33>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-09 Fri 15:52]
+    :END:
+
+    - the difference between the modification time(st_mtim) and the changed-status time(st_ctim):
+      - the *modification time* indicates when *the contents* fo the file were last modified.
+      - the *changed-status time* indicates when *the i-node* of the file was last modified.
+    - Note that the system doesn't maintain the last-access time for an i-node.
+    - by default, the /ls/ command displays or sorts using the modification time of the files.
+
+*** DONE 4.20 futimens, utimensat, and utimes, Functions
+    CLOSED: [2016-12-12 Mon 22:28] SCHEDULED: <2016-12-09 Fri 15:52>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-12 Mon 22:28]
+    :END:
+
+    - the three functions above only change the access time(st_atim) and the modification time(st_mtim), the changed-status time(st_ctim) is automaticlly updated.
+
+*** DONE 4.21 mkdir, mkdirat, and rmdir Functions
+    CLOSED: [2016-12-26 Mon 22:20] SCHEDULED: <2016-12-26 Mon 22:11>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-26 Mon 22:20]
+    :END:
+
+    - if the *link count* of the directory becomes 0 with a /rmdir/ call, and if no other process has the directory open, then the *space* occupied by the directory is *freed*.
+
+*** DONE 4.22 Reading Directories
+    CLOSED: [2016-12-27 Tue 15:23] SCHEDULED: <2016-12-27 Tue 15:00>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2016-12-27 Tue 15:23]
+    :END:
+
+    - to preserve file system sanity(ok), only the kernel can write to a directory.
+
+*** TODO 4.23 chdir, fchdir, and getcwd Functions
+
+
+* TODO Understanding the linux kernel, Third Edition (kernel version: 2.6.11)
+
+
+
+* TODO Linux Kernel Development, Third  Edition (kernel  version: 2.6.34)

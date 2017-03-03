@@ -1,0 +1,4 @@
+*     :update:spacemacs:
+#+BEGIN_SRC shell
+update-spacemacs
+#+END_SRC

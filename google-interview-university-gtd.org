@@ -1,0 +1,291 @@
+#+TITLE: google interview university GTD
+#+DATE: <2016-12-28 Wed>
+#+AUTHOR: lightjames
+#+TAGS: interview
+
+* DONE What is it?
+  CLOSED: [2016-12-28 Wed 21:22] SCHEDULED: <2016-12-28 Wed 21:15>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-28 Wed 21:22]
+  :END:
+  - goal: google software engineer
+  - note: software engineering != software/web development
+
+* DONE Why use it?
+  CLOSED: [2016-12-28 Wed 21:28] SCHEDULED: <2016-12-28 Wed 21:22>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-28 Wed 21:28]
+  :END:
+  - larger systems, computer systems, algorithm efficiency, data structure performance, low-level languages, how it all works ...
+
+* DONE How to use it?
+  CLOSED: [2016-12-28 Wed 21:32] SCHEDULED: <2016-12-28 Wed 21:28>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-28 Wed 21:32]
+  :END:
+  - from top to bottom
+
+* DONE Get in a Googley Mood
+  CLOSED: [2016-12-28 Wed 21:56] SCHEDULED: <2016-12-28 Wed 21:32>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-28 Wed 21:56]
+  :END:
+  - I added my desktop background with "future Googler"
+
+* DONE Don't feel you aren't smart enough
+  CLOSED: [2016-12-28 Wed 22:34] SCHEDULED: <2016-12-28 Wed 21:58>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2016-12-28 Wed 22:34]
+  :END:
+  - video: https://www.youtube.com/watch?v=0SARbwvhupQ
+    - there's no genius.
+    - work in a team!
+    - lose the Ego
+    - criticism it not Evil
+    - embrace failure
+    - iterate quickly
+    - practice is key
+    - be a small fish
+    - be influnced
+    - be vulnerable
+    - sweet spot ==> same goal
+    - summary:
+      - don't try to be a genius
+      - collaborate early and often
+      - pay attention to your tools
+      - pay attention to timing
+
+* STARTED About Google
+  SCHEDULED: <2016-12-28 Wed 22:35>
+
+** STARTED For students
+   SCHEDULED: <2016-12-28 Wed 22:36>
+https://www.google.com/about/careers/students/guide-to-technical-development.html
+
+*** STARTED Take an "Introduction to CS" course
+    SCHEDULED: <2016-12-28 Wed 22:40>
+
+**** DONE Unit 1 Get Started
+     CLOSED: [2016-12-31 Sat 00:12] SCHEDULED: <2016-12-30 Fri 09:00>
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2016-12-31 Sat 00:12]
+     :END:
+     - goal:
+       1. get started programming.
+       2. learn some important computer science concepts.
+       3. write code to extract a link from a web page.
+     - Backus-Naur Form:
+       <Non-terminal> -> replacement
+     - Python Grammar for Arithmetic Expressions:
+       Expression -> Expression Operator Expression
+       Expression -> Number
+       Operator -> +
+       Operator -> *
+       Number -> 0, 1, ...
+       Expression -> (Expression)
+     - Assignment Statement:
+       Name = Expression
+     - Variables can vary
+     - Strings
+       '' or ""
+     - Indexing Strings
+       <string>[<expression>]
+     - Select Sub-Sequences
+       <string>[<expression> : <expression>]
+     - Finding Strings in Strings
+       <string>.find(<string>)
+       <string>.find(<string>, <pos>)
+     - Extracting Links
+       <a href="<url>" >
+
+**** DONE Unit 2 How to Repeat
+     CLOSED: [2017-01-07 Sat 22:55] SCHEDULED: <2017-01-02 Mon 14:40>
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2017-01-07 Sat 22:55]
+     :END:
+     - prodedure:
+       #+BEGIN_SRC python
+       def <name>(<parameters>):
+           <block>
+           return <expression>, <expression>, ...
+       #+END_SRC
+     - using prodedures
+       <prodedure>(<input>, <input>, ...)
+     - comparison
+       <, >, ==, !=
+     - if
+       #+BEGIN_SRC python
+         if <TestExpression>:
+             <Block>
+         else:
+             <Block>
+       #+END_SRC
+     - or
+       #+BEGIN_SRC python
+         <expression> or <expression>
+       #+END_SRC
+     - while
+       #+BEGIN_SRC python
+         while <TestExpression>:
+             <Code>
+             if <BreakTest>:
+                break
+             <More Code>
+       #+END_SRC
+     - multiple assignment
+       var1, var2, ... = <expression1>, <expression2>, ...
+
+**** DONE Unit 2.5 How to Solve a Problem
+     CLOSED: [2017-01-12 Thu 09:43] SCHEDULED: <2017-01-07 Sat 22:55>
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2017-01-12 Thu 09:43]
+     :END:
+     1. understand the problem:
+        - possible inputs
+
+**** DONE Unit 3 How to Manage Data
+     CLOSED: [2017-01-25 Wed 17:49] SCHEDULED: <2017-01-12 Thu 09:45>
+     :LOGBOOK:
+     - State "DONE"       from "STARTED"    [2017-01-25 Wed 17:49]
+     :END:
+     - List
+     - Nested Lists
+     - Mutation
+       - item assignment
+     - Aliasing
+     - List Operations
+       - append:
+         <list>.append(<element>)
+       - +:
+         <list> + <list> )
+       - len:
+         len(<list>)
+       - how computer store data
+       - Loop of Lists
+       - for Loops:
+         for <name> in <list>:
+             <block>
+       - index:
+         <list>.index(<value>)
+       - in & not in
+         <value> in <list>
+         <value> not in <list>
+       - pop:
+         <list>.pop()
+       - write a web crawler
+         start from /seed/
+
+
+
+
+
+
+**** STARTED Unit 4 Response to the search
+     SCHEDULED: <2017-01-25 Wed 17:50>
+
+
+* TODO Interview Process & General Interview Prep
+
+* DONE Pick One Language for the interview
+  CLOSED: [2017-03-01 Wed 11:00] SCHEDULED: <2016-12-29 Thu 22:24>
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-03-01 Wed 11:00]
+  :END:
+
+** DONE read the author's blog
+   CLOSED: [2016-12-29 Thu 22:32] SCHEDULED: <2016-12-29 Thu 22:25>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2016-12-29 Thu 22:32]
+   :END:
+   https://googleyasheck.com/important-pick-one-language-for-the-google-interview/
+   - practice
+
+* STARTED Data Structures
+  SCHEDULED: <2017-03-01 Wed>
+
+** DONE Arrays
+   CLOSED: [2017-03-02 Thu 22:12] SCHEDULED: <2017-03-02 Thu 10:00>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2017-03-02 Thu 22:12]
+   :END:
+*** DONE videos
+    CLOSED: [2017-03-02 Thu 15:06] SCHEDULED: <2017-03-02 Thu 10:10>
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2017-03-02 Thu 15:06]
+    :END:
+    - https://www.youtube.com/watch?v=Wp8oiO_CZZE&feature=youtu.be&t=15m32s
+
+*** DONE practice
+    CLOSED: [2017-03-02 Thu 22:11]
+    :LOGBOOK:
+    - State "DONE"       from "STARTED"    [2017-03-02 Thu 22:11]
+    :END:
+https://github.com/jwasham/practice-cpp/blob/master/arrays/jvector.cc
+
+** TODO Linked Lists
+
+** Stack
+
+** Queue
+
+** Hash Table
+
+* TODO More Knowledge
+
+** Binary search
+
+** Bitwise Operations
+
+* TODO Trees
+
+** Trees - Notes & Background
+
+** Binary search trees: BSTs
+
+** Heap / Priority Queue / Binary Heap
+
+* TODO Sorting
+
+* TODO Graphs
+
+* TODO Even More Knowledge
+
+** Recursion
+
+** Dynamic Programming
+
+** Object-Oriented Programming
+
+** Design patterns
+
+** Combinatorics (n choose k) & Probability
+
+** NP, NP-Complete and Approximation Algorithms
+
+** Caches
+
+** Processes and Threads
+
+** Papers
+
+** Testing
+
+** Scheduling
+
+** Implement system routines
+
+** String searching & manipulations
+
+** Tries
+
+** Floating Point Numbers
+
+** Unicode
+
+** Endianness
+
+** Networking
+
+* TODO System Design, Scalability, Data Handling
+
+* TODO Final Review

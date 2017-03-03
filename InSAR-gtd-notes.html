@@ -1,0 +1,2794 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en">
+<head>
+<!-- 2017-01-15 Sun 17:27 -->
+<meta http-equiv="Content-Type" content="text/html;charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>InSAR Notes(GTD)</title>
+<meta name="generator" content="Org mode" />
+<meta name="author" content="liutao" />
+<style type="text/css">
+ <!--/*--><![CDATA[/*><!--*/
+  .title  { text-align: center;
+             margin-bottom: .2em; }
+  .subtitle { text-align: center;
+              font-size: medium;
+              font-weight: bold;
+              margin-top:0; }
+  .todo   { font-family: monospace; color: red; }
+  .done   { font-family: monospace; color: green; }
+  .priority { font-family: monospace; color: orange; }
+  .tag    { background-color: #eee; font-family: monospace;
+            padding: 2px; font-size: 80%; font-weight: normal; }
+  .timestamp { color: #bebebe; }
+  .timestamp-kwd { color: #5f9ea0; }
+  .org-right  { margin-left: auto; margin-right: 0px;  text-align: right; }
+  .org-left   { margin-left: 0px;  margin-right: auto; text-align: left; }
+  .org-center { margin-left: auto; margin-right: auto; text-align: center; }
+  .underline { text-decoration: underline; }
+  #postamble p, #preamble p { font-size: 90%; margin: .2em; }
+  p.verse { margin-left: 3%; }
+  pre {
+    border: 1px solid #ccc;
+    box-shadow: 3px 3px 3px #eee;
+    padding: 8pt;
+    font-family: monospace;
+    overflow: auto;
+    margin: 1.2em;
+  }
+  pre.src {
+    position: relative;
+    overflow: visible;
+    padding-top: 1.2em;
+  }
+  pre.src:before {
+    display: none;
+    position: absolute;
+    background-color: white;
+    top: -10px;
+    right: 10px;
+    padding: 3px;
+    border: 1px solid black;
+  }
+  pre.src:hover:before { display: inline;}
+  /* Languages per Org manual */
+  pre.src-asymptote:before { content: 'Asymptote'; }
+  pre.src-awk:before { content: 'Awk'; }
+  pre.src-C:before { content: 'C'; }
+  /* pre.src-C++ doesn't work in CSS */
+  pre.src-clojure:before { content: 'Clojure'; }
+  pre.src-css:before { content: 'CSS'; }
+  pre.src-D:before { content: 'D'; }
+  pre.src-ditaa:before { content: 'ditaa'; }
+  pre.src-dot:before { content: 'Graphviz'; }
+  pre.src-calc:before { content: 'Emacs Calc'; }
+  pre.src-emacs-lisp:before { content: 'Emacs Lisp'; }
+  pre.src-fortran:before { content: 'Fortran'; }
+  pre.src-gnuplot:before { content: 'gnuplot'; }
+  pre.src-haskell:before { content: 'Haskell'; }
+  pre.src-java:before { content: 'Java'; }
+  pre.src-js:before { content: 'Javascript'; }
+  pre.src-latex:before { content: 'LaTeX'; }
+  pre.src-ledger:before { content: 'Ledger'; }
+  pre.src-lisp:before { content: 'Lisp'; }
+  pre.src-lilypond:before { content: 'Lilypond'; }
+  pre.src-lua:before { content: 'Lua'; }
+  pre.src-matlab:before { content: 'MATLAB'; }
+  pre.src-mscgen:before { content: 'Mscgen'; }
+  pre.src-ocaml:before { content: 'Objective Caml'; }
+  pre.src-octave:before { content: 'Octave'; }
+  pre.src-org:before { content: 'Org mode'; }
+  pre.src-oz:before { content: 'OZ'; }
+  pre.src-plantuml:before { content: 'Plantuml'; }
+  pre.src-processing:before { content: 'Processing.js'; }
+  pre.src-python:before { content: 'Python'; }
+  pre.src-R:before { content: 'R'; }
+  pre.src-ruby:before { content: 'Ruby'; }
+  pre.src-sass:before { content: 'Sass'; }
+  pre.src-scheme:before { content: 'Scheme'; }
+  pre.src-screen:before { content: 'Gnu Screen'; }
+  pre.src-sed:before { content: 'Sed'; }
+  pre.src-sh:before { content: 'shell'; }
+  pre.src-sql:before { content: 'SQL'; }
+  pre.src-sqlite:before { content: 'SQLite'; }
+  /* additional languages in org.el's org-babel-load-languages alist */
+  pre.src-forth:before { content: 'Forth'; }
+  pre.src-io:before { content: 'IO'; }
+  pre.src-J:before { content: 'J'; }
+  pre.src-makefile:before { content: 'Makefile'; }
+  pre.src-maxima:before { content: 'Maxima'; }
+  pre.src-perl:before { content: 'Perl'; }
+  pre.src-picolisp:before { content: 'Pico Lisp'; }
+  pre.src-scala:before { content: 'Scala'; }
+  pre.src-shell:before { content: 'Shell Script'; }
+  pre.src-ebnf2ps:before { content: 'ebfn2ps'; }
+  /* additional language identifiers per "defun org-babel-execute"
+       in ob-*.el */
+  pre.src-cpp:before  { content: 'C++'; }
+  pre.src-abc:before  { content: 'ABC'; }
+  pre.src-coq:before  { content: 'Coq'; }
+  pre.src-groovy:before  { content: 'Groovy'; }
+  /* additional language identifiers from org-babel-shell-names in
+     ob-shell.el: ob-shell is the only babel language using a lambda to put
+     the execution function name together. */
+  pre.src-bash:before  { content: 'bash'; }
+  pre.src-csh:before  { content: 'csh'; }
+  pre.src-ash:before  { content: 'ash'; }
+  pre.src-dash:before  { content: 'dash'; }
+  pre.src-ksh:before  { content: 'ksh'; }
+  pre.src-mksh:before  { content: 'mksh'; }
+  pre.src-posh:before  { content: 'posh'; }
+  /* Additional Emacs modes also supported by the LaTeX listings package */
+  pre.src-ada:before { content: 'Ada'; }
+  pre.src-asm:before { content: 'Assembler'; }
+  pre.src-caml:before { content: 'Caml'; }
+  pre.src-delphi:before { content: 'Delphi'; }
+  pre.src-html:before { content: 'HTML'; }
+  pre.src-idl:before { content: 'IDL'; }
+  pre.src-mercury:before { content: 'Mercury'; }
+  pre.src-metapost:before { content: 'MetaPost'; }
+  pre.src-modula-2:before { content: 'Modula-2'; }
+  pre.src-pascal:before { content: 'Pascal'; }
+  pre.src-ps:before { content: 'PostScript'; }
+  pre.src-prolog:before { content: 'Prolog'; }
+  pre.src-simula:before { content: 'Simula'; }
+  pre.src-tcl:before { content: 'tcl'; }
+  pre.src-tex:before { content: 'TeX'; }
+  pre.src-plain-tex:before { content: 'Plain TeX'; }
+  pre.src-verilog:before { content: 'Verilog'; }
+  pre.src-vhdl:before { content: 'VHDL'; }
+  pre.src-xml:before { content: 'XML'; }
+  pre.src-nxml:before { content: 'XML'; }
+  /* add a generic configuration mode; LaTeX export needs an additional
+     (add-to-list 'org-latex-listings-langs '(conf " ")) in .emacs */
+  pre.src-conf:before { content: 'Configuration File'; }
+
+  table { border-collapse:collapse; }
+  caption.t-above { caption-side: top; }
+  caption.t-bottom { caption-side: bottom; }
+  td, th { vertical-align:top;  }
+  th.org-right  { text-align: center;  }
+  th.org-left   { text-align: center;   }
+  th.org-center { text-align: center; }
+  td.org-right  { text-align: right;  }
+  td.org-left   { text-align: left;   }
+  td.org-center { text-align: center; }
+  dt { font-weight: bold; }
+  .footpara { display: inline; }
+  .footdef  { margin-bottom: 1em; }
+  .figure { padding: 1em; }
+  .figure p { text-align: center; }
+  .inlinetask {
+    padding: 10px;
+    border: 2px solid gray;
+    margin: 10px;
+    background: #ffffcc;
+  }
+  #org-div-home-and-up
+   { text-align: right; font-size: 70%; white-space: nowrap; }
+  textarea { overflow-x: auto; }
+  .linenr { font-size: smaller }
+  .code-highlighted { background-color: #ffff00; }
+  .org-info-js_info-navigation { border-style: none; }
+  #org-info-js_console-label
+    { font-size: 10px; font-weight: bold; white-space: nowrap; }
+  .org-info-js_search-highlight
+    { background-color: #ffff00; color: #000000; font-weight: bold; }
+  .org-svg { width: 90%; }
+  /*]]>*/-->
+</style>
+<script type="text/javascript">
+/*
+@licstart  The following is the entire license notice for the
+JavaScript code in this tag.
+
+Copyright (C) 2012-2013 Free Software Foundation, Inc.
+
+The JavaScript code in this tag is free software: you can
+redistribute it and/or modify it under the terms of the GNU
+General Public License (GNU GPL) as published by the Free Software
+Foundation, either version 3 of the License, or (at your option)
+any later version.  The code is distributed WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS
+FOR A PARTICULAR PURPOSE.  See the GNU GPL for more details.
+
+As additional permission under GNU GPL version 3 section 7, you
+may distribute non-source (e.g., minimized or compacted) forms of
+that code without the copy of the GNU GPL normally required by
+section 4, provided you include this license notice and a URL
+through which recipients can access the Corresponding Source.
+
+
+@licend  The above is the entire license notice
+for the JavaScript code in this tag.
+*/
+<!--/*--><![CDATA[/*><!--*/
+ function CodeHighlightOn(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(null != target) {
+     elem.cacheClassElem = elem.className;
+     elem.cacheClassTarget = target.className;
+     target.className = "code-highlighted";
+     elem.className   = "code-highlighted";
+   }
+ }
+ function CodeHighlightOff(elem, id)
+ {
+   var target = document.getElementById(id);
+   if(elem.cacheClassElem)
+     elem.className = elem.cacheClassElem;
+   if(elem.cacheClassTarget)
+     target.className = elem.cacheClassTarget;
+ }
+/*]]>*///-->
+</script>
+<script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+        displayAlign: "center",
+        displayIndent: "0em",
+
+        "HTML-CSS": { scale: 100,
+                        linebreaks: { automatic: "false" },
+                        webFont: "TeX"
+                       },
+        SVG: {scale: 100,
+              linebreaks: { automatic: "false" },
+              font: "TeX"},
+        NativeMML: {scale: 100},
+        TeX: { equationNumbers: {autoNumber: "AMS"},
+               MultLineWidth: "85%",
+               TagSide: "right",
+               TagIndent: ".8em"
+             }
+});
+</script>
+<script type="text/javascript"
+        src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML"></script>
+</head>
+<body>
+<div id="content">
+<h1 class="title">InSAR Notes(GTD)</h1>
+<div id="table-of-contents">
+<h2>Table of Contents</h2>
+<div id="text-table-of-contents">
+<ul>
+<li><a href="#org1687e59">1. Questions</a></li>
+<li><a href="#org6af547e">2. 菜单</a>
+<ul>
+<li><a href="#org9dd3ee0">2.1. 图像基本处理</a>
+<ul>
+<li><a href="#org320c880">2.1.1. 数据转换</a></li>
+<li><a href="#org10afe59">2.1.2. R2数据标定</a></li>
+<li><a href="#orge0fd1c5">2.1.3. 复数据处理</a></li>
+<li><a href="#orgf429c93">2.1.4. 多视处理</a></li>
+<li><a href="#org77da22e">2.1.5. ROI处理</a></li>
+</ul>
+</li>
+<li><a href="#orgb46782d">2.2. InSAR</a>
+<ul>
+<li><a href="#org6ffe4de">2.2.1. 基线分析</a></li>
+<li><a href="#org5406c7b">2.2.2. 精轨数据导入</a></li>
+<li><a href="#orgc2eeb37">2.2.3. 粗配准</a></li>
+<li><a href="#org027275c">2.2.4. 精配准</a></li>
+<li><a href="#orgc51cf98">2.2.5. 平地相位计算</a></li>
+<li><a href="#orgf1a33a3">2.2.6. 相干性估计</a></li>
+</ul>
+</li>
+<li><a href="#org2362fa3">2.3. CTInSAR</a>
+<ul>
+<li><a href="#org7c5f1ae">2.3.1. 平均相干系数图</a></li>
+<li><a href="#org47abf6d">2.3.2. 相干目标选择</a></li>
+<li><a href="#org638348c">2.3.3. 基线、入射角和斜距计算</a></li>
+<li><a href="#orgdc30706">2.3.4. 线性形变反演</a></li>
+<li><a href="#org5a03541">2.3.5. 离散点残余相位</a></li>
+<li><a href="#orgd01fcb4">2.3.6. 离散点残余相位解缠</a></li>
+<li><a href="#org645c162">2.3.7. 非线性形变和大气相位计算</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org225e305">3. SARStudio Structure</a>
+<ul>
+<li><a href="#org23b269f">3.1. Package</a></li>
+<li><a href="#org28689a4">3.2. Plugins</a>
+<ul>
+<li><a href="#org7cbc6ae">3.2.1. PfxBatch</a></li>
+<li><a href="#org98abb2a">3.2.2. PfxCTInSAR</a></li>
+<li><a href="#org76ed61f">3.2.3. PfxConvertor</a></li>
+<li><a href="#orgb1d0a74">3.2.4. PfxInSAR</a></li>
+<li><a href="#orgbe4d11c">3.2.5. pfxPolPSI</a></li>
+<li><a href="#org956f15c">3.2.6. pfxRoiSelect</a></li>
+</ul>
+</li>
+<li><a href="#org638ed47">3.3. SARStudio</a></li>
+<li><a href="#orgc516ad1">3.4. Share</a>
+<ul>
+<li><a href="#orgdb19b04">3.4.1. Common</a></li>
+<li><a href="#orgca751a0">3.4.2. Core</a></li>
+<li><a href="#org7c4f549">3.4.3. Component</a></li>
+<li><a href="#org5c5041f">3.4.4. PluginFramework</a></li>
+</ul>
+</li>
+<li><a href="#org27576e2">3.5. UnitTest</a></li>
+</ul>
+</li>
+<li><a href="#org9c986fb">4. Compile progress</a>
+<ul>
+<li><a href="#org18362ae">4.1. After converting to linux version</a>
+<ul>
+<li><a href="#org839dd7b">4.1.1. Plugins</a></li>
+<li><a href="#org7b2bf7a">4.1.2. SARStudio</a></li>
+<li><a href="#orgb555177">4.1.3. Share</a></li>
+</ul>
+</li>
+<li><a href="#orgce3e06f">4.2. After adding OpenMP to linux version</a>
+<ul>
+<li><a href="#orgad6177f">4.2.1. Plugins</a></li>
+<li><a href="#orgd4c1d5d">4.2.2. SARStudio</a></li>
+<li><a href="#org64ae496">4.2.3. Share</a></li>
+</ul>
+</li>
+<li><a href="#org31f2809">4.3. After adding STAR to linux version</a>
+<ul>
+<li><a href="#org425ccfa">4.3.1. Plugins</a></li>
+<li><a href="#org479b68a">4.3.2. SARStudio</a></li>
+<li><a href="#org097df8d">4.3.3. Share</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><a href="#org40f289f">5. Overall schedule</a>
+<ul>
+<li><a href="#orge595ee3">5.1. <span class="done DONE">DONE</span> Core: decide test order </a></li>
+<li><a href="#org8c64291">5.2. <span class="done DONE">DONE</span> Core: test Core</a>
+<ul>
+<li><a href="#org82ec5c1">5.2.1. <span class="done DONE">DONE</span> test RMGHeader</a></li>
+<li><a href="#orgf703861">5.2.2. <span class="done DONE">DONE</span> test PreOrb</a></li>
+<li><a href="#org618f89f">5.2.3. <span class="done DONE">DONE</span> test RMGBase</a></li>
+<li><a href="#orgf394092">5.2.4. <span class="done DONE">DONE</span> test RMGImage</a></li>
+<li><a href="#org997a614">5.2.5. <span class="done DONE">DONE</span> test Point</a></li>
+<li><a href="#org557a279">5.2.6. <span class="done DONE">DONE</span> test Rect</a></li>
+<li><a href="#orge3ed7ce">5.2.7. <span class="done DONE">DONE</span> test RdWrIni</a></li>
+</ul>
+</li>
+<li><a href="#orgeddcc35">5.3. <span class="done DONE">DONE</span> Common: test Common</a>
+<ul>
+<li><a href="#org3b3e901">5.3.1. <span class="done DONE">DONE</span> test SpMatrix (fixed)</a></li>
+<li><a href="#org7d40efc">5.3.2. <span class="done DONE">DONE</span> test SpStatistics</a></li>
+</ul>
+</li>
+<li><a href="#org79327bd">5.4. <span class="done DONE">DONE</span> compile files from liuhuan</a></li>
+<li><a href="#org1449709">5.5. <span class="done DONE">DONE</span> convert pfxConvertor to linux style</a>
+<ul>
+<li><a href="#org519f150">5.5.1. <span class="done DONE">DONE</span> IQCombine IQ通道合成 (2)</a></li>
+<li><a href="#org72385d3">5.5.2. <span class="done DONE">DONE</span> R2Calibration R2数据标定 (3)</a></li>
+<li><a href="#org690bf4d">5.5.3. <span class="done DONE">DONE</span> ComplexConvertor 复数处理 (11)</a></li>
+<li><a href="#orgde23271">5.5.4. <span class="done DONE">DONE</span> MultiLook 多视处理</a></li>
+</ul>
+</li>
+<li><a href="#org14f9a20">5.6. <span class="done DONE">DONE</span> convert pfxInSAR to linux style</a>
+<ul>
+<li><a href="#org1d5ec29">5.6.1. <span class="done DONE">DONE</span> BaseLineEst 基线分析</a></li>
+<li><a href="#orge41db80">5.6.2. <span class="done DONE">DONE</span> InterferogramMaps 干涉组合分析 (4)</a></li>
+<li><a href="#org1a77282">5.6.3. <span class="done DONE">DONE</span> InterferDepict 干涉图生成</a></li>
+<li><a href="#org33a086c">5.6.4. <span class="done DONE">DONE</span> RegistrCoarse 粗配准 (5)</a></li>
+<li><a href="#orge2d537c">5.6.5. <span class="done DONE">DONE</span> RegistrFine 精配准 (6)</a></li>
+<li><a href="#org47f5b33">5.6.6. <span class="done DONE">DONE</span> PreOrbImport 精轨数据导入 (7)</a></li>
+<li><a href="#orge619abb">5.6.7. <span class="done DONE">DONE</span> FlatPhase 平地相位计算 (9)</a></li>
+<li><a href="#orgaddaf5e">5.6.8. <span class="done DONE">DONE</span> CoherenceEst 相干性估计 (10)</a></li>
+</ul>
+</li>
+<li><a href="#org1859c6f">5.7. <span class="done DONE">DONE</span> convert pfxCTInSAR to linux style</a>
+<ul>
+<li><a href="#org1410aee">5.7.1. <span class="done DONE">DONE</span> MeanCoh 平均相干性系数图计算 (12)</a></li>
+<li><a href="#org96777de">5.7.2. <span class="done DONE">DONE</span> Musk 相干目标选取 (13)</a></li>
+<li><a href="#org6b18ec7">5.7.3. <span class="done DONE">DONE</span> Baseline 基线、入射角和斜距计算 (14)</a></li>
+<li><a href="#orgbefbcfc">5.7.4. <span class="done DONE">DONE</span> PSC PSC结构生成 (15)</a></li>
+<li><a href="#org2eeba06">5.7.5. <span class="done DONE">DONE</span> Denuanay 三角网建立 (16)</a></li>
+<li><a href="#orgf4a9441">5.7.6. <span class="done DONE">DONE</span> Integration 增量集成 (17)</a></li>
+<li><a href="#orga70ab0f">5.7.7. <span class="done DONE">DONE</span> Residue 残余相位计算 (18)</a></li>
+<li><a href="#orgd12d5b0">5.7.8. <span class="done DONE">DONE</span> ResidueUnw 残余相位解缠 (19)</a></li>
+<li><a href="#orgbb43123">5.7.9. <span class="done DONE">DONE</span> Uonlinear 非线性形变和大气相位计算 (20)</a></li>
+</ul>
+</li>
+<li><a href="#org3065d92">5.8. <span class="done DONE">DONE</span> convert pfxRoiSelect to linux style</a>
+<ul>
+<li><a href="#org64b284b">5.8.1. <span class="done DONE">DONE</span> RoiSelcetPro ROI处理 (8)</a></li>
+</ul>
+</li>
+<li><a href="#orga069cc3">5.9. <span class="done CANCELLED">CANCELLED</span> compile all files on linux (gc05)</a></li>
+<li><a href="#org2aae3ef">5.10. <span class="done DONE">DONE</span> compile all files on linux (mnode04)</a>
+<ul>
+<li><a href="#org5234637">5.10.1. <span class="done DONE">DONE</span> set up suitesparse 4.2.1</a></li>
+<li><a href="#orgf25add4">5.10.2. <span class="done DONE">DONE</span> compile Plugins</a></li>
+</ul>
+</li>
+<li><a href="#org3b8e6c0">5.11. <span class="done DONE">DONE</span> test on mnode04 with data </a>
+<ul>
+<li><a href="#org7d017cd">5.11.1. <span class="done DONE">DONE</span> test Share</a></li>
+<li><a href="#orgdadcaa5">5.11.2. <span class="done DONE">DONE</span> 数据导入 Rd2Sp2Local (on windows yet)</a></li>
+<li><a href="#orgc04e293">5.11.3. <span class="done DONE">DONE</span> scrutinize the procedures on windows from clicking on a button to executing the corresponding functions</a></li>
+<li><a href="#org181a100">5.11.4. <span class="done DONE">DONE</span> IQ通道合成 IQCombine (on mnode04 from now on)</a></li>
+<li><a href="#org9c14377">5.11.5. <span class="done DONE">DONE</span> R2数据标定 R2Calibration (on mnode04)</a></li>
+<li><a href="#orgda820f5">5.11.6. <span class="done DONE">DONE</span> InSAR干涉组合 InterferogramMaps</a></li>
+<li><a href="#org8b732e7">5.11.7. <span class="done DONE">DONE</span> 粗配准 RegistrCoarse</a></li>
+<li><a href="#orgfa2f399">5.11.8. <span class="done DONE">DONE</span> 精配准 RegistrFine</a></li>
+<li><a href="#org0f5f9c1">5.11.9. <span class="done DONE">DONE</span> 精轨数据导入 PreOrbImport</a></li>
+<li><a href="#org51ac89a">5.11.10. <span class="done DONE">DONE</span> ROI处理 RoiSelcetPro</a></li>
+<li><a href="#orgaf58d61">5.11.11. <span class="done DONE">DONE</span> 平地相位计算 FlatPhase</a></li>
+<li><a href="#org3a35ee0">5.11.12. <span class="done DONE">DONE</span> 相干性估计 CoherenceEst</a></li>
+<li><a href="#orga1993c6">5.11.13. <span class="done DONE">DONE</span> 复数处理 ComplexPro</a></li>
+<li><a href="#org513a845">5.11.14. <span class="done DONE">DONE</span> 平均相干系数图 MeanCoh</a></li>
+<li><a href="#org910e49f">5.11.15. <span class="done DONE">DONE</span> 相干目标选取 Musk</a></li>
+<li><a href="#org8fff7fd">5.11.16. <span class="done DONE">DONE</span> 基线、入射角和斜距计算 Baseline</a></li>
+<li><a href="#org6fcf083">5.11.17. <span class="done DONE">DONE</span> PSC生成 PSC</a></li>
+<li><a href="#org63f5f4e">5.11.18. <span class="done DONE">DONE</span> Delaunay三角网建立</a></li>
+<li><a href="#orgd78f28e">5.11.19. <span class="done DONE">DONE</span> 增量集成 Integration</a></li>
+<li><a href="#org1a67da9">5.11.20. <span class="done DONE">DONE</span> 离散点残余相位 Residue</a></li>
+<li><a href="#org9aa621a">5.11.21. <span class="done DONE">DONE</span> 残余点相位解缠 ResidueUnw</a></li>
+<li><a href="#orgd643695">5.11.22. <span class="done DONE">DONE</span> 非线性形变和大气相位计算 Uonlinear</a></li>
+</ul>
+</li>
+<li><a href="#org4fc92c9">5.12. <span class="done DONE">DONE</span> add CIProcessable back</a></li>
+<li><a href="#orge1795fa">5.13. <span class="done DONE">DONE</span> add OpenMP</a>
+<ul>
+<li><a href="#orga220cc8">5.13.1. <span class="done DONE">DONE</span> clean all code</a></li>
+<li><a href="#org0b5a423">5.13.2. <span class="done DONE">DONE</span> test all</a></li>
+<li><a href="#orge386a54">5.13.3. <span class="done DONE">DONE</span> deciding the schedule of adding OpenMP</a></li>
+<li><a href="#org2696f9e">5.13.4. <span class="done DONE">DONE</span> go through Share</a></li>
+<li><a href="#org743e46b">5.13.5. <span class="done DONE">DONE</span> go through Plugins(add openmp and test)</a></li>
+</ul>
+</li>
+<li><a href="#orgb7c7599">5.14. <span class="todo TODO">TODO</span> add STAR</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</div>
+
+<div id="org1687e59" class="outline-2">
+<h2 id="org1687e59"><span class="section-number-2">1</span> Questions</h2>
+<div class="outline-text-2" id="text-1">
+<ol class="org-ol">
+<li>mentioned file types?
+<ul class="org-ul">
+<li>.tif是输入的原始文件，经过数据转换后生成.rmg和.ldr</li>
+<li>.ldr是头文件扩展名</li>
+<li>.orb是精轨数据文件扩展名</li>
+<li>.rmg是图像文件扩展名</li>
+</ul></li>
+<li>SAR by liuhuan?
+<ul class="org-ul">
+<li>SAR, SAR<sub>OMP</sub>, SAR<sub>STAR</sub>, SAR<sub>final</sub>(i named it)</li>
+</ul></li>
+<li>why "#pragma once# appears at the beginning of header files?
+<ul class="org-ul">
+<li>避免同一个file被include多次</li>
+</ul></li>
+<li>what is REAL<sub>EPSILON</sub>?
+<a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liutao/SARStudio-linux/Plugins/PfxCTInSAR/Delaunay.cpp">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liutao/SARStudio-linux/Plugins/PfxCTInSAR/Delaunay.cpp</a></li>
+<li>bugs in original source codes
+<ol class="org-ol">
+<li>wrong date copy in RMGHeader</li>
+<li>wrong usage of <i>feof()</i> in <i>while</i> loop deciding whether keep doing <i>fscanf()</i></li>
+</ol></li>
+</ol>
+</div>
+</div>
+
+
+
+
+<div id="org6af547e" class="outline-2">
+<h2 id="org6af547e"><span class="section-number-2">2</span> 菜单</h2>
+<div class="outline-text-2" id="text-2">
+</div><div id="org9dd3ee0" class="outline-3">
+<h3 id="org9dd3ee0"><span class="section-number-3">2.1</span> 图像基本处理</h3>
+<div class="outline-text-3" id="text-2-1">
+</div><div id="org320c880" class="outline-4">
+<h4 id="org320c880"><span class="section-number-4">2.1.1</span> 数据转换</h4>
+<div class="outline-text-4" id="text-2-1-1">
+</div><ol class="org-ol"><li><a id="org40f3f77"></a>RD2转换<br  /><div class="outline-text-5" id="text-2-1-1-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>经过一天的尝试发现很难移植，因为用到windows的库&lt;msxml6.h&gt;,&lt;comdef.h&gt;等。故暂时略过。</li>
+</ul>
+</div></li>
+
+<li><a id="org0e764d5"></a>IQ通道合成<br  /><div class="outline-text-5" id="text-2-1-1-2">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+</div></li></ol>
+</div>
+
+
+<div id="org10afe59" class="outline-4">
+<h4 id="org10afe59"><span class="section-number-4">2.1.2</span> R2数据标定</h4>
+</div>
+
+<div id="orge0fd1c5" class="outline-4">
+<h4 id="orge0fd1c5"><span class="section-number-4">2.1.3</span> 复数据处理</h4>
+</div>
+
+<div id="orgf429c93" class="outline-4">
+<h4 id="orgf429c93"><span class="section-number-4">2.1.4</span> 多视处理</h4>
+</div>
+
+<div id="org77da22e" class="outline-4">
+<h4 id="org77da22e"><span class="section-number-4">2.1.5</span> ROI处理</h4>
+</div>
+</div>
+
+<div id="orgb46782d" class="outline-3">
+<h3 id="orgb46782d"><span class="section-number-3">2.2</span> InSAR</h3>
+<div class="outline-text-3" id="text-2-2">
+</div><div id="org6ffe4de" class="outline-4">
+<h4 id="org6ffe4de"><span class="section-number-4">2.2.1</span> 基线分析</h4>
+<div class="outline-text-4" id="text-2-2-1">
+</div><ol class="org-ol"><li><a id="orge6acc79"></a>干涉图像基线计算<br  /></li>
+
+<li><a id="orgff5443e"></a>干涉图像组合分析<br  /></li></ol>
+</div>
+
+<div id="org5406c7b" class="outline-4">
+<h4 id="org5406c7b"><span class="section-number-4">2.2.2</span> 精轨数据导入</h4>
+</div>
+
+<div id="orgc2eeb37" class="outline-4">
+<h4 id="orgc2eeb37"><span class="section-number-4">2.2.3</span> 粗配准</h4>
+<div class="outline-text-4" id="text-2-2-3">
+</div><ol class="org-ol"><li><a id="org8bfb44d"></a>粗配准<br  /></li></ol>
+</div>
+
+<div id="org027275c" class="outline-4">
+<h4 id="org027275c"><span class="section-number-4">2.2.4</span> 精配准</h4>
+<div class="outline-text-4" id="text-2-2-4">
+</div><ol class="org-ol"><li><a id="orge0d4c45"></a>精配准<br  /></li></ol>
+</div>
+
+<div id="orgc51cf98" class="outline-4">
+<h4 id="orgc51cf98"><span class="section-number-4">2.2.5</span> 平地相位计算</h4>
+</div>
+
+<div id="orgf1a33a3" class="outline-4">
+<h4 id="orgf1a33a3"><span class="section-number-4">2.2.6</span> 相干性估计</h4>
+</div>
+</div>
+
+<div id="org2362fa3" class="outline-3">
+<h3 id="org2362fa3"><span class="section-number-3">2.3</span> CTInSAR</h3>
+<div class="outline-text-3" id="text-2-3">
+</div><div id="org7c5f1ae" class="outline-4">
+<h4 id="org7c5f1ae"><span class="section-number-4">2.3.1</span> 平均相干系数图</h4>
+</div>
+
+<div id="org47abf6d" class="outline-4">
+<h4 id="org47abf6d"><span class="section-number-4">2.3.2</span> 相干目标选择</h4>
+</div>
+
+<div id="org638348c" class="outline-4">
+<h4 id="org638348c"><span class="section-number-4">2.3.3</span> 基线、入射角和斜距计算</h4>
+</div>
+
+<div id="orgdc30706" class="outline-4">
+<h4 id="orgdc30706"><span class="section-number-4">2.3.4</span> 线性形变反演</h4>
+<div class="outline-text-4" id="text-2-3-4">
+</div><ol class="org-ol"><li><a id="org4c6bf25"></a>PSC生成<br  /></li>
+
+<li><a id="org7f8f142"></a>Denuanay三角网建立<br  /></li>
+
+<li><a id="orgfa9bd8a"></a>增量集成<br  /></li></ol>
+</div>
+
+<div id="org5a03541" class="outline-4">
+<h4 id="org5a03541"><span class="section-number-4">2.3.5</span> 离散点残余相位</h4>
+</div>
+
+<div id="orgd01fcb4" class="outline-4">
+<h4 id="orgd01fcb4"><span class="section-number-4">2.3.6</span> 离散点残余相位解缠</h4>
+</div>
+
+<div id="org645c162" class="outline-4">
+<h4 id="org645c162"><span class="section-number-4">2.3.7</span> 非线性形变和大气相位计算</h4>
+</div>
+</div>
+</div>
+
+<div id="org225e305" class="outline-2">
+<h2 id="org225e305"><span class="section-number-2">3</span> SARStudio Structure</h2>
+<div class="outline-text-2" id="text-3">
+</div><div id="org23b269f" class="outline-3">
+<h3 id="org23b269f"><span class="section-number-3">3.1</span> Package</h3>
+<div class="outline-text-3" id="text-3-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>content: gdal lib</li>
+<li>removed(hard to imagrate <b>Rd2Sp2Local</b> from win to linux), fix it later</li>
+</ul>
+</div>
+</div>
+
+<div id="org28689a4" class="outline-3">
+<h3 id="org28689a4"><span class="section-number-3">3.2</span> Plugins</h3>
+<div class="outline-text-3" id="text-3-2">
+</div><div id="org7cbc6ae" class="outline-4">
+<h4 id="org7cbc6ae"><span class="section-number-4">3.2.1</span> PfxBatch</h4>
+<div class="outline-text-4" id="text-3-2-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>removed</li>
+</ul>
+</div>
+</div>
+
+<div id="org98abb2a" class="outline-4">
+<h4 id="org98abb2a"><span class="section-number-4">3.2.2</span> PfxCTInSAR</h4>
+<div class="outline-text-4" id="text-3-2-2">
+</div><ol class="org-ol"><li><a id="org9e280c2"></a>MeanCoh 平均相干性系数图计算<br  /><div class="outline-text-5" id="text-3-2-2-1">
+<ul class="org-ul">
+<li>need
+<ul class="org-ul">
+<li>RMGImage</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="org50f1911"></a>Musk 相干目标选取<br  /><div class="outline-text-5" id="text-3-2-2-2">
+<ul class="org-ul">
+<li>need
+<ul class="org-ul">
+<li>RMGImage</li>
+<li>RMGHeader</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="orge48ccf2"></a>Baseline 基线、入射角和斜距计算<br  /><div class="outline-text-5" id="text-3-2-2-3">
+<ul class="org-ul">
+<li>need
+<ul class="org-ul">
+<li>RMGImage</li>
+<li>CSpMatrix</li>
+<li>RMGHeader</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="org8aef973"></a>Denuanay 三角网建立<br  /></li>
+
+<li><a id="orgf9cc0f3"></a>PSC PSC结构生成<br  /></li>
+
+<li><a id="org4be60d8"></a>Integration 增量集成<br  /></li>
+
+<li><a id="org7497590"></a>Residue 相干点残余相位计算<br  /></li>
+
+<li><a id="org019252c"></a>ResidueUnw 离散点残余相位解缠<br  /></li>
+
+<li><a id="orgae31f19"></a>Uonlinear 非线性形变和大气相位计算<br  /></li></ol>
+</div>
+
+<div id="org76ed61f" class="outline-4">
+<h4 id="org76ed61f"><span class="section-number-4">3.2.3</span> PfxConvertor</h4>
+<div class="outline-text-4" id="text-3-2-3">
+</div><ol class="org-ol"><li><a id="org151692f"></a>Rd2sp2Local RD2转换<br  /><div class="outline-text-5" id="text-3-2-3-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>comment codes related to <b>dialog</b></li>
+<li>comment codes related to <b>CIProcessable</b></li>
+<li>change <b>CString</b> to <b>string</b></li>
+<li>CPLMalloc need <b>GDAL</b> support, build gdal from source(on my Mac, and mnode04)</li>
+<li>functions in <b>cpl<sub>conv.h</sub></b>:
+<ul class="org-ul">
+<li>CPLMalloc</li>
+<li>CPLFree</li>
+</ul></li>
+<li>change <b>Core.h</b> and <b>Common.h</b> to linux style</li>
+<li>need class <b>CRMGHeader</b>, change <b>RMGHeader.h</b> to linux style</li>
+<li>need class <b>CXmlReader</b>, change <b>XmlReader.h</b> to linux style</li>
+<li>too hard to imagrate, rollback</li>
+</ul>
+</div></li>
+
+<li><a id="org407f9bd"></a>IQCombine IQ通道合成<br  /><div class="outline-text-5" id="text-3-2-3-2">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>using <b>Core.h</b>, change all classes in Core.h to linux style</li>
+</ul>
+</div></li>
+
+
+<li><a id="org22b1aaa"></a>R2Calibration R2数据标定<br  /></li>
+
+<li><a id="org5dcd7f6"></a>ComplexConvertor 复数处理<br  /></li>
+
+<li><a id="orgcf09ed8"></a>MultiLook 多视处理<br  /></li></ol>
+</div>
+
+<div id="orgb1d0a74" class="outline-4">
+<h4 id="orgb1d0a74"><span class="section-number-4">3.2.4</span> PfxInSAR</h4>
+<div class="outline-text-4" id="text-3-2-4">
+</div><ol class="org-ol"><li><a id="orgdad2292"></a>BaseLineEst 基线分析（估计）<br  /></li>
+<li><a id="org77b2b9b"></a>InterferogramMaps 干涉组合分析<br  /></li>
+<li><a id="orgd4119db"></a>InterferDepict 干涉图生成<br  /></li>
+<li><a id="orga2c8680"></a>PreOrbImport 精轨数据导入<br  /></li>
+
+<li><a id="orgef6e025"></a>RegistrCoarse 粗配准<br  /></li>
+
+<li><a id="org5b5097e"></a>RegistrFine 精配准<br  /><div class="outline-text-5" id="text-3-2-4-6">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li>
+
+<li><a id="org89acd68"></a>FlatPhase 平地相位计算<br  /><div class="outline-text-5" id="text-3-2-4-7">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li>
+
+<li><a id="orgd064a78"></a>CoherenceEst 相干性估计<br  /><div class="outline-text-5" id="text-3-2-4-8">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li></ol>
+</div>
+
+<div id="orgbe4d11c" class="outline-4">
+<h4 id="orgbe4d11c"><span class="section-number-4">3.2.5</span> pfxPolPSI</h4>
+</div>
+
+<div id="org956f15c" class="outline-4">
+<h4 id="org956f15c"><span class="section-number-4">3.2.6</span> pfxRoiSelect</h4>
+<div class="outline-text-4" id="text-3-2-6">
+</div><ol class="org-ol"><li><a id="org8576b3c"></a>RoiSelcetPro ROI处理<br  /></li></ol>
+</div>
+</div>
+
+<div id="org638ed47" class="outline-3">
+<h3 id="org638ed47"><span class="section-number-3">3.3</span> SARStudio</h3>
+</div>
+
+<div id="orgc516ad1" class="outline-3">
+<h3 id="orgc516ad1"><span class="section-number-3">3.4</span> Share</h3>
+<div class="outline-text-3" id="text-3-4">
+</div><div id="orgdb19b04" class="outline-4">
+<h4 id="orgdb19b04"><span class="section-number-4">3.4.1</span> Common</h4>
+<div class="outline-text-4" id="text-3-4-1">
+</div><ol class="org-ol"><li><a id="org2a28fd2"></a>Common<br  /><div class="outline-text-5" id="text-3-4-1-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li><b>Common.h</b> include:
+<ul class="org-ul">
+<li>SpMatrix.h</li>
+<li>SpStatistics.h</li>
+<li>Configuration.h</li>
+<li>ProgressBar.h</li>
+<li>XmlReader.h</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="orgcc02d4f"></a>SpMatrix<br  /><div class="outline-text-5" id="text-3-4-1-2">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li>
+
+<li><a id="org2909821"></a>XmlReader<br  /><div class="outline-text-5" id="text-3-4-1-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>delete AFX<sub>CLASS</sub><sub>EXPORT</sub></li>
+<li>change LPCTSTR to const string</li>
+<li>too hard to imagrate, rollback</li>
+</ul>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>removed</li>
+</ul>
+</div></li></ol>
+</div>
+
+<div id="orgca751a0" class="outline-4">
+<h4 id="orgca751a0"><span class="section-number-4">3.4.2</span> Core</h4>
+<div class="outline-text-4" id="text-3-4-2">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-10 Mon&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>add Point, RdWrIni and Rect support from liuhuan</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="orga68830a"></a>RMGHeader<br  /><div class="outline-text-5" id="text-3-4-2-1">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-10 Mon&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li>
+<li><a id="org7fa0e60"></a>PreOrb<br  /><div class="outline-text-5" id="text-3-4-2-2">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li>
+
+<li><a id="orgb8f2ef3"></a>RMGBase<br  /><div class="outline-text-5" id="text-3-4-2-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="org35c57b3"></a>test RMGBase<br  /></li></ol></li>
+
+<li><a id="orgb6779b2"></a>RMGImage<br  /><div class="outline-text-5" id="text-3-4-2-4">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div></li>
+
+<li><a id="org834a8ab"></a>Point<br  /><div class="outline-text-5" id="text-3-4-2-5">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-10 Mon&gt;</span></span>
+</p>
+</div></li>
+<li><a id="org800d7d9"></a>Rect<br  /><div class="outline-text-5" id="text-3-4-2-6">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-10 Mon&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>added from liuhuan</li>
+</ul>
+</div></li>
+
+
+<li><a id="org5828483"></a>RdWrIni<br  /><div class="outline-text-5" id="text-3-4-2-7">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-10 Mon&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>added from liuhuan</li>
+</ul>
+</div></li>
+
+<li><a id="orgeda14af"></a>Core<br  /><div class="outline-text-5" id="text-3-4-2-8">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-09 Sun&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>comment <b>IProcessable.h</b></li>
+<li><b>Core.h</b> include:
+<ul class="org-ul">
+<li>RMGBase.h</li>
+<li>RMGHeader.h</li>
+<li>RMGImage.h</li>
+</ul></li>
+</ul>
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>change to linux style</li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="orgef0ccd8"></a><span class="done DONE">DONE</span> test Core<br  /><div class="outline-text-6" id="text-3-4-2-8-1">
+</div></li></ol></li></ol>
+</div>
+
+<div id="org7c4f549" class="outline-4">
+<h4 id="org7c4f549"><span class="section-number-4">3.4.3</span> Component</h4>
+<div class="outline-text-4" id="text-3-4-3">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>removed</li>
+</ul>
+</div>
+</div>
+
+<div id="org5c5041f" class="outline-4">
+<h4 id="org5c5041f"><span class="section-number-4">3.4.4</span> PluginFramework</h4>
+<div class="outline-text-4" id="text-3-4-4">
+<p>
+<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-11 Tue&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li>removed</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org27576e2" class="outline-3">
+<h3 id="org27576e2"><span class="section-number-3">3.5</span> UnitTest</h3>
+</div>
+</div>
+
+<div id="org9c986fb" class="outline-2">
+<h2 id="org9c986fb"><span class="section-number-2">4</span> Compile progress</h2>
+<div class="outline-text-2" id="text-4">
+</div><div id="org18362ae" class="outline-3">
+<h3 id="org18362ae"><span class="section-number-3">4.1</span> After converting to linux version</h3>
+<div class="outline-text-3" id="text-4-1">
+</div><div id="org839dd7b" class="outline-4">
+<h4 id="org839dd7b"><span class="section-number-4">4.1.1</span> Plugins</h4>
+<div class="outline-text-4" id="text-4-1-1">
+</div><ol class="org-ol"><li><a id="org55b4fe4"></a>PfxCTInSAR<br  /><ol class="org-ol"><li><a id="org4f2c6ef"></a><span class="done DONE">DONE</span> MeanCoh 平均相干性系数图计算<br  /><div class="outline-text-6" id="text-4-1-1-1-1">
+</div></li>
+
+<li><a id="org75670c9"></a>Musk 相干目标选取<br  /></li>
+
+<li><a id="org2667a69"></a>Baseline 基线、入射角和斜距计算<br  /></li>
+
+<li><a id="orgad0a3ba"></a>Denuanay 三角网建立<br  /></li>
+
+<li><a id="orgdee05a3"></a>PSC PSC结构生成<br  /></li>
+
+<li><a id="org4572173"></a>Integration 增量集成<br  /></li>
+
+<li><a id="org37fdc70"></a>Residue 相干点残余相位计算<br  /></li>
+
+<li><a id="org5083e26"></a>ResidueUnw 离散点残余相位解缠<br  /></li>
+
+<li><a id="org004299f"></a>Uonlinear 非线性形变和大气相位计算<br  /></li></ol></li>
+
+
+<li><a id="org8ceeaa9"></a>PfxConvertor<br  /><ol class="org-ol"><li><a id="org25c078d"></a>IQCombine IQ通道合成<br  /></li>
+
+<li><a id="orgbd80416"></a>R2Calibration R2数据标定<br  /></li>
+
+<li><a id="orgbe68835"></a>ComplexConvertor 复数处理<br  /></li>
+
+<li><a id="org6d29cc8"></a>MultiLook 多视处理<br  /></li></ol></li>
+
+
+<li><a id="org7d8fccd"></a>PfxInSAR<br  /><ol class="org-ol"><li><a id="org3a12036"></a>BaseLineEst 基线分析（估计）<br  /></li>
+
+<li><a id="org5334132"></a>PreOrbImport 精轨数据导入<br  /></li>
+
+<li><a id="org7aeba3f"></a>InterferogramMaps 干涉组合分析<br  /></li>
+
+<li><a id="orgec229af"></a>InterferDepict 干涉图生成<br  /></li>
+
+<li><a id="orga9aed12"></a>RegistrCoarse 粗配准<br  /></li>
+
+<li><a id="org01228f4"></a><span class="done DONE">DONE</span> RegistrFine 精配准<br  /><div class="outline-text-6" id="text-4-1-1-3-6">
+</div></li>
+
+<li><a id="org1f6a831"></a><span class="done DONE">DONE</span> FlatPhase 平地相位计算<br  /><div class="outline-text-6" id="text-4-1-1-3-7">
+</div></li>
+
+<li><a id="org38f2816"></a><span class="done DONE">DONE</span> CoherenceEst 相干性估计<br  /><div class="outline-text-6" id="text-4-1-1-3-8">
+</div></li></ol></li>
+
+
+<li><a id="org144c0fd"></a>pfxPolPSI<br  /></li>
+
+<li><a id="org54f29ef"></a>pfxRoiSelect<br  /><ol class="org-ol"><li><a id="orgc53999c"></a>RoiSelcetPro ROI处理<br  /></li></ol></li></ol>
+</div>
+
+
+<div id="org7b2bf7a" class="outline-4">
+<h4 id="org7b2bf7a"><span class="section-number-4">4.1.2</span> SARStudio</h4>
+</div>
+
+
+<div id="orgb555177" class="outline-4">
+<h4 id="orgb555177"><span class="section-number-4">4.1.3</span> Share</h4>
+<div class="outline-text-4" id="text-4-1-3">
+</div><ol class="org-ol"><li><a id="org036d6a1"></a>Common<br  /><ol class="org-ol"><li><a id="org0236775"></a><span class="done DONE">DONE</span> Common<br  /><div class="outline-text-6" id="text-4-1-3-1-1">
+</div></li>
+
+<li><a id="org0c5b2da"></a><span class="done DONE">DONE</span> SpMatrix<br  /><div class="outline-text-6" id="text-4-1-3-1-2">
+</div></li>
+
+<li><a id="orgf7329c5"></a>SpStatistics<br  /></li></ol></li>
+<li><a id="org9eaee16"></a><span class="done DONE">DONE</span> Core<br  /><div class="outline-text-5" id="text-4-1-3-2">
+</div>
+
+<ol class="org-ol"><li><a id="org7091ad2"></a><span class="done DONE">DONE</span> RMGHeader<br  /><div class="outline-text-6" id="text-4-1-3-2-1">
+</div></li>
+
+<li><a id="org44692f4"></a><span class="done DONE">DONE</span> PreOrb<br  /><div class="outline-text-6" id="text-4-1-3-2-2">
+</div></li>
+
+<li><a id="org08f2452"></a><span class="done DONE">DONE</span> RMGBase<br  /><div class="outline-text-6" id="text-4-1-3-2-3">
+</div></li>
+
+<li><a id="org4bab587"></a><span class="done DONE">DONE</span> RMGImage<br  /><div class="outline-text-6" id="text-4-1-3-2-4">
+</div></li>
+
+<li><a id="org172a76d"></a><span class="done DONE">DONE</span> Point<br  /><div class="outline-text-6" id="text-4-1-3-2-5">
+</div></li>
+
+<li><a id="orgdeabef4"></a><span class="done DONE">DONE</span> Rect<br  /><div class="outline-text-6" id="text-4-1-3-2-6">
+</div></li>
+
+<li><a id="orgfc06a58"></a><span class="done DONE">DONE</span> RdWrIni<br  /><div class="outline-text-6" id="text-4-1-3-2-7">
+</div></li>
+
+<li><a id="org39bd405"></a><span class="done DONE">DONE</span> Core<br  /><div class="outline-text-6" id="text-4-1-3-2-8">
+</div></li></ol></li></ol>
+</div>
+</div>
+
+
+<div id="orgce3e06f" class="outline-3">
+<h3 id="orgce3e06f"><span class="section-number-3">4.2</span> After adding OpenMP to linux version</h3>
+<div class="outline-text-3" id="text-4-2">
+</div><div id="orgad6177f" class="outline-4">
+<h4 id="orgad6177f"><span class="section-number-4">4.2.1</span> Plugins</h4>
+<div class="outline-text-4" id="text-4-2-1">
+</div><ol class="org-ol"><li><a id="org62d03b3"></a>PfxCTInSAR<br  /><ol class="org-ol"><li><a id="orgeabc880"></a>MeanCoh 平均相干性系数图计算<br  /></li>
+
+<li><a id="org63e3a2b"></a>Musk 相干目标选取<br  /></li>
+
+<li><a id="org1a14df1"></a>Baseline 基线、入射角和斜距计算<br  /></li>
+
+<li><a id="org6c3e403"></a>Denuanay 三角网建立<br  /></li>
+
+<li><a id="org2e7d086"></a>PSC PSC结构生成<br  /></li>
+
+<li><a id="orgd9341a9"></a>Integration 增量集成<br  /></li>
+
+<li><a id="orga4bcc9d"></a>Residue 相干点残余相位计算<br  /></li>
+
+<li><a id="orge7bd57d"></a>ResidueUnw 离散点残余相位解缠<br  /></li>
+
+<li><a id="org63b1037"></a>Uonlinear 非线性形变和大气相位计算<br  /></li></ol></li>
+
+
+<li><a id="org9bc1d95"></a>PfxConvertor<br  /><ol class="org-ol"><li><a id="org56c3a4b"></a>IQCombine IQ通道合成<br  /></li>
+
+<li><a id="org0d79ca1"></a>R2Calibration R2数据标定<br  /></li>
+
+<li><a id="org0c95e9f"></a>ComplexConvertor 复数处理<br  /></li>
+
+<li><a id="org78a69a8"></a>MultiLook 多视处理<br  /></li></ol></li>
+
+
+<li><a id="org76a32f9"></a>PfxInSAR<br  /><ol class="org-ol"><li><a id="org17ebe66"></a>BaseLineEst 基线分析（估计）<br  /></li>
+
+<li><a id="orgbae5339"></a>PreOrbImport 精轨数据导入<br  /></li>
+
+<li><a id="orgdd60f56"></a>InterferogramMaps 干涉组合分析<br  /></li>
+
+<li><a id="org27e9a79"></a>InterferDepict 干涉图生成<br  /></li>
+
+<li><a id="org48b38a7"></a>RegistrCoarse 粗配准<br  /></li>
+
+<li><a id="org747482b"></a>RegistrFine 精配准<br  /></li>
+
+<li><a id="org5d7ac81"></a>FlatPhase 平地相位计算<br  /></li>
+
+<li><a id="orgd7af3aa"></a>CoherenceEst 相干性估计<br  /></li></ol></li>
+
+
+<li><a id="org052acf3"></a>pfxPolPSI<br  /></li>
+
+<li><a id="org6c475d4"></a>pfxRoiSelect<br  /><ol class="org-ol"><li><a id="orgd1114b7"></a>RoiSelcetPro ROI处理<br  /></li></ol></li></ol>
+</div>
+
+
+<div id="orgd4c1d5d" class="outline-4">
+<h4 id="orgd4c1d5d"><span class="section-number-4">4.2.2</span> SARStudio</h4>
+</div>
+
+
+<div id="org64ae496" class="outline-4">
+<h4 id="org64ae496"><span class="section-number-4">4.2.3</span> Share</h4>
+<div class="outline-text-4" id="text-4-2-3">
+</div><ol class="org-ol"><li><a id="org8efd6e3"></a>Common<br  /><ol class="org-ol"><li><a id="orgfa358dd"></a>Common<br  /></li>
+
+<li><a id="org34406d7"></a>SpMatrix<br  /></li>
+
+<li><a id="orgb2f8e5f"></a>SpStatistics<br  /></li></ol></li>
+<li><a id="org26f5b60"></a>Core<br  /><ol class="org-ol"><li><a id="org2e36c95"></a>RMGHeader<br  /></li>
+
+<li><a id="org6704041"></a>PreOrb<br  /></li>
+
+<li><a id="orgaea725c"></a>RMGBase<br  /></li>
+
+<li><a id="orgfe076ec"></a>RMGImage<br  /></li>
+
+<li><a id="orgdca94bd"></a>Point<br  /></li>
+
+<li><a id="orgdbef89a"></a>Rect<br  /></li>
+
+<li><a id="org49a9955"></a>RdWrIni<br  /></li>
+
+<li><a id="org19178fb"></a>Core<br  /></li></ol></li></ol>
+</div>
+</div>
+
+
+<div id="org31f2809" class="outline-3">
+<h3 id="org31f2809"><span class="section-number-3">4.3</span> After adding STAR to linux version</h3>
+<div class="outline-text-3" id="text-4-3">
+</div><div id="org425ccfa" class="outline-4">
+<h4 id="org425ccfa"><span class="section-number-4">4.3.1</span> Plugins</h4>
+<div class="outline-text-4" id="text-4-3-1">
+</div><ol class="org-ol"><li><a id="org0806b92"></a>PfxCTInSAR<br  /><ol class="org-ol"><li><a id="org4b4999f"></a>MeanCoh 平均相干性系数图计算<br  /></li>
+
+<li><a id="org35e7f94"></a>Musk 相干目标选取<br  /></li>
+
+<li><a id="org6fe4122"></a>Baseline 基线、入射角和斜距计算<br  /></li>
+
+<li><a id="orgef3d028"></a>Denuanay 三角网建立<br  /></li>
+
+<li><a id="orgfc50fd0"></a>PSC PSC结构生成<br  /></li>
+
+<li><a id="orgc92fc91"></a>Integration 增量集成<br  /></li>
+
+<li><a id="org15971af"></a>Residue 相干点残余相位计算<br  /></li>
+
+<li><a id="org1624c72"></a>ResidueUnw 离散点残余相位解缠<br  /></li>
+
+<li><a id="orge1fa79a"></a>Uonlinear 非线性形变和大气相位计算<br  /></li></ol></li>
+
+
+<li><a id="org1844d34"></a>PfxConvertor<br  /><ol class="org-ol"><li><a id="org99b35f6"></a>IQCombine IQ通道合成<br  /></li>
+
+<li><a id="org480f82c"></a>R2Calibration R2数据标定<br  /></li>
+
+<li><a id="org38440af"></a>ComplexConvertor 复数处理<br  /></li>
+
+<li><a id="org91b5610"></a>MultiLook 多视处理<br  /></li></ol></li>
+
+
+<li><a id="org2ed911d"></a>PfxInSAR<br  /><ol class="org-ol"><li><a id="orgc5d9782"></a>BaseLineEst 基线分析（估计）<br  /></li>
+
+<li><a id="orgec72120"></a>PreOrbImport 精轨数据导入<br  /></li>
+
+<li><a id="orgf29c65a"></a>InterferogramMaps 干涉组合分析<br  /></li>
+
+<li><a id="org7ad57cc"></a>InterferDepict 干涉图生成<br  /></li>
+
+<li><a id="org13a771e"></a>RegistrCoarse 粗配准<br  /></li>
+
+<li><a id="org1e4c28a"></a>RegistrFine 精配准<br  /></li>
+
+<li><a id="orgf519e29"></a>FlatPhase 平地相位计算<br  /></li>
+
+<li><a id="org013fee4"></a>CoherenceEst 相干性估计<br  /></li></ol></li>
+
+
+<li><a id="orgdccd617"></a>pfxPolPSI<br  /></li>
+
+<li><a id="orgfd44fcb"></a>pfxRoiSelect<br  /><ol class="org-ol"><li><a id="org9c3aa82"></a>RoiSelcetPro ROI处理<br  /></li></ol></li></ol>
+</div>
+
+
+
+<div id="org479b68a" class="outline-4">
+<h4 id="org479b68a"><span class="section-number-4">4.3.2</span> SARStudio</h4>
+</div>
+
+
+<div id="org097df8d" class="outline-4">
+<h4 id="org097df8d"><span class="section-number-4">4.3.3</span> Share</h4>
+<div class="outline-text-4" id="text-4-3-3">
+</div><ol class="org-ol"><li><a id="org6b6d82f"></a>Common<br  /><ol class="org-ol"><li><a id="orge8d2993"></a>Common<br  /></li>
+
+<li><a id="orga90904c"></a>SpMatrix<br  /></li>
+
+<li><a id="orgc8684eb"></a>SpStatistics<br  /></li></ol></li>
+<li><a id="orgb36c0d8"></a>Core<br  /><ol class="org-ol"><li><a id="org2283fba"></a>RMGHeader<br  /></li>
+
+<li><a id="org04e6874"></a>PreOrb<br  /></li>
+
+<li><a id="org63dd273"></a>RMGBase<br  /></li>
+
+<li><a id="org1f6cbf4"></a>RMGImage<br  /></li>
+
+<li><a id="org1df7fc5"></a>Point<br  /></li>
+
+<li><a id="orgd3142ac"></a>Rect<br  /></li>
+
+<li><a id="orgfbf898a"></a>RdWrIni<br  /></li>
+
+<li><a id="orgce8e1e1"></a>Core<br  /></li></ol></li></ol>
+</div>
+</div>
+</div>
+
+<div id="org40f289f" class="outline-2">
+<h2 id="org40f289f"><span class="section-number-2">5</span> Overall schedule</h2>
+<div class="outline-text-2" id="text-5">
+</div><div id="orge595ee3" class="outline-3">
+<h3 id="orge595ee3"><span class="section-number-3">5.1</span> <span class="done DONE">DONE</span> Core: decide test order <a id="org9cdde84"></a></h3>
+<div class="outline-text-3" id="text-5-1">
+<ul class="org-ul">
+<li>according to UML in <a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/InSAR_Class_Diagram.mdj">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/InSAR_Class_Diagram.mdj</a>, the testing order in Core:
+<ul class="org-ul">
+<li>RMGHeader</li>
+<li>PreOrb</li>
+<li>RMGBase</li>
+<li>RMGImage(after Common/SpMatrix)</li>
+<li>Point</li>
+<li>Rect</li>
+<li>RdWrIni</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org8c64291" class="outline-3">
+<h3 id="org8c64291"><span class="section-number-3">5.2</span> <span class="done DONE">DONE</span> Core: test Core</h3>
+<div class="outline-text-3" id="text-5-2">
+<ul class="org-ul">
+<li>according to the order above</li>
+</ul>
+</div>
+
+<div id="org82ec5c1" class="outline-4">
+<h4 id="org82ec5c1"><span class="section-number-4">5.2.1</span> <span class="done DONE">DONE</span> test RMGHeader</h4>
+<div class="outline-text-4" id="text-5-2-1">
+<ul class="org-ul">
+<li><a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liutao/SARStudio-linux/Share/Core/RMGImage.cpp">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liutao/SARStudio-linux/Share/Core/RMGImage.cpp</a></li>
+<li><a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liutao/SARStudio-linux/Share/Core/RMGImage.h">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liutao/SARStudio-linux/Share/Core/RMGImage.h</a></li>
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c RMGHeader.cpp
+</pre>
+</div></li>
+<li>problems:
+warning: use of enumeration in a nested name specifier is a <b>C++11</b> extension [-Wc++11-extensions]</li>
+</ul>
+</div>
+</div>
+<div id="orgf703861" class="outline-4">
+<h4 id="orgf703861"><span class="section-number-4">5.2.2</span> <span class="done DONE">DONE</span> test PreOrb</h4>
+<div class="outline-text-4" id="text-5-2-2">
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c PreOrb.cpp
+</pre>
+</div></li>
+<li>problems:
+warning: illegal character encoding in string literal <b>[-Winvalid-source-encoding]</b></li>
+</ul>
+</div>
+</div>
+
+<div id="org618f89f" class="outline-4">
+<h4 id="org618f89f"><span class="section-number-4">5.2.3</span> <span class="done DONE">DONE</span> test RMGBase</h4>
+<div class="outline-text-4" id="text-5-2-3">
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c RMGBase.cpp
+</pre>
+</div></li>
+<li>problems:</li>
+</ul>
+</div>
+</div>
+
+<div id="orgf394092" class="outline-4">
+<h4 id="orgf394092"><span class="section-number-4">5.2.4</span> <span class="done DONE">DONE</span> test RMGImage</h4>
+<div class="outline-text-4" id="text-5-2-4">
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c RMGImage.cpp
+</pre>
+</div></li>
+<li>problems:
+./../Common/SpMatrix.h:283:17: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+<code>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code></li>
+</ul>
+<p>
+./../Common/SpMatrix.h:283:17: note: place parentheses around the assignment to silence this warning
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+(                                  )
+./../Common/SpMatrix.h:283:17: note: use '==' to turn this assignment into an equality comparison
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+==
+./../Common/SpMatrix.h:283:17: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+<code>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+./../Common/SpMatrix.h:245:22: note: in instantiation of member function 'CSpMatrix&lt;double&gt;::Pivot' requested here
+int indx=Pivot(k);
+^
+RMGImage.cpp:86:19: note: in instantiation of member function 'CSpMatrix&lt;double&gt;::Inverse' requested here
+lmtmtx=lmtmtx.Inverse();
+^
+./../Common/SpMatrix.h:283:17: note: place parentheses around the assignment to silence this warning
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+(                                  )
+./../Common/SpMatrix.h:283:17: note: use '==' to turn this assignment into an equality comparison
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+</p>
+</div>
+</div>
+
+<div id="org997a614" class="outline-4">
+<h4 id="org997a614"><span class="section-number-4">5.2.5</span> <span class="done DONE">DONE</span> test Point</h4>
+<div class="outline-text-4" id="text-5-2-5">
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c Point.cpp
+</pre>
+</div></li>
+<li>problems:</li>
+</ul>
+</div>
+</div>
+
+<div id="org557a279" class="outline-4">
+<h4 id="org557a279"><span class="section-number-4">5.2.6</span> <span class="done DONE">DONE</span> test Rect</h4>
+<div class="outline-text-4" id="text-5-2-6">
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c Rect.cpp
+</pre>
+</div></li>
+<li>problems:</li>
+</ul>
+</div>
+</div>
+
+<div id="orge3ed7ce" class="outline-4">
+<h4 id="orge3ed7ce"><span class="section-number-4">5.2.7</span> <span class="done DONE">DONE</span> test RdWrIni</h4>
+<div class="outline-text-4" id="text-5-2-7">
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c RdWrIni.cpp
+</pre>
+</div></li>
+<li>problems:</li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="orgeddcc35" class="outline-3">
+<h3 id="orgeddcc35"><span class="section-number-3">5.3</span> <span class="done DONE">DONE</span> Common: test Common</h3>
+<div class="outline-text-3" id="text-5-3">
+</div>
+
+<div id="org3b3e901" class="outline-4">
+<h4 id="org3b3e901"><span class="section-number-4">5.3.1</span> <span class="done DONE">DONE</span> test SpMatrix (fixed)</h4>
+<div class="outline-text-4" id="text-5-3-1">
+<p>
+CLOSED: <span class="timestamp-wrapper"><span class="timestamp">[2016-10-13 Thu 10:35] </span></span> SCHEDULED: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-13 Thu 10:32&gt;</span></span>
+</p>
+<ul class="org-ul">
+<li><p>
+command:
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">g++ -c SpMatrix.cpp
+</pre>
+</div></li>
+<li>problems:</li>
+</ul>
+<p>
+./SpMatrix.h:283:17: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+<code>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+./SpMatrix.h:283:17: note: place parentheses around the assignment to silence this warning
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+(                                  )
+./SpMatrix.h:283:17: note: use '==' to turn this assignment into an equality comparison
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+==
+1 warning generated.
+</p>
+</div>
+</div>
+
+
+<div id="org7d40efc" class="outline-4">
+<h4 id="org7d40efc"><span class="section-number-4">5.3.2</span> <span class="done DONE">DONE</span> test SpStatistics</h4>
+<div class="outline-text-4" id="text-5-3-2">
+</div>
+</div>
+</div>
+
+<div id="org79327bd" class="outline-3">
+<h3 id="org79327bd"><span class="section-number-3">5.4</span> <span class="done DONE">DONE</span> compile files from liuhuan</h3>
+<div class="outline-text-3" id="text-5-4">
+<ul class="org-ul">
+<li>liuhuan's files: <a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liuhuan/SAR_final">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/liuhuan/SAR_final</a></li>
+<li>CoherenceEst.cpp
+<ul class="org-ul">
+<li>problems:
+./../../Share/Core/../Common/SpMatrix.h:283:17: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+<code>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+./../../Share/Core/../Common/SpMatrix.h:283:17: note: place parentheses around the assignment to silence this warning
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+(                                  )
+./../../Share/Core/../Common/SpMatrix.h:283:17: note: use '==' to turn this assignment into an equality comparison
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+==
+1 warning generated.</li>
+</ul></li>
+<li>FlatPhase.cpp
+<ul class="org-ul">
+<li>problems:
+same as above</li>
+</ul></li>
+<li>MeanCoh.cpp
+<ul class="org-ul">
+<li>problems:
+same as above.
+changed as different from liuhuan</li>
+</ul></li>
+<li>RegistrFine.cpp
+<ul class="org-ul">
+<li>problems:
+./../../Share/Common/SpMatrix.h:283:17: warning: using the result of an assignment as a condition without parentheses [-Wparentheses]
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+<code>^~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~</code>
+./../../Share/Common/SpMatrix.h:283:17: note: place parentheses around the assignment to silence this warning
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+(                                  )
+./../../Share/Common/SpMatrix.h:283:17: note: use '==' to turn this assignment into an equality comparison
+if(t=fabs(this-&gt;Get(i,row))&gt;amax&amp;&amp;t!=0)
+^
+==
+RegistrFine.cpp:159:23: warning: invalid conversion specifier '\x0a' [-Wformat-invalid-specifier]
+printf("process:%1\n");
+~~^</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org1449709" class="outline-3">
+<h3 id="org1449709"><span class="section-number-3">5.5</span> <span class="done DONE">DONE</span> convert pfxConvertor to linux style</h3>
+<div class="outline-text-3" id="text-5-5">
+<ul class="org-ul">
+<li>the order is decided according to <a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf</a> (p31)</li>
+</ul>
+</div>
+
+<div id="org519f150" class="outline-4">
+<h4 id="org519f150"><span class="section-number-4">5.5.1</span> <span class="done DONE">DONE</span> IQCombine IQ通道合成 (2)</h4>
+<div class="outline-text-4" id="text-5-5-1">
+<ul class="org-ul">
+<li>change <b>FILE</b> to <b>ifstream</b> and <b>ofstream</b>
+<ul class="org-ul">
+<li>change <b>fopen()</b> to <b>open()</b></li>
+<li>change <b>fseek()</b> to <b>seekg()</b></li>
+<li>change <b>fread()</b>, <b>fwrite()</b>, <b>fclose()</b> to <b>read()</b>, <b>write()</b>, <b>close()</b></li>
+<li>fix <b>MACRO<sub>GENERIC</sub><sub>INVOKE</sub></b> problem</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org72385d3" class="outline-4">
+<h4 id="org72385d3"><span class="section-number-4">5.5.2</span> <span class="done DONE">DONE</span> R2Calibration R2数据标定 (3)</h4>
+<div class="outline-text-4" id="text-5-5-2">
+</div>
+</div>
+
+<div id="org690bf4d" class="outline-4">
+<h4 id="org690bf4d"><span class="section-number-4">5.5.3</span> <span class="done DONE">DONE</span> ComplexConvertor 复数处理 (11)</h4>
+<div class="outline-text-4" id="text-5-5-3">
+</div>
+</div>
+
+<div id="orgde23271" class="outline-4">
+<h4 id="orgde23271"><span class="section-number-4">5.5.4</span> <span class="done DONE">DONE</span> MultiLook 多视处理</h4>
+<div class="outline-text-4" id="text-5-5-4">
+</div>
+</div>
+</div>
+
+<div id="org14f9a20" class="outline-3">
+<h3 id="org14f9a20"><span class="section-number-3">5.6</span> <span class="done DONE">DONE</span> convert pfxInSAR to linux style</h3>
+<div class="outline-text-3" id="text-5-6">
+<ul class="org-ul">
+<li>the order is decided according to <a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf</a> (p31)</li>
+</ul>
+</div>
+
+<div id="org1d5ec29" class="outline-4">
+<h4 id="org1d5ec29"><span class="section-number-4">5.6.1</span> <span class="done DONE">DONE</span> BaseLineEst 基线分析</h4>
+<div class="outline-text-4" id="text-5-6-1">
+</div>
+</div>
+
+<div id="orge41db80" class="outline-4">
+<h4 id="orge41db80"><span class="section-number-4">5.6.2</span> <span class="done DONE">DONE</span> InterferogramMaps 干涉组合分析 (4)</h4>
+<div class="outline-text-4" id="text-5-6-2">
+</div>
+</div>
+
+<div id="org1a77282" class="outline-4">
+<h4 id="org1a77282"><span class="section-number-4">5.6.3</span> <span class="done DONE">DONE</span> InterferDepict 干涉图生成</h4>
+<div class="outline-text-4" id="text-5-6-3">
+</div>
+</div>
+
+<div id="org33a086c" class="outline-4">
+<h4 id="org33a086c"><span class="section-number-4">5.6.4</span> <span class="done DONE">DONE</span> RegistrCoarse 粗配准 (5)</h4>
+<div class="outline-text-4" id="text-5-6-4">
+</div>
+
+
+<ol class="org-ol"><li><a id="orge3c3c53"></a><span class="done DONE">DONE</span> convert Common/SpStatistics to linux style (3.5)<br  /><div class="outline-text-5" id="text-5-6-4-1">
+</div></li></ol>
+</div>
+
+
+<div id="orge2d537c" class="outline-4">
+<h4 id="orge2d537c"><span class="section-number-4">5.6.5</span> <span class="done DONE">DONE</span> RegistrFine 精配准 (6)</h4>
+<div class="outline-text-4" id="text-5-6-5">
+</div>
+</div>
+
+<div id="org47f5b33" class="outline-4">
+<h4 id="org47f5b33"><span class="section-number-4">5.6.6</span> <span class="done DONE">DONE</span> PreOrbImport 精轨数据导入 (7)</h4>
+<div class="outline-text-4" id="text-5-6-6">
+</div>
+</div>
+
+<div id="orge619abb" class="outline-4">
+<h4 id="orge619abb"><span class="section-number-4">5.6.7</span> <span class="done DONE">DONE</span> FlatPhase 平地相位计算 (9)</h4>
+<div class="outline-text-4" id="text-5-6-7">
+</div>
+</div>
+
+<div id="orgaddaf5e" class="outline-4">
+<h4 id="orgaddaf5e"><span class="section-number-4">5.6.8</span> <span class="done DONE">DONE</span> CoherenceEst 相干性估计 (10)</h4>
+<div class="outline-text-4" id="text-5-6-8">
+</div>
+</div>
+</div>
+
+<div id="org1859c6f" class="outline-3">
+<h3 id="org1859c6f"><span class="section-number-3">5.7</span> <span class="done DONE">DONE</span> convert pfxCTInSAR to linux style</h3>
+<div class="outline-text-3" id="text-5-7">
+<ul class="org-ul">
+<li>the order is decided according to <a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf</a> (p31)</li>
+</ul>
+</div>
+
+<div id="org1410aee" class="outline-4">
+<h4 id="org1410aee"><span class="section-number-4">5.7.1</span> <span class="done DONE">DONE</span> MeanCoh 平均相干性系数图计算 (12)</h4>
+<div class="outline-text-4" id="text-5-7-1">
+</div>
+</div>
+
+<div id="org96777de" class="outline-4">
+<h4 id="org96777de"><span class="section-number-4">5.7.2</span> <span class="done DONE">DONE</span> Musk 相干目标选取 (13)</h4>
+<div class="outline-text-4" id="text-5-7-2">
+</div>
+</div>
+
+<div id="org6b18ec7" class="outline-4">
+<h4 id="org6b18ec7"><span class="section-number-4">5.7.3</span> <span class="done DONE">DONE</span> Baseline 基线、入射角和斜距计算 (14)</h4>
+<div class="outline-text-4" id="text-5-7-3">
+</div>
+</div>
+
+<div id="orgbefbcfc" class="outline-4">
+<h4 id="orgbefbcfc"><span class="section-number-4">5.7.4</span> <span class="done DONE">DONE</span> PSC PSC结构生成 (15)</h4>
+<div class="outline-text-4" id="text-5-7-4">
+</div>
+
+<ol class="org-ol"><li><a id="orgfe9345b"></a><span class="done DONE">DONE</span> convert Delaunay to linux style (15.5)<br  /><div class="outline-text-5" id="text-5-7-4-1">
+</div></li></ol>
+</div>
+
+<div id="org2eeba06" class="outline-4">
+<h4 id="org2eeba06"><span class="section-number-4">5.7.5</span> <span class="done DONE">DONE</span> Denuanay 三角网建立 (16)</h4>
+<div class="outline-text-4" id="text-5-7-5">
+</div>
+</div>
+
+<div id="orgf4a9441" class="outline-4">
+<h4 id="orgf4a9441"><span class="section-number-4">5.7.6</span> <span class="done DONE">DONE</span> Integration 增量集成 (17)</h4>
+<div class="outline-text-4" id="text-5-7-6">
+</div>
+
+<ol class="org-ol"><li><a id="orgba67e9e"></a><span class="done DONE">DONE</span> convert Lsqr to linux style<br  /><div class="outline-text-5" id="text-5-7-6-1">
+</div></li></ol>
+</div>
+
+<div id="orga70ab0f" class="outline-4">
+<h4 id="orga70ab0f"><span class="section-number-4">5.7.7</span> <span class="done DONE">DONE</span> Residue 残余相位计算 (18)</h4>
+<div class="outline-text-4" id="text-5-7-7">
+</div>
+</div>
+
+<div id="orgd12d5b0" class="outline-4">
+<h4 id="orgd12d5b0"><span class="section-number-4">5.7.8</span> <span class="done DONE">DONE</span> ResidueUnw 残余相位解缠 (19)</h4>
+<div class="outline-text-4" id="text-5-7-8">
+</div>
+</div>
+
+<div id="orgbb43123" class="outline-4">
+<h4 id="orgbb43123"><span class="section-number-4">5.7.9</span> <span class="done DONE">DONE</span> Uonlinear 非线性形变和大气相位计算 (20)</h4>
+<div class="outline-text-4" id="text-5-7-9">
+</div>
+</div>
+</div>
+
+<div id="org3065d92" class="outline-3">
+<h3 id="org3065d92"><span class="section-number-3">5.8</span> <span class="done DONE">DONE</span> convert pfxRoiSelect to linux style</h3>
+<div class="outline-text-3" id="text-5-8">
+<ul class="org-ul">
+<li>the order is decided according to <a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf</a> (p31)</li>
+</ul>
+</div>
+
+<div id="org64b284b" class="outline-4">
+<h4 id="org64b284b"><span class="section-number-4">5.8.1</span> <span class="done DONE">DONE</span> RoiSelcetPro ROI处理 (8)</h4>
+<div class="outline-text-4" id="text-5-8-1">
+</div>
+</div>
+</div>
+
+<div id="orga069cc3" class="outline-3">
+<h3 id="orga069cc3"><span class="section-number-3">5.9</span> <span class="done CANCELLED">CANCELLED</span> compile all files on linux (gc05)</h3>
+<div class="outline-text-3" id="text-5-9">
+</div>
+</div>
+
+<div id="org2aae3ef" class="outline-3">
+<h3 id="org2aae3ef"><span class="section-number-3">5.10</span> <span class="done DONE">DONE</span> compile all files on linux (mnode04)</h3>
+<div class="outline-text-3" id="text-5-10">
+</div>
+
+<div id="org5234637" class="outline-4">
+<h4 id="org5234637"><span class="section-number-4">5.10.1</span> <span class="done DONE">DONE</span> set up suitesparse 4.2.1</h4>
+<div class="outline-text-4" id="text-5-10-1">
+<ul class="org-ul">
+<li>reason: need umfpack.h &#x2026;</li>
+<li>local install path: /home/liutao/local/include /home/liutao/local/lib</li>
+</ul>
+</div>
+</div>
+
+<div id="orgf25add4" class="outline-4">
+<h4 id="orgf25add4"><span class="section-number-4">5.10.2</span> <span class="done DONE">DONE</span> compile Plugins</h4>
+<div class="outline-text-4" id="text-5-10-2">
+</div>
+
+<ol class="org-ol"><li><a id="orgfac3ee6"></a><span class="done DONE">DONE</span> PfxConvertor<br  /><div class="outline-text-5" id="text-5-10-2-1">
+<ul class="org-ul">
+<li>ComplexConvertor: passed</li>
+<li>ComplexPro: fixed
+<ul class="org-ul">
+<li>need boost</li>
+</ul></li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="org2aece8c"></a><span class="done DONE">DONE</span> install boost on mnode04<br  /><div class="outline-text-6" id="text-5-10-2-1-1">
+<p>
+<a href="https://mozillazg.com/2016/04/linux-how-to-build-boost.python-on-centos7.md.html">https://mozillazg.com/2016/04/linux-how-to-build-boost.python-on-centos7.md.html</a>
+</p>
+
+<ul class="org-ul">
+<li>install path: /opt/boost<sub>1</sub><sub>62</sub><sub>0</sub></li>
+</ul>
+</div></li></ol></li>
+
+<li><a id="org1d0b804"></a><span class="done DONE">DONE</span> PfxCTInSAR<br  /><div class="outline-text-5" id="text-5-10-2-2">
+<ul class="org-ul">
+<li>command: g++ -std=c++11 -c -I/opt/boost<sub>1</sub><sub>62</sub><sub>0</sub> -I/home/liutao/local/include *.cpp</li>
+</ul>
+</div></li>
+
+<li><a id="org62d4976"></a><span class="done DONE">DONE</span> PfxInSAR<br  /><div class="outline-text-5" id="text-5-10-2-3">
+<p>
+problems:
+</p>
+<ol class="org-ol">
+<li>SpMatrix.h: memcpy not declared
+<ul class="org-ul">
+<li>include &lt;cstring&gt;</li>
+</ul></li>
+</ol>
+</div></li>
+
+<li><a id="orge860cde"></a><span class="done DONE">DONE</span> pfxRoiSelect<br  /><div class="outline-text-5" id="text-5-10-2-4">
+<p>
+passed
+</p>
+</div></li></ol>
+</div>
+</div>
+
+<div id="org3b8e6c0" class="outline-3">
+<h3 id="org3b8e6c0"><span class="section-number-3">5.11</span> <span class="done DONE">DONE</span> test on mnode04 with data <a id="org046a7fc"></a></h3>
+<div class="outline-text-3" id="text-5-11">
+<ul class="org-ul">
+<li>test order:</li>
+</ul>
+<p>
+<a href="file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf">file:///Users/lightjames/Nutstore/ACG_group/yaogansuo/R2用户手册V3.pdf</a>
+</p>
+<ul class="org-ul">
+<li>test data location:</li>
+</ul>
+<p>
+mnode04: home/liutao/workspace/ygs<sub>data</sub>
+</p>
+</div>
+
+<div id="org7d017cd" class="outline-4">
+<h4 id="org7d017cd"><span class="section-number-4">5.11.1</span> <span class="done DONE">DONE</span> test Share</h4>
+<div class="outline-text-4" id="text-5-11-1">
+<p>
+files: <a href="file://liutao@mnode04:/home/liutao/workspace/github/ygs-linux/Share/">file://liutao@mnode04:/home/liutao/workspace/github/ygs-linux/Share/</a> (Makefile and test*.cpp)
+</p>
+
+<ul class="org-ul">
+<li>Rect: g++ -c Rect.cpp -std=c++11</li>
+<li>Point: g++ -c Point.cpp -std=c++11</li>
+<li>RdWrIni: g++ -c RdWrIni.cpp -std=c++11</li>
+<li>RMGHeader: g++ -c RMGHeader.cpp -std=c++11 (when g++ -o need <b>-lboost<sub>regex</sub></b>)</li>
+<li>PreOrb: done</li>
+<li>RMGBase: done</li>
+<li>SpMatrix: done</li>
+<li>SpStatistics: done</li>
+<li>RMGImage: done</li>
+</ul>
+</div>
+</div>
+
+
+<div id="orgdadcaa5" class="outline-4">
+<h4 id="orgdadcaa5"><span class="section-number-4">5.11.2</span> <span class="done DONE">DONE</span> 数据导入 Rd2Sp2Local (on windows yet)</h4>
+<div class="outline-text-4" id="text-5-11-2">
+<ul class="org-ul">
+<li>on windows</li>
+<li>HuaiNanData2012 ==&gt; 1.rmg, 1.ldr, 2.rmg, 2.ldr, 3.rmg, 3.ldr, 4.rmg, 4.ldr</li>
+</ul>
+</div>
+</div>
+
+<div id="orgc04e293" class="outline-4">
+<h4 id="orgc04e293"><span class="section-number-4">5.11.3</span> <span class="done DONE">DONE</span> scrutinize the procedures on windows from clicking on a button to executing the corresponding functions</h4>
+<div class="outline-text-4" id="text-5-11-3">
+<ul class="org-ul">
+<li>it took me so much time!</li>
+</ul>
+</div>
+</div>
+
+<div id="org181a100" class="outline-4">
+<h4 id="org181a100"><span class="section-number-4">5.11.4</span> <span class="done DONE">DONE</span> IQ通道合成 IQCombine (on mnode04 from now on)</h4>
+<div class="outline-text-4" id="text-5-11-4">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori">file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori</a> (1.rmg, 2.rmg, 3.rmg, 4.rmg)</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC</a> (1.rmg, 2.rmg, 3.rmg, 4.rmg)</li>
+<li>file: ygs-linux/UnitTest/TestIQCombine.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>segementation fault (core dumped): fixed</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org9c14377" class="outline-4">
+<h4 id="org9c14377"><span class="section-number-4">5.11.5</span> <span class="done DONE">DONE</span> R2数据标定 R2Calibration (on mnode04)</h4>
+<div class="outline-text-4" id="text-5-11-5">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/*.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/*.rmg</a>
+<a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori/lutSigma*.xml">file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori/lutSigma*.xml</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/*.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/*.rmg</a></li>
+<li>file: ygs-linux/UnitTest/TestR2Calibration.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="orgda820f5" class="outline-4">
+<h4 id="orgda820f5"><span class="section-number-4">5.11.6</span> <span class="done DONE">DONE</span> InSAR干涉组合 InterferogramMaps</h4>
+<div class="outline-text-4" id="text-5-11-6">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SARdata.txt">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SARdata.txt</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/inSARgraphy.txt">file://liutao@mnode04:/home/liutao/workspace/ygs_data/inSARgraphy.txt</a></li>
+<li>file: ygs-linux/UnitTest/TestInterferogramMaps.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>segementation fault (core dumped): fixed
+<ul class="org-ul">
+<li>found bugs in RMGHeader.cpp from liuhuan, and in RMGHeader.h from yaogansuo</li>
+<li>RMGHeader.cpp: in Save(), missing spaces when write to lpExport file.</li>
+<li>RMGHeader.h: in StructStateVector, wrong timePoint assignment.</li>
+</ul></li>
+<li>not enough disk space
+<ul class="org-ul">
+<li>mnode04:/home 100% used</li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org8b732e7" class="outline-4">
+<h4 id="org8b732e7"><span class="section-number-4">5.11.7</span> <span class="done DONE">DONE</span> 粗配准 RegistrCoarse</h4>
+<div class="outline-text-4" id="text-5-11-7">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/</a> (1,2) (1,3) (1,4) rmg, ldr</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/coaReg/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/coaReg/</a>   2     3     4      rmg</li>
+<li>file: ygs-linux/UnitTest/TestRegistrCoarse.cpp</li>
+<li>problems:</li>
+</ul>
+</div>
+</div>
+
+<div id="orgfa2f399" class="outline-4">
+<h4 id="orgfa2f399"><span class="section-number-4">5.11.8</span> <span class="done DONE">DONE</span> 精配准 RegistrFine</h4>
+<div class="outline-text-4" id="text-5-11-8">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/1.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/1.rmg</a>
+<a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/coaReg/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/coaReg/</a> 2 3 4 rmg</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/</a> 12 2 13 3 14 4 rmg</li>
+<li>file: ygs-linux/UnitTest/TestRegistrFine.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>segmentation fault (core dumped)</li>
+<li>in <b>RegistrFine.cpp</b>, in <b>Get<sub>para</sub><sub>gcp</sub></b>: the matrix for function Inverse() is zero.</li>
+<li></li>
+</ul></li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="orgdc9e459"></a><span class="done DONE">DONE</span> found wrong data output from R2Calibration (IQCombine's output is correct)<br  /><div class="outline-text-5" id="text-5-11-8-1">
+<ul class="org-ul">
+<li>it turned out that it was the wrong <b>input path</b> that caused this problem:
+I mistook /SLC/cal/1.rmg for <b>/SLC/1.rmg</b></li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="orge9962d3"></a><span class="done DONE">DONE</span> fix R2Calibration<br  /><div class="outline-text-6" id="text-5-11-8-1-1">
+<ul class="org-ul">
+<li>compared with data of windows program, almost the same. (小数后六位是相同的)</li>
+</ul>
+</div></li>
+
+<li><a id="orga663052"></a><span class="done DONE">DONE</span> check RegistrCoarse<br  /><div class="outline-text-6" id="text-5-11-8-1-2">
+<ul class="org-ul">
+<li>test RegistrFine with data /cal/1.rmg on linux and /coaReg/2.rmg on windows, passed.</li>
+<li>so bugs exist in RegistrCoarse!</li>
+<li>possible reason: fseek in linux c++ is not equalient to _fseeki64 in windows c++.</li>
+</ul>
+</div></li></ol></li></ol>
+</div>
+
+<div id="org0f5f9c1" class="outline-4">
+<h4 id="org0f5f9c1"><span class="section-number-4">5.11.9</span> <span class="done DONE">DONE</span> 精轨数据导入 PreOrbImport</h4>
+<div class="outline-text-4" id="text-5-11-9">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/1.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/1.rmg</a> <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori/24951_def-120924.orb">file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori/24951_def-120924.orb</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/1.orb">file://liutao@mnode04:/home/liutao/workspace/ygs_data/SLC/cal/1.orb</a></li>
+<li>file: ygs-linux/UnitTest/TestPreOrbImport.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>origin orb files of 1.rmg and 2.rmg are missed, only 3.rmg and 4.rmg tested yet.</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org51ac89a" class="outline-4">
+<h4 id="org51ac89a"><span class="section-number-4">5.11.10</span> <span class="done DONE">DONE</span> ROI处理 RoiSelcetPro</h4>
+<div class="outline-text-4" id="text-5-11-10">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori/1.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/ori/1.rmg</a> 3401 8001 3200 1600</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/ROI/1.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/ROI/1.rmg</a></li>
+<li>file: ysg-linux/UnitTest/TestRoiSelectPro.cpp</li>
+<li>problems:</li>
+</ul>
+</div>
+</div>
+
+<div id="orgaf58d61" class="outline-4">
+<h4 id="orgaf58d61"><span class="section-number-4">5.11.11</span> <span class="done DONE">DONE</span> 平地相位计算 FlatPhase</h4>
+<div class="outline-text-4" id="text-5-11-11">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/</a> (1,2) (1,4) (2,3) (2,4) (3,4) rmg, ldr</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/flatPha/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/flatPha/</a> 1-2   1-4   2-3   2-4   3-4  rmg, ldr</li>
+<li>file: ygs-linux/UnitTest/TestFlatPhase.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>segmentation fault (core dumped)  ./test (fixed, need *.orb files in /fineReg directory)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org3a35ee0" class="outline-4">
+<h4 id="org3a35ee0"><span class="section-number-4">5.11.12</span> <span class="done DONE">DONE</span> 相干性估计 CoherenceEst</h4>
+<div class="outline-text-4" id="text-5-11-12">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/</a> (1,2) rmg
+<a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/flatPha/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/flatPha/</a> 1-2   rmg</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/coh/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/coh/</a> 1-2 rmg</li>
+<li>file: ygs-linux/UnitTest/TestCoherenceEst.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="orga1993c6" class="outline-4">
+<h4 id="orga1993c6"><span class="section-number-4">5.11.13</span> <span class="done DONE">DONE</span> 复数处理 ComplexPro</h4>
+<div class="outline-text-4" id="text-5-11-13">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/coh/1-2.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/coh/1-2.rmg</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/coh/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/coh/</a> amp/1-2.rmg pha/1-2.rmg</li>
+<li>file: ygs-linux/UnitTest/TestComplexPro.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="org513a845" class="outline-4">
+<h4 id="org513a845"><span class="section-number-4">5.11.14</span> <span class="done DONE">DONE</span> 平均相干系数图 MeanCoh</h4>
+<div class="outline-text-4" id="text-5-11-14">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/coherence.txt">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/coherence.txt</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/meanCoh.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/meanCoh.rmg</a> meanCoh.ldr</li>
+<li>file: ygs-linux/UnitTest/TestMeanCoh.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="org910e49f" class="outline-4">
+<h4 id="org910e49f"><span class="section-number-4">5.11.15</span> <span class="done DONE">DONE</span> 相干目标选取 Musk</h4>
+<div class="outline-text-4" id="text-5-11-15">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/meanCoh.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/meanCoh.rmg</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/CTmusk.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/CTmusk.rmg</a></li>
+<li>file: ygs-linux/UnitTest/TestMusk.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="org8fff7fd" class="outline-4">
+<h4 id="org8fff7fd"><span class="section-number-4">5.11.16</span> <span class="done DONE">DONE</span> 基线、入射角和斜距计算 Baseline</h4>
+<div class="outline-text-4" id="text-5-11-16">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/fineReg/</a> (1,2) rmg, orb</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/BIR/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/BIR/</a> b1-2.rmg i1-2.rmg r1-2.rmg</li>
+<li>file: ygs-linux/UnitTest/TestBaseline.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>../Plugins/PfxCTInSAR/Baseline.cpp:208:38: error: non-constant-expression cannot be narrowed from type 'int' to 'double' in initializer list [-Wc++11-narrowing] (fixed)</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org6fcf083" class="outline-4">
+<h4 id="org6fcf083"><span class="section-number-4">5.11.17</span> <span class="done DONE">DONE</span> PSC生成 PSC</h4>
+<div class="outline-text-4" id="text-5-11-17">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/</a> CTmusk.rmg phase.txt BT.txt BIR.txt</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/PSC.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/PSC.rmg</a></li>
+<li>file: ygs-linux/UnitTest/TestPSC.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>find the wrong test function: not CreatePSC(), but Process()!</li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org63f5f4e" class="outline-4">
+<h4 id="org63f5f4e"><span class="section-number-4">5.11.18</span> <span class="done DONE">DONE</span> Delaunay三角网建立</h4>
+<div class="outline-text-4" id="text-5-11-18">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/PSC.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/PSC.rmg</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/edge.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/edge.rmg</a></li>
+<li>file: ygs-linux/UnitTest/TestDeluanay.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="orgd78f28e" class="outline-4">
+<h4 id="orgd78f28e"><span class="section-number-4">5.11.19</span> <span class="done DONE">DONE</span> 增量集成 Integration</h4>
+<div class="outline-text-4" id="text-5-11-19">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/</a> edge.rmg edge.ldr PSC.rmg PSC.ldr</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/</a> integratePoint.rmg integratePoint.ldr vel.txt</li>
+<li>file: ygs-linux/UnitTest/TestIntegration.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>need suitesparse support!
+<ul class="org-ul">
+<li>install suitesparse on mnode04:
+<ul class="org-ul">
+<li><p>
+install blas and lapack: (libs at <i>usr/lib64</i>)
+</p>
+<div class="org-src-container">
+<pre class="src src-shell">yum install blas blas-devel lapack lapack-devel atlas atlas-devel
+</pre>
+</div></li>
+<li>download suitsparse4.2.1 (at <i>home/liutao/downloads/SuiteSparse</i>)</li>
+<li>download metis4.0.3 and move it as /home/liutao/downloads/SuiteSparse/metis4.0</li>
+<li>cd /home/liutao/downloads/SuiteSparse &amp;&amp; make</li>
+<li>sudo make install (libs at /usr/local/lib; headers at /usr/local/include)</li>
+<li>to uninstall: cd /home/liutao/downloads/SuiteSparse &amp;&amp; sudo make uninstall</li>
+</ul></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+
+<div id="org1a67da9" class="outline-4">
+<h4 id="org1a67da9"><span class="section-number-4">5.11.20</span> <span class="done DONE">DONE</span> 离散点残余相位 Residue</h4>
+<div class="outline-text-4" id="text-5-11-20">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/PSC.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/PSC.rmg</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/integratePoint.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/integratePoint.rmg</a></li>
+<li>file: ygs-linux/UnitTest/TestResidue.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="org9aa621a" class="outline-4">
+<h4 id="org9aa621a"><span class="section-number-4">5.11.21</span> <span class="done DONE">DONE</span> 残余点相位解缠 ResidueUnw</h4>
+<div class="outline-text-4" id="text-5-11-21">
+<ul class="org-ul">
+<li>input: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/integratePoint.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/integratePoint.rmg</a></li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/unwrapPoint.rmg">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/unwrapPoint.rmg</a></li>
+<li>file: ygs-linux/UnitTest/TestResidueUnw.cpp</li>
+</ul>
+</div>
+</div>
+
+<div id="orgd643695" class="outline-4">
+<h4 id="orgd643695"><span class="section-number-4">5.11.22</span> <span class="done DONE">DONE</span> 非线性形变和大气相位计算 Uonlinear</h4>
+<div class="outline-text-4" id="text-5-11-22">
+<ul class="org-ul">
+<li>input: file: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/</a> PSC.rmg integratePoint.rmg SARtime.txt unwrapPoint.rmg Group.txt</li>
+<li>output: <a href="file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/">file://liutao@mnode04:/home/liutao/workspace/ygs_data/CTI/</a> velFileOut.txt deformationOut/*</li>
+<li>file: ygs-linux/UnitTest/TestUonlinear.cpp</li>
+<li>problems:
+<ul class="org-ul">
+<li>lack input files(SARtime.txt, Group.txt&#x2026;), ask ygs for help on QQ but not replied.</li>
+<li>problems:
+<ul class="org-ul">
+<li>lack input files(SARtime.txt, Group.txt&#x2026;), ask ygs for help on QQ but not replied.<span class="timestamp-wrapper"><span class="timestamp">&lt;2016-11-29 Tue&gt;</span></span></li>
+<li>gotten the input examples, i compiled the test file but failed again.</li>
+<li><p>
+found bug: ygs-linux/Plugins/pfxCTInSAR/Uonlinear.cpp
+</p>
+<ul class="org-ul">
+<li><p>
+fgets() may execute different when on Windows and on Linux. on Linux, if use the following coding style, <b>one more line will be read</b>.
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #F92672;">while</span> (<span style="color: #E6DB74; font-weight: bold;">!</span>feof(fp)) {
+    fgets(buf, LINE_MAXSIZE, fp);
+    ...
+}
+</pre>
+</div></li>
+</ul>
+<p>
+the right usage is:
+</p>
+
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #F92672;">while</span> (fgets(buf, LINE_MAXSIZE, fp) !=  <span style="color: #AE81FF;">NULL</span>) {
+    ...
+}
+</pre>
+</div></li>
+</ul></li>
+</ul></li>
+</ul>
+</div>
+</div>
+</div>
+
+<div id="org4fc92c9" class="outline-3">
+<h3 id="org4fc92c9"><span class="section-number-3">5.12</span> <span class="done DONE">DONE</span> add CIProcessable back</h3>
+<div class="outline-text-3" id="text-5-12">
+<ul class="org-ul">
+<li>class <b>CIProcessable</b> is inherited by most classes in <b>Plugins</b>.</li>
+<li>add <i>Process()</i> and <i>Batch()</i> function framework for each of them.</li>
+<li>test: run script run<sub>linux.sh</sub> in /UnitTest directory.</li>
+</ul>
+</div>
+</div>
+
+<div id="orge1795fa" class="outline-3">
+<h3 id="orge1795fa"><span class="section-number-3">5.13</span> <span class="done DONE">DONE</span> add OpenMP</h3>
+<div class="outline-text-3" id="text-5-13">
+</div>
+
+<div id="orga220cc8" class="outline-4">
+<h4 id="orga220cc8"><span class="section-number-4">5.13.1</span> <span class="done DONE">DONE</span> clean all code</h4>
+<div class="outline-text-4" id="text-5-13-1">
+</div>
+</div>
+
+<div id="org0b5a423" class="outline-4">
+<h4 id="org0b5a423"><span class="section-number-4">5.13.2</span> <span class="done DONE">DONE</span> test all</h4>
+<div class="outline-text-4" id="text-5-13-2">
+<ul class="org-ul">
+<li><p>
+run the testing shell script:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #F92672;">cd</span> /home/liutao/workspace/github/ygs-omp/UnitTest
+./run_omp.sh
+</pre>
+</div></li>
+</ul>
+</div>
+</div>
+
+<div id="orge386a54" class="outline-4">
+<h4 id="orge386a54"><span class="section-number-4">5.13.3</span> <span class="done DONE">DONE</span> deciding the schedule of adding OpenMP</h4>
+<div class="outline-text-4" id="text-5-13-3">
+<ol class="org-ol">
+<li>go through Share directory (<b>adding OpenMP here very carefully!</b>)</li>
+<li>add OpenMP to Plugins directory (follow the schedule as <a href="#org046a7fc">5.11</a>)</li>
+<li>update UnitTest directory (accompany with step 2)</li>
+</ol>
+</div>
+</div>
+
+<div id="org2696f9e" class="outline-4">
+<h4 id="org2696f9e"><span class="section-number-4">5.13.4</span> <span class="done DONE">DONE</span> go through Share</h4>
+<div class="outline-text-4" id="text-5-13-4">
+</div>
+
+<ol class="org-ol"><li><a id="orgb14d4c5"></a>schedule (according to <a href="#org9cdde84">5.1</a>)<br  /><div class="outline-text-5" id="text-5-13-4-1">
+<ul class="org-ul">
+<li>RdWrIni</li>
+<li>RMGHeader</li>
+<li>PreOrb</li>
+<li>RMGBase</li>
+<li>SpMatrix</li>
+<li>RMGImage</li>
+<li>Point</li>
+<li>Rect</li>
+<li>SpStatistics</li>
+</ul>
+</div></li>
+
+<li><a id="org2034406"></a>RdWrIni<br  /><div class="outline-text-5" id="text-5-13-4-2">
+<ul class="org-ul">
+<li>hard to update</li>
+<li>unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="org47f5cce"></a><span class="done DONE">DONE</span> RMGHeader<br  /><div class="outline-text-5" id="text-5-13-4-3">
+<ul class="org-ul">
+<li>Save() function writes data to file, hard to update with OpenMP</li>
+<li>Load() function reads data from file, but it uses functions related to file operations from RdWrIni, which is hard to update</li>
+<li>unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="org5f497d7"></a><span class="done DONE">DONE</span> PreOrb<br  /><div class="outline-text-5" id="text-5-13-4-4">
+<ul class="org-ul">
+<li>unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="orga6de228"></a><span class="done DONE">DONE</span> RMGBase<br  /><div class="outline-text-5" id="text-5-13-4-5">
+<ul class="org-ul">
+<li>unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="orgf1c779d"></a><span class="done DONE">DONE</span> SpMatrix<br  /><div class="outline-text-5" id="text-5-13-4-6">
+<ul class="org-ul">
+<li>changed:
+<ul class="org-ul">
+<li>SetValues()</li>
+<li>SetMatrix()</li>
+<li>operator+()</li>
+<li>operator=()</li>
+<li>operator*()</li>
+<li>Transpose()</li>
+<li>Oversample()</li>
+<li>Inverse()</li>
+</ul></li>
+<li><p>
+compile (passed):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">g++ -fopenmp -c SpMatrix.cpp
+</pre>
+</div></li>
+</ul>
+</div></li>
+
+<li><a id="org8ac5bf8"></a><span class="done DONE">DONE</span> RMGImage<br  /><div class="outline-text-5" id="text-5-13-4-7">
+<ul class="org-ul">
+<li>changed:
+<ul class="org-ul">
+<li>OrbitCoef()</li>
+<li>PreorbCoef()</li>
+</ul></li>
+<li><p>
+compile (passed):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">g++ -fopenmp -c RMGImage.cpp
+</pre>
+</div></li>
+</ul>
+</div></li>
+
+<li><a id="orge7da9b2"></a>Point<br  /><div class="outline-text-5" id="text-5-13-4-8">
+<ul class="org-ul">
+<li>unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="org036c49d"></a>Rect<br  /><div class="outline-text-5" id="text-5-13-4-9">
+<ul class="org-ul">
+<li>unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="org060cead"></a><span class="done DONE">DONE</span> SpStatistics<br  /><div class="outline-text-5" id="text-5-13-4-10">
+<ul class="org-ul">
+<li>changed:
+<ul class="org-ul">
+<li>Do()</li>
+<li>DoAdvanced()</li>
+<li>DoComplex()</li>
+</ul></li>
+<li><p>
+compile (passed):
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">g++ -fopenmp -c SpStatistics.cpp
+</pre>
+</div></li>
+<li>problems:
+<ul class="org-ul">
+<li>illegal variables in <b>reduction</b> clause</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="org083c2a2"></a><span class="done DONE">DONE</span> test Share<br  /><div class="outline-text-5" id="text-5-13-4-11">
+<ul class="org-ul">
+<li><p>
+run <a href="file://liutao@mnode04:/home/liutao/workspace/github/ygs-omp/UnitTest/run_omp.sh">file://liutao@mnode04:/home/liutao/workspace/github/ygs-omp/UnitTest/run_omp.sh</a>
+</p>
+<div class="org-src-container">
+<pre class="src src-sh"><span style="color: #75715E;"># </span><span style="color: #75715E;">set num_threads=4</span>
+./run_omp.sh <span style="color: #AE81FF;">4</span>
+</pre>
+</div></li>
+<li>very slow!
+<ul class="org-ul">
+<li>possible reason: most OpenMP implementations use roughly a block partitioning while scheduling for loops ==&gt; may cause frequent I/O !</li>
+<li>so, use better scheduling strategy ==&gt; assigns chunks of <i>chunksize</i> iterations to each thread in a round-robin fashion
+<ul class="org-ul">
+<li><p>
+the schedule clause to apply:
+</p>
+<div class="org-src-container">
+<pre class="src src-C">schedule(<span style="color: #F92672;">static</span>, <span style="color: #AE81FF;">1</span>)
+</pre>
+</div></li>
+</ul></li>
+<li>but it's still slow.
+<ul class="org-ul">
+<li>possible reason: <b>false sharing</b> ==&gt; different threads update different elements <b>which are on the same cache line</b>!</li>
+<li><p>
+scrutinize the cache structure:
+</p>
+<table border="2" cellspacing="0" cellpadding="6" rules="groups" frame="hsides">
+
+
+<colgroup>
+<col  class="org-left" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+
+<col  class="org-right" />
+</colgroup>
+<thead>
+<tr>
+<th scope="col" class="org-left">cache level</th>
+<th scope="col" class="org-right">cache size</th>
+<th scope="col" class="org-right">line size</th>
+<th scope="col" class="org-right">total lines</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td class="org-left">L1</td>
+<td class="org-right">32768</td>
+<td class="org-right">64</td>
+<td class="org-right">512</td>
+</tr>
+
+<tr>
+<td class="org-left">L2</td>
+<td class="org-right">262144</td>
+<td class="org-right">64</td>
+<td class="org-right">4096</td>
+</tr>
+
+<tr>
+<td class="org-left">L3</td>
+<td class="org-right">25165824</td>
+<td class="org-right">64</td>
+<td class="org-right">393216</td>
+</tr>
+</tbody>
+</table>
+<ul class="org-ul">
+<li><p>
+cache line size is 64 Bytes. so the <i>chunksize</i> should be:
+</p>
+<div class="org-src-container">
+<pre class="src src-C">schdule(<span style="color: #F92672;">static</span>, <span style="color: #AE81FF;">64</span>/<span style="color: #F92672;">sizeof</span>(element))
+</pre>
+</div></li>
+<li>and <b>not aligned cache line</b> also leads to false sharing.</li>
+</ul></li>
+</ul></li>
+</ul></li>
+<li>false sharing
+<ul class="org-ul">
+<li>False sharing is a well-known performance issue on SMP systems, where each processor has a local cache. It occurs when threads on different processors modify variables that reside on the same cache line:
+<img src="./img/InSAR-gtd-notes_20161218_145826.png" alt="InSAR-gtd-notes_20161218_145826.png" /></li>
+</ul></li>
+<li>I can't find a good solution yet, so rolled back Share directory and go to add openmp in Plugins directory.</li>
+</ul>
+</div></li></ol>
+</div>
+
+
+
+
+<div id="org743e46b" class="outline-4">
+<h4 id="org743e46b"><span class="section-number-4">5.13.5</span> <span class="done DONE">DONE</span> go through Plugins(add openmp and test)</h4>
+<div class="outline-text-4" id="text-5-13-5">
+<ul class="org-ul">
+<li>test order see <a href="#org046a7fc">5.11</a></li>
+</ul>
+</div>
+
+<ol class="org-ol"><li><a id="org1f889ac"></a><span class="done DONE">DONE</span> update shell scripts in UnitTest directory<br  /><div class="outline-text-5" id="text-5-13-5-1">
+<ul class="org-ul">
+<li>run<sub>omp.sh</sub>: rum all tests</li>
+<li>clean<sub>data.sh</sub>: delete some data</li>
+<li>test.sh: single class test</li>
+</ul>
+</div></li>
+
+<li><a id="orgee8f9b0"></a><span class="done DONE">DONE</span> IQCombine<br  /><div class="outline-text-5" id="text-5-13-5-2">
+<ul class="org-ul">
+<li>in function <i>Bands2Complex()</i>, parallel for</li>
+<li>results:
+<ul class="org-ul">
+<li>frequency I/O operations, keep it as serial code</li>
+<li>4 image file, fastest finish time about 12s</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="orgddba38e"></a><span class="done DONE">DONE</span> R2Calibration<br  /><div class="outline-text-5" id="text-5-13-5-3">
+<ul class="org-ul">
+<li>clean the data directory</li>
+<li>make it run with 8 or 16 cores, the finish time accelerate from 62s to 20s~40s</li>
+<li>affected by I/O condition</li>
+</ul>
+</div></li>
+
+<li><a id="orge594a0b"></a>InterferogramMaps<br  /><div class="outline-text-5" id="text-5-13-5-4">
+<ul class="org-ul">
+<li>keep unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="org8a3aea7"></a><span class="done DONE">DONE</span> RegistrCoarse<br  /><div class="outline-text-5" id="text-5-13-5-5">
+<ul class="org-ul">
+<li>also affected by I/O condition</li>
+<li>from 45s to 20s~30s</li>
+</ul>
+</div></li>
+
+<li><a id="org789b636"></a><span class="done DONE">DONE</span> RegistrFine<br  /><div class="outline-text-5" id="text-5-13-5-6">
+<ul class="org-ul">
+<li>add openmp to these functions:
+<ul class="org-ul">
+<li>Fine()</li>
+<li>Get<sub>para</sub><sub>gcp</sub>()</li>
+<li>Resample()</li>
+<li>ReSampleImg<sub>Master</sub>()</li>
+</ul></li>
+<li>from 350s to about 150s</li>
+</ul>
+</div></li>
+
+<li><a id="orgf619606"></a>PreOrbImport<br  /><div class="outline-text-5" id="text-5-13-5-7">
+<ul class="org-ul">
+<li>nearly 100% I/O operations</li>
+<li>keep it unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="orgd618116"></a>RoiSelcetPro<br  /><div class="outline-text-5" id="text-5-13-5-8">
+<ul class="org-ul">
+<li>nearly 100% I/O operations</li>
+<li>keep it unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="orge8a8084"></a><span class="done DONE">DONE</span> FlatPhase<br  /><div class="outline-text-5" id="text-5-13-5-9">
+<ul class="org-ul">
+<li>add openmp to function m<sub>Flat</sub><sub>R2</sub>()</li>
+<li>put most variables inside for loop and parallelize it</li>
+<li>from 140s to about 14s</li>
+</ul>
+</div></li>
+
+<li><a id="orgae42990"></a><span class="done DONE">DONE</span> CoherenceEst<br  /><div class="outline-text-5" id="text-5-13-5-10">
+<ul class="org-ul">
+<li>add openmp to function CoherenceFun()</li>
+<li>from 240s to 25s</li>
+</ul>
+</div></li>
+
+<li><a id="org5c33871"></a><span class="done DONE">DONE</span> ComplexPro<br  /><div class="outline-text-5" id="text-5-13-5-11">
+<ul class="org-ul">
+<li>add openmp to function ComplexFun</li>
+<li>from 14s to 3s</li>
+</ul>
+</div></li>
+
+<li><a id="orge0da16c"></a><span class="done DONE">DONE</span> MeanCoh<br  /><div class="outline-text-5" id="text-5-13-5-12">
+<ul class="org-ul">
+<li>add openmp to function MeanCoherence</li>
+<li>from 1.8s to 0.13s</li>
+</ul>
+</div></li>
+
+<li><a id="orga9c4c21"></a><span class="done DONE">DONE</span> Musk<br  /><div class="outline-text-5" id="text-5-13-5-13">
+<ul class="org-ul">
+<li>add openmp to function MuskCoherenceTarget</li>
+<li>from 0.39s to 0.3s (most are I/Os)</li>
+</ul>
+</div></li>
+
+<li><a id="org10f12c9"></a><span class="done CANCELLED">CANCELLED</span> BaseLine<br  /><div class="outline-text-5" id="text-5-13-5-14">
+<ul class="org-ul">
+<li></li>
+</ul>
+</div></li>
+
+<li><a id="orgaea1639"></a><span class="done CANCELLED">CANCELLED</span> PSC<br  /><div class="outline-text-5" id="text-5-13-5-15">
+<ul class="org-ul">
+<li>generated file is empty!</li>
+<li>check previous files</li>
+<li>different from ygs-linux from <b>RegistrFine</b></li>
+<li>in .ldr files, value of <i>RegistrationType</i>, <i>RegistrationAziOffset</i> may be different</li>
+<li>check how the header files is written</li>
+<li>fix <b>while(!feof((file))</b>, which is always wrong! see <a href="http://stackoverflow.com/questions/23185622/fscanf-reads-the-last-integer-twice">http://stackoverflow.com/questions/23185622/fscanf-reads-the-last-integer-twice</a> .</li>
+</ul>
+</div></li>
+
+<li><a id="org6ae5cad"></a><span class="done CANCELLED">CANCELLED</span> fix RegistrFine.cpp<br  /><div class="outline-text-5" id="text-5-13-5-16">
+<ul class="org-ul">
+<li>found that /fineReg/*.ldr consistent with ygs-linux, but different from ygs-omp, so bug may starts from RegistrFine.cpp</li>
+<li><p>
+analyse code structure of <b>cFloat region</b>:
+</p>
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #75715E;">// </span><span style="color: #75715E;">for1: 790~927 for11: 799~912</span>
+<span style="color: #75715E;">// </span><span style="color: #75715E;">for2: 961~1371 for21: 962~1370</span>
+
+<span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">mbox</span>[], <span style="color: #FD971F;">sbox</span>[], <span style="color: #FD971F;">bigslave</span>[];
+<span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">temp_x</span>, <span style="color: #FD971F;">temp_y</span>[];
+<span style="color: #F92672;">if</span> (eCFLOAT32 == mdatatype) {
+    <span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">master</span>[], <span style="color: #FD971F;">slave</span>[], <span style="color: #FD971F;">master_block</span>[], <span style="color: #FD971F;">slave_block</span>[];
+    <span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">tempnn</span>[];
+
+    <span style="color: #A6E22E;">for1</span>() {
+        <span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">z1</span>[], <span style="color: #FD971F;">z_cof</span>[];
+        <span style="color: #A6E22E;">for11</span>() {
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">master</span>[];
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">slave</span>[];
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">z_cof</span>[];
+        } <span style="color: #75715E;">// </span><span style="color: #75715E;">for11</span>
+        <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">temp_y</span>[];
+    } <span style="color: #75715E;">// </span><span style="color: #75715E;">for1</span>
+
+    <span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">tempnn_mean</span>, <span style="color: #FD971F;">tempnn_std</span>;
+    <span style="color: #66D9EF;">def</span> <span style="color: #FD971F;">tempnn_count</span>, <span style="color: #FD971F;">tempnn_val</span>;
+
+    <span style="color: #66D9EF;">del</span> <span style="color: #FD971F;">slave</span>[];
+    <span style="color: #66D9EF;">redef</span> <span style="color: #FD971F;">slave</span>[];
+
+    <span style="color: #A6E22E;">for2</span>() {
+        <span style="color: #A6E22E;">for21</span>() {
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">master_block</span>[];
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">slave_block</span>[];
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">master</span>[];
+            <span style="color: #66D9EF;">write</span> <span style="color: #FD971F;">slave</span>[];
+        } <span style="color: #75715E;">// </span><span style="color: #75715E;">for21</span>
+    } <span style="color: #75715E;">// </span><span style="color: #75715E;">for2</span>
+
+    <span style="color: #66D9EF;">del</span> <span style="color: #FD971F;">master</span>[], <span style="color: #FD971F;">slave</span>[], <span style="color: #FD971F;">master_block</span>[], <span style="color: #FD971F;">slave_block</span>[];
+} <span style="color: #75715E;">// </span><span style="color: #75715E;">if</span>
+</pre>
+</div></li>
+</ul>
+</div></li>
+
+<li><a id="org2353856"></a><span class="done DONE">DONE</span> using <i>cmp</i> to find bug position<br  /><div class="outline-text-5" id="text-5-13-5-17">
+<ul class="org-ul">
+<li>ygs-omp data in <i>dev/shm/ygs<sub>data</sub></i></li>
+<li>ygs-linux data in <i>dev/shm/ygs<sub>linux</sub><sub>data</sub></i></li>
+<li><p>
+compare the output of each test with <i>cmp</i>:
+</p>
+<div class="org-src-container">
+<pre class="src src-sh">cmp -s file1 file2 &amp;&amp; <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"same"</span> || <span style="color: #F92672;">echo</span> <span style="color: #E6DB74;">"diff"</span>
+</pre>
+</div></li>
+<li>create cmp.sh in UnitTest for convenience</li>
+<li>found that
+<ul class="org-ul">
+<li>when run with 1 thread, bug starts from RegistrFine</li>
+<li>when run with multiple threads, from R2Calibration</li>
+</ul></li>
+<li>so, rollback to R2Calibration</li>
+</ul>
+</div></li>
+
+<li><a id="orgaa745f4"></a><span class="done DONE">DONE</span> parallelize IQCombine<br  /><div class="outline-text-5" id="text-5-13-5-18">
+<ul class="org-ul">
+<li>parallelized with read lock and write lock</li>
+</ul>
+</div></li>
+
+<li><a id="org2eb6e55"></a><span class="done DONE">DONE</span> check R2Calibration<br  /><div class="outline-text-5" id="text-5-13-5-19">
+<ul class="org-ul">
+<li>test:
+<ol class="org-ol">
+<li>1 thread: same as ygs-linux</li>
+<li>&gt;1 thread: different from ygs-linux</li>
+</ol></li>
+<li><p>
+problems:
+</p>
+<ul class="org-ul">
+<li>wrong mode of opening outfile in R2Calibration.cpp:</li>
+</ul>
+<div class="org-src-container">
+<pre class="src src-C++"><span style="color: #66D9EF;">ofstream</span> <span style="color: #A6E22E;">outFile</span>(lpExport.c_str(), <span style="color: #AE81FF;">ios</span>::out | <span style="color: #AE81FF;">ios</span>::binary | <span style="color: #AE81FF;">ios</span>::app);
+</pre>
+</div>
+<ul class="org-ul">
+<li>removing <b>ios::app</b> fixed it</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="orgb6306d5"></a><span class="done DONE">DONE</span> check RegistrCoarse<br  /><div class="outline-text-5" id="text-5-13-5-20">
+<ul class="org-ul">
+<li>ok</li>
+<li>Note: only Coarse() is called, CoarseBlock() and CoarseOffset() are unused.</li>
+</ul>
+</div></li>
+
+<li><a id="org7038d23"></a><span class="done DONE">DONE</span> redo RegistrFine<br  /><div class="outline-text-5" id="text-5-13-5-21">
+<ul class="org-ul">
+<li>remove useless comments</li>
+<li>get the dependencies of functions in RegistrFine.cpp:
+<img src="./img/InSAR-gtd-notes_20170105_173214.png" alt="InSAR-gtd-notes_20170105_173214.png" /></li>
+<li>add openmp to Resample(), tests passed</li>
+<li>add openmp to ReSampleImg<sub>Master</sub>(), tests passed</li>
+<li>find possibility of parallelism in Fine()
+<ul class="org-ul">
+<li>change <b>i,j,&#x2026;</b> as local variables inside <b>for loop</b>, tests passed</li>
+<li>add openmp to first big for loop in Fine(), tests passed</li>
+<li>add openmp to second big for loop in Fine(), tests passed</li>
+</ul></li>
+<li>result: from 280s to 40s</li>
+<li>NOTE:
+<ul class="org-ul">
+<li>danger when <b>mdatatype == eCINT16</b>! this code block is changed but haven't been tested yet.</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="org18b94d2"></a><span class="done DONE">DONE</span> check FlatPhase<br  /><div class="outline-text-5" id="text-5-13-5-22">
+<ul class="org-ul">
+<li>tests passed</li>
+</ul>
+</div></li>
+
+<li><a id="org84a1cbb"></a><span class="done DONE">DONE</span> check CoherenceEst<br  /><div class="outline-text-5" id="text-5-13-5-23">
+<ul class="org-ul">
+<li>output data different from linux version</li>
+<li>fix:
+<ul class="org-ul">
+<li>in CoherenceEst.h: put <i>mdata</i>, <i>sdata</i> and <i>ftdata</i> inside for loop, tests passed</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="org8e983b2"></a><span class="done DONE">DONE</span> check ComplexPro<br  /><div class="outline-text-5" id="text-5-13-5-24">
+<ul class="org-ul">
+<li>output data different from linux version</li>
+<li>fix:
+<ul class="org-ul">
+<li>in ComplexPro.h: put <i>data</i> inside for loop, tests passed</li>
+</ul></li>
+</ul>
+</div></li>
+
+<li><a id="org3d8e1ed"></a><span class="done DONE">DONE</span> check MeanCoh<br  /><div class="outline-text-5" id="text-5-13-5-25">
+<ul class="org-ul">
+<li>tested passed</li>
+</ul>
+</div></li>
+
+<li><a id="org5c8a1c7"></a><span class="done DONE">DONE</span> check Musk<br  /><div class="outline-text-5" id="text-5-13-5-26">
+<ul class="org-ul">
+<li>tests passed</li>
+</ul>
+</div></li>
+
+<li><a id="orged41e68"></a><span class="done DONE">DONE</span> check BaseLine<br  /><div class="outline-text-5" id="text-5-13-5-27">
+<ul class="org-ul">
+<li>output data different from linux version</li>
+<li>fix:
+<ul class="org-ul">
+<li>check domain of each variable in for loop</li>
+<li>note: in function <b>Newton()</b> <i>x0</i>, <i>y0</i>, <i>z0</i> are both <b>input</b> and <b>output</b></li>
+<li>need to generate <i>x0</i>, <i>y0</i>, <i>z0</i> for each iteration (serial)</li>
+</ul></li>
+<li>hard to find bug position</li>
+<li>redo from linux version</li>
+<li>tests passed</li>
+</ul>
+</div></li>
+
+<li><a id="orgc8e69a9"></a><span class="done DONE">DONE</span> check PSC<br  /><div class="outline-text-5" id="text-5-13-5-28">
+<ul class="org-ul">
+<li>PSC generated <b>different output data each time</b></li>
+<li>parallelize loops with iterators:
+<ul class="org-ul">
+<li>can't just use parallel for</li>
+<li>using openmp <b>task</b></li>
+<li>no significant performance advantages</li>
+</ul></li>
+<li>keep as linux version (serial code)</li>
+</ul>
+</div></li>
+
+<li><a id="org913ce08"></a><span class="done DONE">DONE</span> Delaunay<br  /><div class="outline-text-5" id="text-5-13-5-29">
+<ul class="org-ul">
+<li>function dependencies:
+<img src="./img/InSAR-gtd-notes_20170109_151658.png" alt="InSAR-gtd-notes_20170109_151658.png" /></li>
+<li>store edge elements in vector, then parallelize the for loop with integer index</li>
+</ul>
+</div></li>
+
+<li><a id="orgfca4004"></a><span class="done DONE">DONE</span> Integration<br  /><div class="outline-text-5" id="text-5-13-5-30">
+<ul class="org-ul">
+<li>keep unchanged</li>
+<li>its output data varies</li>
+</ul>
+</div></li>
+
+<li><a id="orgcf33ed1"></a><span class="done DONE">DONE</span> Residue<br  /><div class="outline-text-5" id="text-5-13-5-31">
+<ul class="org-ul">
+<li>added openmp and tests passed, but <b>slower</b> than serial linux version</li>
+</ul>
+</div></li>
+
+<li><a id="org53deb25"></a><span class="done DONE">DONE</span> ResidueUnw<br  /><div class="outline-text-5" id="text-5-13-5-32">
+<ul class="org-ul">
+<li>almost 100% I/O operations</li>
+<li>keep unchanged</li>
+</ul>
+</div></li>
+
+<li><a id="orgc57e7a1"></a><span class="done DONE">DONE</span> Uonlinear<br  /><div class="outline-text-5" id="text-5-13-5-33">
+<ul class="org-ul">
+<li>added openmp, tests passed</li>
+</ul>
+</div></li></ol>
+</div>
+</div>
+
+<div id="orgb7c7599" class="outline-3">
+<h3 id="orgb7c7599"><span class="section-number-3">5.14</span> <span class="todo TODO">TODO</span> add STAR</h3>
+</div>
+</div>
+</div>
+<div id="postamble" class="status">
+<p class="date">Date: <span class="timestamp-wrapper"><span class="timestamp">&lt;2016-10-08 Sat&gt;</span></span></p>
+<p class="author">Author: liutao</p>
+<p class="date">Created: 2017-01-15 Sun 17:27</p>
+<p class="validation"><a href="http://validator.w3.org/check?uri=referer">Validate</a></p>
+</div>
+</body>
+</html>

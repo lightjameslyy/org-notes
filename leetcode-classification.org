@@ -1,0 +1,20 @@
+#+TITLE: leetcode classification
+#+AUTHOR: lightjames
+#+DATE: <2017-03-01 Wed>
+
+* DFA
+** 65. Valid Number
+
+* Dynamic Programming
+
+** 62. Unique Paths
+   - 排列组合
+** 63. Unique Paths II
+** 64. Minimum Path Sum
+
+* Hash Table
+
+** 1. Two Sum
+
+* Linked List
+** 2. Add Two Numbers

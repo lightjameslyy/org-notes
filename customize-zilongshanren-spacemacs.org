@@ -1,0 +1,31 @@
+#+TITLE: my changes to zilongshanren's spacemacs configurations
+
+* reset and update spacemacs (if needed)
+
+  - execute the following command, located in file:~/workspace/github/shell/bin
+  #+BEGIN_SRC sh
+    update-spacemacs
+  #+END_SRC
+
+* create lightjames layer
+
+  - purpose:
+    1. avoid inconsistencies with zilongshanren's configurations
+    2. make updating easier.
+  - function: configuration-layer/declare-layers
+  - file: ~/.spacemacs.d/layers/lightjames/layers.el
+
+* change frame title
+
+  - change *Guanghui* to *Lightjames*
+  - variable: frame-title-format
+  - file: ~/.spacemacs.d/layers/lightjames-ui/config.el
+
+* change mail address
+
+  - variable: user-mail-address
+  - file: ~/.spacemacs.d/layers/lightjames-misc/config.el
+
+* change org-octopress configurations
+
+https://zilongshanren.com/blog/2015-07-19-add-org-mode-support.html#orgheadline5
