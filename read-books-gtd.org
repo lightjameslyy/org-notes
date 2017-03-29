@@ -161,3 +161,206 @@
 
 
 * TODO Linux Kernel Development, Third  Edition (kernel  version: 2.6.34)
+
+* STARTED Coding Interview Guide
+  SCHEDULED: <2017-03-20 Mon 10:00>
+** DONE 第1章 栈和队列
+   CLOSED: [2017-03-21 Tue 16:42] SCHEDULED: <2017-03-20 Mon 10:00>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2017-03-21 Tue 16:42]
+   :END:
+*** 设计一个有getMin功能的栈
+    - 使用2个栈
+    - 一个保存data，一个保存最小值
+
+*** 由两个栈组成的队列
+    - 如果stackPush要往stackPop中压入数据，必须一次性把stackPush中的数据全部压入。
+    - 如果stackPop不为空，stackPush不能向stackPop中压入数据。
+
+*** 如何仅用递归函数和栈操作逆序一个栈
+    - 递归函数1：将栈底元素返回并移除。
+    - 递归函数2：逆序一个栈。
+
+*** 猫狗队列
+    - 不能改变用户原有的类
+    - 方法：将不同的实例盖上时间戳
+
+*** 用一个栈实现另一个栈的排序
+    - see page 14
+
+*** 用栈来求解汉诺塔问题
+    - recursive method, see page 15
+    - using stack, see page 17
+
+*** 生成窗口最大值数组
+    - 要求时间复杂度O(n)
+    - 利用双端队列实现窗口最大值的更新，see page 20
+
+*** 构造数组的MaxTree
+    - using stack and map, see page 23-25
+
+*** 求最大子矩阵的大小
+    - DP, using stack for each line, see page 27
+
+*** 最大值减去最小值小于或等于num的子数组数量
+    - using two deque: qmin and qmax
+
+** DONE 第2章 链表问题
+   CLOSED: [2017-03-24 Fri 09:33] SCHEDULED: <2017-03-21 Tue 16:45>
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2017-03-24 Fri 09:33]
+   :END:
+*** 打印两个有序链表的公共部分
+    - easy
+
+*** 在单链表和双链表中删除倒数第K个节点
+    - see page 35
+
+*** 删除链表的中间节点和a/b处的节点
+    - 中间节点采用two pointers, 一个slow，一个fast
+    - a/b：先找到该删除第n个节点（需要先遍历链表求表长）
+
+*** 反转单向和双向链表
+    - easy
+
+*** 反转部分单向链表
+    - 先找到反转部分的前一个节点和后一个节点，然后反转需要反转的部分，最后与前一个节点连接起来
+
+*** 环形单链表的约瑟夫问题
+    - 约瑟夫问题：用数学归纳法分析问题，寻求复杂度更低的解
+
+*** 判断一个链表是否为回文结构
+    - using stack, space O(n)
+    - reverse the right part, space O(1)
+
+*** 将单向链表按某值划分成左边小、中间相等、右边大的形式
+    - 方法1：将所有nodes放入数组，对数组进行partition排序，connect
+    - 方法2：将节点依次连入small、equal、big三个链表中，connect
+
+*** 复制含有随机指针节点的链表
+    - 方法1：using map
+    - 方法2：1->2->3 ==> 1->1'->2->2'->3->3'
+
+*** 两个单链表生成相加链表
+    - using stack
+    - 先reverse，再相加
+
+*** 两个单链表相交的一系列问题
+    - 问题1：判断链表是否有环
+    - 问题2：判断两个无环链表是否相交
+    - 问题3：判断两个有环链表是否相交
+
+*** 将单链表的每K个节点之间逆序
+    - method 1: using stack
+    - method 2: just using pointers
+
+*** 删除无序单链表中值重复出现的节点
+    - method 1: using unordered_set, time O(n), space O(n)
+    - method 2: selection sort, time O(n^2), space O(1)
+
+*** 在单链表中删除指定值的节点
+    - method 1: using stack
+    - method 2: just using pointers
+
+*** 将搜索二叉树转换成双向链表
+    - method 1: using queue
+    - method 2: recursive method(kind of special)
+
+*** 单链表的选择排序
+    - O(n^2)
+
+*** 一种怪异的节点删除方式
+    - unsafe, unstable, not awlays correct
+
+*** 向有序的环形单链表中插入新节点
+    - 注意极端情况：新值大于所有值或小于所有值
+
+*** 合并两个有序的链表
+    - easy
+
+*** 按照左右半区的方式重新组合单链表
+    - easy
+
+** STARTED 第3章 二叉树问题
+   SCHEDULED: <2017-03-24 Fri 15:15>
+*** 分别用递归和非递归方式实现二叉树先序、中序和后序遍历
+    - 非递归的后序遍历比较难
+
+*** 打印二叉树的边界节点
+    - getHeight ==> get height of a node
+    - get edges for each level and print(mind the sequence) ==> edgeMap
+    - print leaf not in edgeMap
+
+*** 如何较为直观地打印二叉树
+    - 反中序：右中左
+
+*** 二叉树的序列化和反序列化
+    - 先序遍历 + queue
+    - 层次遍历
+
+*** 遍历二叉树的神级方法
+    - Morris traversal
+    - hard
+
+*** 在二叉树中找到累加和为指定值得最长路径长度
+    - record posible sums of each level using map
+
+*** 找到二叉树中的最大搜索二叉子树
+    - 后序遍历
+    - 动态规划
+
+*** 找到二叉树中符合搜索二叉树条件的最大拓扑结构
+    -
+
+** 第4章 递归和动态规划
+
+** 第5章 字符串问题
+
+** 第6章 大数据和空间限制
+
+** 第7章 位运算
+
+** 第8章 数组和矩阵问题
+
+** 其他问题
+
+* STARTED Beauty of Programming
+  SCHEDULED: <2017-03-21 Tue 23:30>
+** DONE 面试杂谈
+   CLOSED: [2017-03-22 Wed 09:21]
+   :LOGBOOK:
+   - State "DONE"       from "STARTED"    [2017-03-22 Wed 09:21]
+   :END:
+   - 做题时要注意陷阱，而且面试者会不断深化这个问题
+   - 尽量弥补信息不对称，了解公司的最新科技、业务方向等细节很有帮助
+   - 考虑问题的全面程度和逻辑分析能力
+   - 每个人都是独立的个体，要有自己的想法，对自己的未来有规划
+   - 专业技巧：
+     - 程序设计思路
+     - 编程风格
+     - 对细节的考虑
+     - 内存泄漏
+     - 最优算法
+     - 修改程序以满足新的需求
+     - 举一反三
+   - 职业技巧：
+     - 交流能力
+     - 合作能力
+     - 自我评价和期望
+     - 抗压能力
+     - 追求卓越
+   - tips:
+     - 知己知彼
+       - 知己，就是要了解自己的能力、兴趣、职业发展方向
+       - 知彼，就是要了解公司的文化、战略方向和择才标准
+     - 笔试就是考察基础，用扎实的理解和考虑完备的解答征服阅卷者
+     - 面试就是探讨，缜密的代码和严密的分析，思考问题的过程比结果更重要
+     - 纸上得来终觉浅，绝知此事要躬行
+
+** TODO 第1章 游戏之乐——游戏中碰到的题目
+
+** 第2章 数字之魅——数字中的技巧
+
+** 第3章 结构之法——字符串及链表的探索
+
+** 第4章 数字之趣——数字游戏的乐趣

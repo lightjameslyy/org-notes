@@ -2,19 +2,56 @@
 #+AUTHOR: lightjames
 #+DATE: <2017-03-01 Wed>
 
+* TODO
+
+* Array
+** 73. Set Matrix Zeroes
+
+* Backtracking
+** 77. Combinations
+** 78. Subsets
+** 79. Word Search
+** 89. Gray Code
+** 90. Subsets II
+** 93. Restore IP Addresses
+
+* Bit manipulation
+** 69. Sqrt(x)
+
+* Binary Search
+** 69. Sqrt(x)
+** 74. Search a 2D Matrix
+** 81. Search in Rotated Sorted Array II
+
 * DFA
 ** 65. Valid Number
 
 * Dynamic Programming
-
 ** 62. Unique Paths
    - 排列组合
 ** 63. Unique Paths II
 ** 64. Minimum Path Sum
+** 72. Edit Distance
+** 85. Maximal Rectangle
+** 87. Scramble String
+** 91. Decode Ways
 
 * Hash Table
-
 ** 1. Two Sum
+** 76. Minimum Window Substring
 
 * Linked List
 ** 2. Add Two Numbers
+** 82. Remove Duplicates from Sorted List II
+** 86. Partition List
+** 92. Reverse Linked List II
+
+* Stack
+** 71. Simplify Path
+** 84. Largest Rectangle in Histogram
+
+* Two Pointers
+** 75. Sort Colors
+** 76. Minimum Window Substring
+** 80. Remove Duplicates from Sorted Array II
+** 86. Partition List
