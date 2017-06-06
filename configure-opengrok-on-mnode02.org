@@ -1,0 +1,11 @@
+#+TITLE: setup opengrok on mnode02
+#+AUTHOR: liutao
+#+DATE: <2017-05-15 Mon>
+
+* requirements:
+  1. Java 1.8+
+     installed at /usr/lib/jvm/java-1.8.0-openjdk-1.8.0.131-2.b11.el7_3.x86_64
+  2. Tomcat 8x
+     installed at /opt/Tomcat/apache-tomcat-8.5.15
+  3. Exuberant Ctags
+     installed at /usr/local

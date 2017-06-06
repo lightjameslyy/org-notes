@@ -1,0 +1,124 @@
+#+TITLE: install mesos-1.2.0 on mnode01, mnode02 and mnode03
+#+AUTHOR: liutao
+#+DATE: <2017-05-10 Wed> 
+
+* associated nodes
+  - mnode01, mnode02 and mnode03
+  - mnode04 is offline
+
+* before installation 
+  1. yum update and yum upgrade
+  2. follow http://mesos.apache.org/gettingstarted/ about Centos 7.1
+  
+* DONE mnode02 
+  CLOSED: [2017-05-11 Thu 00:38]
+
+** problems
+    1. https://www.mail-archive.com/search?l=dev@mesos.apache.org&q=subject:%22mesos+1.0.1+build+error+on+CentOS+7.2%22&o=newest&f=1
+    command:
+    #+BEGIN_SRC shell
+    pip install --upgrade pytz
+    #+END_SRC
+    2.Command "python setup.py egg_info" failed with error code 1 in /tmp/pip-build-PgiWKE/protobuf 
+    pip version 7.1.2 ==> 9.0.1
+    command: 
+    #+BEGIN_SRC shell
+    pip install --upgrade pip
+    #+END_SRC
+    
+* DONE mnode01
+  CLOSED: [2017-05-11 Thu 15:54]
+
+** problems
+   same as mnode02
+
+* DONE mnode03
+  CLOSED: [2017-05-11 Thu 15:54]
+
+** problems
+   same as mnode02
+
+* reinstall
+  reason: installing from source is hard to deploy
+  following: https://open.mesosphere.com/advanced-course/
+
+** mnode02
+   1. revert /etc/profile 
+   2. Add the Mesosphere RPM repository
+      #+BEGIN_SRC shell
+      sudo rpm -Uvh http://repos.mesosphere.com/el/7/noarch/RPMS/mesosphere-el-repo-7-1.noarch.rpm
+      #+END_SRC
+   3. Install the mesos and marathon RPMs
+      #+BEGIN_SRC shell
+      sudo yum -y install mesos marathon
+      #+END_SRC
+      installed: marathon.x86_64 0:1.4.3-1.0.649.el7 and mesos.x86_64 0:1.2.0-2.0.6
+   4. Install the necessary ZooKeeper RPMs
+      #+BEGIN_SRC shell
+      sudo rpm -Uvh http://archive.cloudera.com/cdh4/one-click-install/redhat/6/x86_64/cloudera-cdh-4-0.x86_64.rpm
+      yum -y install zookeeper zookeeper-server
+      #+END_SRC
+      installed: zookeeper.x86_64 0:3.4.5+28-1.cdh4.7.1.p0.13.el6 zookeeper-server.x86_64 0:3.4.5+28-1.cdh4.7.1.p0.13.el6
+   5. Initialize and start Zookeeper
+      #+BEGIN_SRC shell
+      sudo -u zookeeper zookeeper-server-initialize --myid=1 
+      sudo service zookeeper-server start
+      #+END_SRC
+      /etc/mesos/zk:
+      zk://10.18.129.112:2181/mesos
+   6. /etc/zookeeper/conf/myid:
+      1
+   7. test that Zookeeper works
+      #+BEGIN_SRC shell
+      /usr/lib/zookeeper/bin/zkCli.sh
+      #+END_SRC
+   8. Shutdown and restart the zookeper-server down and validate that it works
+      #+BEGIN_SRC shell
+      sudo service zookeeper-server stop
+      sudo service zookeeper-server start
+      #+END_SRC
+   9. keep zookeeper-server started, Start the mesos-master and mesos-slave processes
+      #+BEGIN_SRC shell
+      sudo service mesos-master start
+      sudo service mesos-slave start
+      sudo netstat -nlp | grep mesos
+      #+END_SRC
+   10. Test out mesos by using the mesos-execute command
+       #+BEGIN_SRC shell
+       export MASTER=$(mesos-resolve `cat /etc/mesos/zk` 2>/dev/null)
+       echo $MASTER
+       mesos-execute --master=$MASTER --name="cluster-test" --command="sleep 40"
+       #+END_SRC
+       open in browser: 10.18.129.112:5050, and see the web ui
+   11. Start Marathon by using the service command:
+       #+BEGIN_SRC shell
+       sudo service marathon start
+       #+END_SRC
+   12. 
+   
+** mnode01
+   1. step 1-5, same as mnode02
+
+
+* again reinstall 
+  marathon failed to launch
+  follow http://zkread.com/article/1273029.html
+
+** DONE mnode02 
+   CLOSED: [2017-05-16 Tue 11:10]
+
+*** 解决执行zkServer.sh 报错问题
+   http://michaelkang.blog.51cto.com/1553154/1759844
+
+*** 解决marathon不能启动的问题
+   service marathon start 命令不能启动marathon
+   解决方法：直接运行
+   #+BEGIN_SRC shell
+   marathon
+   #+END_SRC
+
+** DONE mnode01
+   CLOSED: [2017-05-16 Tue 11:10]
+
+** DONE mnode03
+   CLOSED: [2017-05-16 Tue 11:10]

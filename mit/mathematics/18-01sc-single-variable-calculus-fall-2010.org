@@ -1,0 +1,40 @@
+#+TITLE: 18-01sc-single-variable-calculus-fall-2010
+#+AUTHOR: lightjames
+#+DATE: <2017-05-23 Tue>
+
+* DIFFERENTIATION 微分
+
+** Part A: Definition and Basic Rules
+
+*** TODO Session 1: Introduction to Derivatives
+    A. 什么是导数
+      * geometric interpretation
+      * physical interpretation
+      * improve to all measurement (science, engineering, economics, political science ...)
+    B. how to differentiate any function
+*** Session 2: Examples of Derivatives
+
+*** Session 3: Derivative as Rate of Change
+
+*** Session 4: Limits and Continuity
+
+*** Session 5: Discontinuity
+
+*** Session 6: Calculating Derivatives
+
+*** Session 7: Derivatives of Sine and Cosine
+
+*** Session 8: Limits of Sine and Cosine
+
+*** Session 9: Product Rule
+
+*** Session 10: Quotient Rule
+
+*** Session 11: Chain Rule
+
+*** Session 12: Higher Derivatives
+
+*** Problem Set 1
+
+** Part B: Implicit Differentiation and Inverse Functions
+    

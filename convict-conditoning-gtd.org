@@ -2,10 +2,21 @@
 #+DATE: <2017-03-29 Wed>
 #+AUTHOR: lightjames
 
-* TODO <2017-03-29 Wed>
-** TODO push-ups: 3 reps
-** TODO leg raises: 3 reps
+* DONE <2017-03-29 Wed>
+  CLOSED: [2017-03-29 Wed 19:10]
+  :LOGBOOK:
+  - State "DONE"       from "STARTED"    [2017-03-29 Wed 19:10]
+  :END:
+** push-ups: 3 reps
+** leg raises: 3 reps
 
-* TODO <2017-03-31 Fri>
-** TODO pul-ups: 3 reps
-** TODO deep squat: 3 reps
+* CANCELLED <2017-03-31 Fri>
+  CLOSED: [2017-04-01 Sat 11:09]
+  :LOGBOOK:
+  - State "CANCELLED"  from "SOMEDAY"    [2017-04-01 Sat 11:09] \\
+    didn't do it
+  - State "SOMEDAY"    from "WAITING"    [2017-04-01 Sat 11:09]
+  - State "DONE"       from "STARTED"    [2017-04-01 Sat 11:09]
+  :END:
+** pul-ups: 3 reps
+** deep squat: 3 reps
