@@ -55,15 +55,15 @@
       - pay attention to your tools
       - pay attention to timing
 
-* STARTED About Google
-  SCHEDULED: <2016-12-28 Wed 22:35>
+* DONE STARTED About Google
+  CLOSED: [2017-06-15 Thu 22:13] SCHEDULED: <2016-12-28 Wed 22:35>
 
-** STARTED For students
-   SCHEDULED: <2016-12-28 Wed 22:36>
+** DONE STARTED For students
+   CLOSED: [2017-06-15 Thu 22:14] SCHEDULED: <2016-12-28 Wed 22:36>
 https://www.google.com/about/careers/students/guide-to-technical-development.html
 
-*** STARTED Take an "Introduction to CS" course
-    SCHEDULED: <2016-12-28 Wed 22:40>
+*** DONE STARTED Take an "Introduction to CS" course
+    CLOSED: [2017-06-15 Thu 22:14] SCHEDULED: <2016-12-28 Wed 22:40>
 
 **** DONE Unit 1 Get Started
      CLOSED: [2016-12-31 Sat 00:12] SCHEDULED: <2016-12-30 Fri 09:00>
@@ -180,11 +180,32 @@ https://www.google.com/about/careers/students/guide-to-technical-development.htm
 
 
 
-**** STARTED Unit 4 Response to the search
-     SCHEDULED: <2017-01-25 Wed 17:50>
+**** DONE STARTED Unit 4 Response to the search
+     CLOSED: [2017-06-15 Thu 22:14] SCHEDULED: <2017-01-25 Wed 17:50>
 
 
 * TODO Interview Process & General Interview Prep
+** ABC: Always Be Coding
+https://medium.com/always-be-coding/abc-always-be-coding-d5f8051afce2
+*** Technical Tips:
+    1. ABC(Always Be Coding)
+    2. Master at least one multi-paradigm language
+    3. Know the complexities
+    4. Re-invent the wheel
+    5. Solve word problems
+    6. Make coding easy
+** Whiteboarding 
+(pointing out some pitfalls)
+   1. slow down
+   2. ask questions
+   3. code how you'd normally code (e.g. don't write a 50-line function, ...)
+   4. check your work (unusual inputs, edge cases, unit test, ...)
+** Effective Whiteboarding during Programming Interviews  
+   1. Notes and figures on the side
+   2. Write Clearly
+   3. Use the Space Efficiently (most problem solutions span at least 15-20 lines, structure code in small functions)
+   4. Re-writing is normal
+** Demystifying Tech Recruiting
 
 * DONE Pick One Language for the interview
   CLOSED: [2017-03-01 Wed 11:00] SCHEDULED: <2016-12-29 Thu 22:24>
@@ -199,6 +220,10 @@ https://www.google.com/about/careers/students/guide-to-technical-development.htm
    :END:
    https://googleyasheck.com/important-pick-one-language-for-the-google-interview/
    - practice
+
+* TODO Book List 
+** TODO Interview Prep 
+   - Programming Interviews Exposed, 3rd
 
 * STARTED Data Structures
   SCHEDULED: <2017-03-01 Wed>

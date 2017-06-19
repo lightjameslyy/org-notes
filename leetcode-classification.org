@@ -2,9 +2,10 @@
 #+AUTHOR: lightjames
 #+DATE: <2017-03-01 Wed>
 
-* TODO
-
-* Array
+* TODO Array
+** 1. Two Sum
+   - description: https://leetcode.com/problems/two-sum/#/description 
+   - hint: 
 ** 73. Set Matrix Zeroes
 
 * Backtracking
@@ -40,12 +41,111 @@
 ** 1. Two Sum
 ** 76. Minimum Window Substring
 
-* Linked List
+* DONE Linked List
+  CLOSED: [2017-06-19 Mon 09:49]
 ** 2. Add Two Numbers
+   - description: Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+                  Output: 7 -> 0 -> 8
+   - hint: in place, 直接修改
+** 19. Remove Nth Node From End of List
+   - description: remove the nth node from the end of list and return its head
+   - hint: 使用二级指针
+** 21. Merge Two Sorted Lists
+   - description: 合并两个有序的链表
+   - hint: 普通思路
+** 23. Merge k Sorted Lists
+   - description: 合并k个有序的链表
+   - hint: 不断地两两合并
+** 24. Swap Nodes in Pairs 
+   - description: 
+   Given a linked list, swap every two adjacent nodes and return its head.
+   For example,
+   Given 1->2->3->4, you should return the list as 2->1->4->3.
+   - hint: trivial method
+** 25. Reverse Nodes in k-Group
+   - description:
+   Given this linked list: 1->2->3->4->5
+   For k = 2, you should return: 2->1->4->3->5
+   For k = 3, you should return: 3->2->1->4->5
+   - hint: trivial method
+** 61. Rotate List
+   - description: 
+   Given 1->2->3->4->5->NULL and k = 2,
+   return 4->5->1->2->3->NULL.
+   - hint: trivial method
 ** 82. Remove Duplicates from Sorted List II
+   - description: 删除链表中的重复节点（ *重复的数字全都删除* ）
+   - hint: p为head的next，如果p的值和head的值不同，则将head->next置为deleteDuplicates(p)，返回head;否则直到找到第一个p不等于head的地方，返回deleteDuplicates(p)  
+** 83. Remove Duplicates from Sorted List
+   - description: 删除链表中的重复节点（ *重复的数字只保留一个* ）
+   - hint: 遍历一遍，如果next的值重复则删除next节点
 ** 86. Partition List
+   - description: 
+   Given 1->4->3->2->5->2 and x = 3,
+   return 1->2->2->4->3->5.
+   - hint: trivial method
 ** 92. Reverse Linked List II
-
+   - description:
+   Reverse a linked list from position m to n. Do it in-place and in one-pass.
+   For example:
+   Given 1->2->3->4->5->NULL, m = 2 and n = 4,
+   return 1->4->3->2->5->NULL.
+   - hint: trivial method
+** 109. Convert Sorted List to Binary Search Tree
+   - description: 
+   Given a singly linked list where elements are sorted in ascending order, convert it to a height balanced BST.
+   - hint: 
+     1. two pointers: slow and fast
+     2. recursively construct the BST
+** 138. Copy List with Random Pointer
+   - description:
+   A linked list is given such that each node contains an additional random pointer which could point to any node in the list or null.
+   Return a deep copy of the list.
+   - hint: 在每个节点后面插入一个label相同的新节点，很容易得到对应的next和random，最后重新连接所有节点。 
+** 141. Linked List Cycle
+   - description: 判断链表是否存在环
+   - hint: 两个指针，fast每次移动两个节点，slow每次移动一个节点
+** 142. Linked List Cycle II
+   - description: 找出链表中环的入口节点
+   - hint: 设相遇时，head到entry的距离为l1，entry到meeting的距离为l2，cycle的长度为r，共走了n次，则有：
+     1. slow节点走了: l1 + l2
+     2. fast节点走了: l1 + l2 + mr 
+     3. so, 2*(l1+l2) = l1+l2+mr ==> l1+l2 = mr ==> l1 = (m-1)r + r-l2
+     4. 所以，相遇后slow和fast的步幅都调整为1，必然会在entry相遇
+** 143. Reorder List
+   - description: https://leetcode.com/problems/reorder-list/#/description
+   - hint: reverse and insert
+** 147. Insertion Sort List 
+   - description: https://leetcode.com/problems/insertion-sort-list/#/description
+   - hint: update tail, using previous start position
+** 148. Sort List 
+   - description: https://leetcode.com/problems/sort-list/#/description
+   - hint: merge sort
+** 160. Intersection of Two Linked Lists
+   - description: https://leetcode.com/problems/intersection-of-two-linked-lists/#/description
+   - hint:
+     设两个链表长度为a和b：
+     1. a == b, 依次比较对应的两个节点 
+     2. a != b, a + b == b + a, 遍历两遍
+** 203. Remove Linked List Elements
+   - description: https://leetcode.com/problems/remove-linked-list-elements/#/description
+   - hint: trivial method 
+** 206. Reverse Linked List
+   - description: https://leetcode.com/problems/reverse-linked-list/#/description
+   - hint: using a pre node initialized with nullptr
+** 234. Palindrome Linked List
+   - description: https://leetcode.com/problems/palindrome-linked-list/#/description
+   - hint: reverse the right half of the list and compare one by one
+** 237. Delete Node in a Linked List
+   - description: https://leetcode.com/problems/delete-node-in-a-linked-list/#/description
+   - hint: assign next node's value to the current node, delete the next node
+** 328. Odd Even Linked List
+   - description: https://leetcode.com/problems/odd-even-linked-list/#/description
+   - hint: two pointers
+** 445. Add Two Numbers II
+   - description: https://leetcode.com/problems/add-two-numbers-ii/#/description
+   - hint: using stack 
+   
 * Stack
 ** 71. Simplify Path
 ** 84. Largest Rectangle in Histogram

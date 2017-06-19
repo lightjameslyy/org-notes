@@ -515,7 +515,6 @@
              double dval = 3.14;
              const int &r = dval;  // 合法，将double转换为const int的临时量tmp，r绑定在tmp上
              #+END_SRC
-          2. 
       - 空指针：使用 *nullptr*, 避免使用NULL或0
       - 不能直接操作void*指针所指的对象
       - 引用本身不是一个对象，所以不存在指向引用的指针
@@ -537,4 +536,123 @@
         - 顶层const：指针本身是const
         - 底层const：指针所指对象是const
         - 执行拷贝操作时，拷入和拷出的对象必须有相同的底层const资格
+      - constexpr和常量表达式
+        - 常量表达式：
+          1. 值不会改变
+          2. 在 *编译过程* 就能得到计算结果
+        - 以下属于常量表达式：
+          1. 字面值
+          2. 用常量表达式初始化的const对象
+          #+BEGIN_SRC C++
+          const int sz = get_size(); // sz is not const expression, its value is availabe during runtime
+          #+END_SRC
+        - constexpr
+          - [C++11] 将变量声明为constexpr类型，由编译器来验证变量的值是否是一个常量表达式
+        - 字面值类型
+          - 算术类型、引用、指针、枚举、数据成员都是字面值类型的聚合类
+        - 指针和constexpr
+          - *constexpr只对指针本身有效，与指针所指的对象无关*
+          #+BEGIN_SRC C++
+          constexpr int *q = nullptr; // q是一个指向整数的常量指针
+          #+END_SRC
+*** 处理类型        
+    - 定义类型别名的两种方法：
+      1. typedef
+         #+BEGIN_SRC C++
+         typedef double base, *p;
+         #+END_SRC
+      2. using
+         #+BEGIN_SRC C++
+         using SI = Sales_item; // SI是Sales_item的同义词
+         #+END_SRC
+    - 指针、常量和类型别名(p61)
+      #+BEGIN_SRC C++
+      typedef char *pstr; // pstr作为基本类型是一个指char的 *指针*
+      const pstr cstr = 0; // cstr是指向char的常量指针
+      const char *cstr = 0; // 这是对上一句的错误理解，const pstr ！= const char*, const pstr是指向char的常量指针，const char *是指向常量字符的指针
+      const pstr *ps;
+      #+END_SRC
+    - auto
+      - auto让编译器通过初始值推算变量的类型 ==> auto定义的变量 *必须有初始值*
+      - auto和引用：
+        以引用的对象的类型作为auto的类型
+      - auto和常量：
+        - auto一般会忽略顶层const，保留底层const
+        - 设置一个类型为auto的引用时，初始值中的顶层常量属性仍然保留
+    - decltype
+      - decltype使用的表达式：
+        1. 是一个变量，则返回改变量的类型（ *包括顶层const和引用* ）
+        2. 不是变量，则返回表达式结果对应的类型
+      - tips (*p63*)
+        #+BEGIN_SRC C++
+        int i = 42, *p = &i, &r = i;
+        decltype(r) a = i; // decltype(r)的结果是int&
+        decltype(r+0) b;   // r+0的结果不是变量，是一个int值
+        decltype(*p) c;    // 如果表达式的内容是 *解引用操作* ，decltype将返回 *引用类型*
+        #+END_SRC
+        - decltype((var))的结果 *永远是引用*
+        - decltype(var)的结果只有当 *var本身是引用* 时才是引用
+        #+BEGIN_SRC C++
+        int a = 3, b = 4;
+        decltype(a) c = a; // int c = 3;
+        decltype(a = b) d = a; // int &d = a;
+        // a = 3, b = 4, c = 3, d = 3
+        #+END_SRC
+        赋值是会产生引用的典型表达式，但是表达式a=b作为decltype的参数， *只做推断类型用，不实际计算该表达式*
+      - decltype和auto的区别：p64 ct_2.38
 
+** 第三章 字符串、向量和数组
+*** 命名空间的using声明 
+    - 作用域操作符(::)
+    - *头文件不应包含using声明*
+      - 包含多个头文件的using声明可能产生名字冲突
+*** 标准库类型string
+**** 定义和初始化string对象
+     - 初始化string对象的方式：
+       #+BEGIN_SRC C++
+       string s1;
+       string s2(s1);
+       string s2 = s1;
+       string s3("value");
+       string s3 = "value";
+       string s4(n, 'c');
+       string s5 = string(n, 'c');
+       #+END_SRC
+***** 直接初始化和拷贝初始化
+      - 用等号：拷贝初始化
+      - 不用等号：直接初始化
+**** string对象上的操作
+***** 读写string对象
+      #+BEGIN_SRC C++
+      string s;
+      cin >> s;
+      cout << s << endl;
+      #+END_SRC
+***** 读取未知数量的string对象
+      #+BEGIN_SRC C++
+      while (cin >> word) {
+      }
+      #+END_SRC
+***** getline
+      #+BEGIN_SRC C++
+      string line;
+      while (getline(cin, line)) ;
+      #+END_SRC
+***** empty() and size()
+***** string::size_type
+      - unsigned
+      - 如果表达式中已有size()，不要再使用int
+***** compare string对象
+      - 比较规则(p80)
+***** string相加
+      #+BEGIN_SRC C++
+      string s1 = "aer", s2 = "uiahr";
+      string s3 = s1 + s2;
+      #+END_SRC
+      *s1+s1的结果是一个新的string对象*
+***** 字面值和string对象相加
+      - *字符串字面值* != string
+      #+BEGIN_SRC C++
+      string s4 = s1 + "sj"; // correct
+      string s5 = "hello" + ", "; // wrong
+      #+END_SRC

@@ -100,7 +100,8 @@
    1. step 1-5, same as mnode02
 
 
-* again reinstall 
+* DONE again reinstall 
+  CLOSED: [2017-06-19 Mon 16:28]
   marathon failed to launch
   follow http://zkread.com/article/1273029.html
 
@@ -120,5 +121,9 @@
 ** DONE mnode01
    CLOSED: [2017-05-16 Tue 11:10]
 
-** DONE mnode03
-   CLOSED: [2017-05-16 Tue 11:10]
+* TODO re-configure after ip changed 
+** current available nodes
+   mnode01 and mnode04 are currently available
+** check mnode01 
+  follow http://zkread.com/article/1273029.html
+   

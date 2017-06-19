@@ -1970,11 +1970,20 @@
 ** STARTED add STAR
    SCHEDULED: <2017-02-06 Mon 09:30>
 
-*** STARTED how to use STAR?(STAR api)
-    SCHEDULED: <2017-02-06 Mon 09:30>
+*** DONE STARTED how to use STAR?(STAR api)
+    CLOSED: [2017-06-19 Mon 10:46] SCHEDULED: <2017-02-06 Mon 09:30>
 
-**** STARTED read QUARK code
-     SCHEDULED: <2017-02-08 Wed 10:10>
+**** DONE STARTED read QUARK code
+     CLOSED: [2017-06-19 Mon 10:46] SCHEDULED: <2017-02-08 Wed 10:10>
      
 
-*** TODO IQCombine 
+*** DONE IQCombine 
+    CLOSED: [2017-06-19 Mon 10:37]
+*** DONE RegistrCoarse
+    CLOSED: [2017-06-19 Mon 10:37]
+*** TODO RegistrFine
+    - function dependencies:
+      - Fine():
+        - Get_Para_gcp()
+        - Resample()
+        - ReSampleImg_Master()
