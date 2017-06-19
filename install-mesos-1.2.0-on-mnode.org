@@ -123,8 +123,11 @@
 
 * TODO re-configure after ip changed 
 ** plan
-   - mnode04: mesos-master, marathon, zookeeper
-   - mnode01, mnode02, mnode03: mesos-slave
+| mnode04 | mesos-master, marathon, zookeeper |
+|---------+-----------------------------------|
+| mnode01 | mesos-slave                       |
+| mnode02 | mesos-slave                       |
+| mnode03 | mesos-slave                       |
 ** configure mnode04 
    follow http://zkread.com/article/1273029.html
   1. change yum repos
@@ -171,7 +174,7 @@
      vim zoo.cfg
      #+END_SRC
      zoo.cfg:
-     #+BEGIN_QUOTE
+     #+BEGIN_VERSE
      maxClientCnxns=50
      # The number of milliseconds of each tick
      tickTime=2000
@@ -189,5 +192,5 @@
      
      server.1=mnode01:2888:3888
      server.4=mnode04:2888:3888
-     #+END_QUOTE
+     #+END_VERSE
    
