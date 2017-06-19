@@ -123,8 +123,9 @@
 
 * TODO re-configure after ip changed 
 ** plan
-| mnode04 | mesos-master, marathon, zookeeper |
+| node    | status                            |
 |---------+-----------------------------------|
+| mnode04 | mesos-master, marathon, zookeeper |
 | mnode01 | mesos-slave                       |
 | mnode02 | mesos-slave                       |
 | mnode03 | mesos-slave                       |
@@ -165,7 +166,7 @@
      SELINUX=disabled  # add it
      #+END_SRC
   6. install zookeeper (only necessary on mnode04)
-     #+BEGIN_SRC shell
+     #+BEGIN_SRC shel
      yum install mesosphere-zookeeper
      #+END_SRC
      configure zookeeper:
@@ -174,7 +175,7 @@
      vim zoo.cfg
      #+END_SRC
      zoo.cfg:
-     #+BEGIN_VERSE
+     #+BEGIN_SRC shell
      maxClientCnxns=50
      # The number of milliseconds of each tick
      tickTime=2000
@@ -192,5 +193,5 @@
      
      server.1=mnode01:2888:3888
      server.4=mnode04:2888:3888
-     #+END_VERSE
+     #+END_SRC
    
