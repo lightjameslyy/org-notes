@@ -1979,8 +1979,12 @@
 
 *** DONE IQCombine 
     CLOSED: [2017-06-19 Mon 10:37]
+
+*** TODO R2Calibration
+
 *** DONE RegistrCoarse
     CLOSED: [2017-06-19 Mon 10:37]
+
 *** TODO RegistrFine
     - function dependencies:
       - Fine():

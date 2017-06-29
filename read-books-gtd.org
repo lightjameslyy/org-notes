@@ -656,3 +656,21 @@
       string s4 = s1 + "sj"; // correct
       string s5 = "hello" + ", "; // wrong
       #+END_SRC
+***** tips
+      1. string的>>运算符和getline()的区别
+         - string的>>运算符自动忽略字符串开头的空白
+         - getline()直到遇到换行符为止（ *换行符也被读取进来，但是不存储在最后的字符串中* ）
+
+*** 标准库类型vector
+    #+BEGIN_QUOTE
+    vector是模板而非类型。
+    因为引用不是对象，所以 *不存在包含引用的vector* 。
+    #+END_QUOTE
+**** 定义和初始化vector对象
+     - 圆括号：指定容量
+     - 花括号：列表初始化
+     - 当花括号里的值不能用来列表初始化，考虑 *用这个值作为容量值来构造vector*
+**** 向vector对象中添加元素
+     - 定义vector对象时没有必要指定容量大小，除非所有元素值相同
+     - 如果循环内可能改变vector的容量，不能使用for循环
+*** 迭代器介绍

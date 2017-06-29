@@ -123,12 +123,12 @@
 
 * TODO re-configure after ip changed 
 ** plan
-| node    | status                            |
-|---------+-----------------------------------|
-| mnode04 | mesos-master, marathon, zookeeper |
-| mnode01 | mesos-slave                       |
-| mnode02 | mesos-slave                       |
-| mnode03 | mesos-slave                       |
+| node    | status                               |
+|---------+--------------------------------------|
+| mnode01 | mesos-master, marathon, zookeeper    |
+| mnode02 | mesos-slave                          |
+| mnode03 | mesos-master, zookeeper, mesos-slave |
+| mnode04 | mesos-slave                          |
 ** configure mnode04 
    follow http://zkread.com/article/1273029.html
   1. change yum repos
@@ -158,40 +158,95 @@
      systemctl stop firewalld
      systemctl disable firewalld
      #+END_SRC
-  5. turn off selinux
+  5. turn off NetworkManager
+     #+BEGIN_SRC shell
+     systemctl stop NetworkManager
+     systemctl disable NetworkManager
+     #+END_SRC
+  6. turn off selinux
      #+BEGIN_SRC shell
      vim /etc/selinux/config
      #SELINUX=enforcing # comment it
      #SELINUXTYPE=targeted # comment it
      SELINUX=disabled  # add it
      #+END_SRC
-  6. install zookeeper (only necessary on mnode04)
+     or
+     #+BEGIN_SRC shell
+     setenforce 0
+     #+END_SRC
+  7. install zookeeper (only on mnode04 and mnode01)
      #+BEGIN_SRC shel
      yum install mesosphere-zookeeper
      #+END_SRC
-     configure zookeeper:
+     - configure zookeeper:
+       #+BEGIN_SRC shell
+       cd /etc/zookeeper/conf
+       vim zoo.cfg
+       #+END_SRC
+       - zoo.cfg:
+         #+BEGIN_SRC shell
+         maxClientCnxns=50
+         # The number of milliseconds of each tick
+         tickTime=2000
+         # The number of ticks that the initial
+         # synchronization phase can take
+         initLimit=10
+         # The number of ticks that can pass between
+         # sending a request and getting an acknowledgement
+         syncLimit=5
+         # the directory where the snapshot is stored.
+         dataDir=/opt/mesosphere/zookeeper/data
+         dataLogDir=/opt/mesosphere/zookeeper/logs
+         # the port at which the clients will connect
+         clientPort=2181
+         
+         server.1=mnode01:2888:3888
+         server.4=mnode04:2888:3888
+         #+END_SRC
+       #+BEGIN_SRC shell
+       cd /opt/mesosphere/zookeeper/data
+       echo 1 >> myid # on mnode01
+       echo 4 >> myid # on mnode04
+       #+END_SRC
+       - log4j.properties:
+         #+BEGIN_SRC shell
+         line 2: zookeeper.root.logger=INFO, ROLLINGFILE
+         line 52: log4j.appender.TRACEFILE=org.apache.log4j.RollingFileAppender
+         #+END_SRC
+       #+BEGIN_SRC shell
+       mkdir -p /var/log/zookeeper
+       chmod 755 /var/log/zookeeper
+       cd /opt/mesosphere/zookeeper/bin
+       vim zkEnv.sh
+       #+END_SRC
+       - zkEnv.sh:
+         #+BEGIN_SRC shell
+         line 34: ZOOCFGDIR="/etc/zookeeper/conf" 
+         line 56: ZOO_LOG_DIR="/var/log/zookeeper"
+         line 61: ZOO_LOG4J_PROP="INFO,ROLLINGFILE" 
+         #+END_SRC
+     - set environment variables:
+       #+BEGIN_SRC shell
+       vim /etc/profile
+       export ZOOKEEPER_HOME=/opt/mesosphere/zookeeper # add this line
+       export PATH=$ZOOKEEPER_HOME/bin:$PATH           # add this line
+       source /etc/profile
+       #+END_SRC
+     - launch zookeeper
+       #+BEGIN_SRC shell
+       cd /opt/mesosphere/zookeeper/bin
+       zkServer.sh start
+       #+END_SRC
+  8. install mesos-master
      #+BEGIN_SRC shell
-     cd /etc/zookeeper/conf
-     vim zoo.cfg
+     yum install mesos
      #+END_SRC
-     zoo.cfg:
-     #+BEGIN_SRC shell
-     maxClientCnxns=50
-     # The number of milliseconds of each tick
-     tickTime=2000
-     # The number of ticks that the initial
-     # synchronization phase can take
-     initLimit=10
-     # The number of ticks that can pass between
-     # sending a request and getting an acknowledgement
-     syncLimit=5
-     # the directory where the snapshot is stored.
-     dataDir=/opt/mesosphere/zookeeper/data
-     dataLogDir=/opt/mesosphere/zookeeper/logs
-     # the port at which the clients will connect
-     clientPort=2181
-     
-     server.1=mnode01:2888:3888
-     server.4=mnode04:2888:3888
-     #+END_SRC
-   
+     - configure mesos
+       #+BEGIN_SRC shell
+       vim /etc/mesos/zk
+       #+END_SRC
+       - zk:
+         #+BEGIN_SRC shell
+         zk://mnode04:2181/mesos
+         #+END_SRC
+         
