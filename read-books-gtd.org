@@ -31,14 +31,16 @@
     - State "DONE"       from "STARTED"    [2016-12-06 Tue 21:23]
     :END:
 
-    - results: change a file's user ID and group ID.
+    - results: change a file's user ID and group       #+END_SRC
+ID.
     - when the *referenced file is a symbolic link*, lchown and fchownat (with AT_SYMLINK_NOFOLLOW flag set) only change the owners of the symbolic link itself, not the file pointed to by the symbolic link.
     - what if _POSIX_CHOWN_RESTRICTED is in effect?
 
 *** DONE 4.12 File Size
     CLOSED: [2016-12-06 Tue 21:39] SCHEDULED: <2016-12-06 Tue 21:24>
     :LOGBOOK:
-    - State "DONE"       from "STARTED"    [2016-12-06 Tue 21:39]
+    - State "DONE"          #+END_SRC
+   from "STARTED"    [2016-12-06 Tue 21:39]
     :END:
 
     - for a symbolic link, the file size is *the number of bits in the filename*.
@@ -673,4 +675,91 @@
 **** 向vector对象中添加元素
      - 定义vector对象时没有必要指定容量大小，除非所有元素值相同
      - 如果循环内可能改变vector的容量，不能使用for循环
+     
 *** 迭代器介绍
+    - 所有标准库容器都支持迭代器，但是只有vector和string（严格来说string不属于容器）支持下标运算符。
+    - 有效的迭代器或者指向某个元素，或者指向容器中尾元素的下一个位置；其他都属于无效。
+      
+*** 数组
+    - 数组的维度必须是一个常量表达式。
+    - 数组不能用auto从初始化列表推断类型，必须在定义数组的时候指定类型。
+    - As with vector, arrays hold objects. Thus, *there are no arrays of references*.
+    - 数组不允许拷贝和赋值
+    - 理解复杂数组声明最好的办法是从数组名字开始 *由内向外* 的顺序阅读。
+    - 使用数组作为一个auto变量的初始值时， *推断得到的类型是指针而非数组* 。
+    - 使用decltype关键字能返回正确的数组类型：
+      #+BEGIN_SRC c++
+      int ia[] = {1,2,3,4,5};
+      decltype(ia) ia1 = {6,7,8,9,10};
+      #+END_SRC
+    - 标准库函数begin和end：
+      #+BEGIN_SRC c++
+      int *beg = begin(ia);
+      int *last = end(ia);
+      cout << *beg << endl; // 1
+      cout << *(last-1) << endl; // 5
+      #+END_SRC
+
+<2017-10-17 Tue>
+* C++ Concurrency In Action
+
+** chapter01 
+   - C++98标准不承认线程的存在，内存模型也 没有正式定义。
+   - C++11有了全新的线程感知内存模型，扩展了管理线程、保护共享数据、线程间同步操作、低级原子操作的各种类。
+  
+** chapter02
+*** 启动线程
+    - 初始化std::thread时要注意不要写成类型对象的定义。(使用多组括号、使用列表初始化、使用lambda表达式)
+    
+*** 等待线程
+    - join()
+    - detach()
+    - 如果有异常，处理异常的时候要join():
+      #+BEGIN_SRC c++
+      int main() {
+          std::thread t{func};
+          try {
+          // do something
+          } catch (...) {
+              t.join();
+              throw;
+          }
+          t.join();
+          return 0;
+      }
+      #+END_SRC
+    - 利用类的析构函数来确保join()
+    
+*** 向线程函数传递参数
+    - 传递字符串常量到string&时，要传递一个构造好的string
+    - 使用std::ref将参数转换成引用的形式
+    - 传递成员函数指针,需要紧接着提供一个合适的对象
+      #+BEGIN_SRC c++
+      class X {
+      public:
+          void do_work();
+      };
+      X my_x;
+      std::thread t(&X::do_work, &my_x);
+      #+END_SRC
+ 
+*** 转移线程所有权
+    - 需要在线程对象被析构前，显示的等待线程完成或分离它，进行复制时也需要满足这些条件(不能通过赋一个新值给std::thread对象的方式来“丢弃”一个线程)
+    - std::move()
+   
+*** 运行时决定线程数量
+    - std::thread::hardware_concurrency()
+   
+*** 识别线程
+    - std::thread::get_id()
+    - std::this_thread::get_id()
+    - std::thread::id
+    - std::thread:type表示"没有线程"
+    
+** chapter09
+   关键问题：
+     - 可用线程数
+     - 高效的任务分配方式
+     - 处理任务依赖
+*** 线程池
+    - 

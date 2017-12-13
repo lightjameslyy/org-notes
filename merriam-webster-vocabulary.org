@@ -1,0 +1,21 @@
+#+TITLE: merriam-webster vocabulary daily workout
+#+AUTHOR: lightjames
+#+DATE:<2017-10-12 Thu> 
+
+<2017-10-12 Thu>
+* ant / anti
+  - 大多数情况下表示否定
+  
+** antagonist 敌手
+   - protagonist 主角
+   
+** antigen 抗原
+   - -gen ==> generate
+** antibody 抗体
+
+** antidote 解药
+
+** antipathy 反感；厌恶
+
+** antithesis 对立面；对仗
+

@@ -1,0 +1,139 @@
+#+TITLE: install mesos on mnodes
+#+DATE: <2017-08-09 Wed>
+#+ATHOR: liutao
+
+* plan
+  - available nodes:
+| hostname |  ip address | status         |
+|----------+-------------+----------------|
+| mnode01  | 10.2.152.21 | slave          |
+| mnode02  | 10.2.152.22 | slave          |
+| mnode04  | 10.2.152.24 | master & slave |
+
+
+* prerequisites
+
+** 关闭防火墙(on all nodes)
+     #+BEGIN_SRC shell
+     systemctl stop firewalld && systemctl disable firewalld
+     #+END_SRC
+** ssh免密登录(on all nodes)
+     - mnode01
+       #+BEGIN_SRC shell
+       ssh-keygen -t rsa
+       ssh-copy-id -i ~/.ssh/id_rsa.pub mnode02
+       ssh-copy-id -i ~/.ssh/id_rsa.pub mnode04
+       #+END_SRC
+     - mnode02
+       #+BEGIN_SRC shell
+       ssh-keygen -t rsa
+       ssh-copy-id -i ~/.ssh/id_rsa.pub mnode01
+       ssh-copy-id -i ~/.ssh/id_rsa.pub mnode04
+       #+END_SRC
+     - mnode04
+       #+BEGIN_SRC shell
+       ssh-keygen -t rsa
+       ssh-copy-id -i ~/.ssh/id_rsa.pub mnode01
+       ssh-copy-id -i ~/.ssh/id_rsa.pub mnode02
+       #+END_SRC
+** 如果之前装过mesos，需要清理一些目录(删除或修改)
+     #+BEGIN_SRC shell
+     /var/lib/mesos/
+     /var/lib/zookeeper/
+     /etc/mesos*/
+     /etc/zookeeper/
+     /etc/marathon/
+     #+END_SRC
+     
+* 配置master节点(mnode04)  
+
+** 添加mesos的yum源
+   #+BEGIN_SRC shell
+   rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-3.noarch.rpm 
+   #+END_SRC
+** 安装mesos,marathon,zookeeper
+   #+BEGIN_SRC shell
+   yum -y install mesos marathon mesosphere-zookeeper
+   #+END_SRC
+** 配置zookeeper
+   #+BEGIN_SRC shell
+   echo 4 > /var/lib/zookeeper/myid
+   vim /etc/zookeeper/conf/zoo.cfg
+   # 在最后添加 
+   # server.4 = 10.2.152.24:2888:3888
+   # 2888端口用于集群成员的信息交换
+   # 3888端口是在leader挂掉时用来选举新的leader用
+   vim /etc/mesos/zk
+   # 内容为：
+   # zk://10.2.152.24:2181/mesos
+   # 设置quorum的值（master节点数目除以2向上取整）
+   echo 1 > /etc/mesos-master/quorum
+   #+END_SRC
+** 配置mesos和marathon
+   #+BEGIN_SRC shell
+   mkdir -p /etc/marathon/conf
+   echo 10.2.152.24 > /etc/mesos-master/hostname
+   echo 10.2.152.24 > /etc/marathon/conf/hostname
+   cp /etc/mesos/zk /etc/marathon/conf/master
+   cp /etc/mesos/zk /etc/marathon/conf/zk
+   sed -i 's|mesos|marathon|g' /etc/marathon/conf/zk
+   #+END_SRC
+** 启动mesos,marathon,zookeeper
+   #+BEGIN_SRC 
+   systemctl start zookeeper && systemctl start mesos-master && systemctl start marathon
+   #+END_SRC
+** 检查配置
+   - 主要配置内容:
+     #+BEGIN_SRC shell
+     /var/lib/zookeeper/myid
+     /etc/zookeeper/conf/zoo.cfg
+     /etc/mesos/zk
+     /etc/mesos-master/quorum
+     /etc/mesos-master/hostname
+     /etc/marathon/conf/hostname
+     /etc/marathon/conf/master
+     /etc/marathon/conf/zk
+     #+END_SRC
+
+* 配置slave节点(mnode01, mnode02, mnode04)
+
+** 添加mesos的yum源并安装mesos(mnode01, mnode02)
+   #+BEGIN_SRC shell
+   rpm -Uvh http://repos.mesosphere.io/el/7/noarch/RPMS/mesosphere-el-repo-7-3.noarch.rpm 
+   yum -y install mesos
+   #+END_SRC
+** 配置slave和master信息
+   - mnode01
+     #+BEGIN_SRC shell
+     echo 10.2.152.21 > /etc/mesos-slave/hostname
+     vim /etc/mesos/zk
+     # 内容编辑为:
+     # zk://10.2.152.24:2181/mesos
+     #+END_SRC
+   - mnode02
+     #+BEGIN_SRC shell
+     echo 10.2.152.22 > /etc/mesos-slave/hostname
+     vim /etc/mesos/zk
+     # 内容编辑为:
+     # zk://10.2.152.24:2181/mesos
+     #+END_SRC
+   - mnode04
+     #+BEGIN_SRC shell
+     echo 10.2.152.24 > /etc/mesos-slave/hostname
+     #+END_SRC
+** 启动slave
+   - mnode01, mnode02 and mnode04
+     #+BEGIN_SRC shell
+     systemctl start mesos-slave
+     #+END_SRC
+* 验证安装
+
+** web ui
+   - mesos的管理页面: http://10.2.152.24:5050
+   - marathon的管理页面: http://10.2.152.24:8080
+** 测试
+   - on mnode04
+     #+BEGIN_SRC shell
+     mesos-execute --master="10.2.152.24:5050" --name="cluster-test" --command="sleep 40"
+     #+END_SRC
+     mesos的管理页面中会显示

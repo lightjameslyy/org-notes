@@ -1,0 +1,41 @@
+#+title: C++ interview questions
+#+author: lightjames
+#+date: <2017-07-18 Tue>
+
+url: https://www.youtube.com/playlist?list=PLk6CEY9XxSIDy8qVHZV-Nf-r9f2BkRZ6p
+
+* how to call some function before main()?
+  1. global variable: global object call its constructor
+  2. static member of class
+
+* What Is Constructor Delegation In C++?
+  - Delegating constructors only works in the constructor's initialization list
+  
+* What Is Code Bloating In C++? 代码膨胀
+  - Code bloat is the production of code that is perceived as unnecessarily long, slow, or otherwise wasteful of resources.
+  
+* What Is Return Value Of printf And scanf In C/C++? 
+  - printf: returns the number of characters printed successfully
+  - scanf: returns the number of elements read successfully
+  
+* How Compilation Works Internally In C And C++?
+  - source code --> compiler --> object code  --* --> linker --> executable
+                                                |
+                                 library file --*
+  - 预处理 --> 编译 --> 汇编 --> 链接 --> 加载
+  
+* What Is Diamond Problem In C++?
+  - 多重继承导致歧义
+  - 解决方法： 虚拟继承
+  
+* What Is Static And Dynamic Binding In C++?
+  - static binding: function calling is determined at compile time
+  - dynamic binding: function calling is determined at run time
+  
+* How To Assign Object To int? 
+  - define *operator int()* to allow the conversion from class to int
+  
+* Difference B/W range for Loop & foreach In C++?
+
+* What Is The Use Of extern "C" In C++?
+  - when you are writing c++ code and including c code in that 
